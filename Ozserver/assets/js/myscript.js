@@ -1,0 +1,1 @@
+var apiDataUrl = "https://localhost:44334/api";

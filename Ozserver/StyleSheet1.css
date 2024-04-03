@@ -1,0 +1,83 @@
+﻿.icon-link img {
+    width: 30px;
+    height: 30px;
+}
+
+#dialog {
+    display: none;
+    width: 40%;
+    height: 30%;
+    padding: 20px;
+    background-color: #7CB9E8; /* Light blue */
+    border: 1px solid #31708f; /* Dark blue */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: auto; /* Center horizontally */
+    text-align: center; /* Center text */
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Align children vertically */
+    justify-content: center; /* Center children vertically */
+}
+
+    #dialog p input[type="text"] {
+        width: calc(100% - 20px); /* Adjust width with padding */
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #31708f; /* Dark blue */
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+#submitButton, #cancelButton {
+    padding: 10px 20px;
+    margin: 0 10px; /* Add margin between buttons */
+    background-color: #00d0f1; /* Update button background color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#cancelButton {
+    background-color: #00d0f1; /* Update cancel button background color */
+}
+
+
+.footer a {
+    color: #31708f; /* Dark blue */
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+
+ /* footer*/
+}
+/* Center-align the dialog content */
+#dialog {
+    text-align: center;
+}
+
+/* Hide the title bar */
+.ui-dialog .ui-dialog-titlebar {
+    display: none;
+}
+
+/* Style for the custom close button */
+#customCloseButton span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%;
+    background-color: #eee;
+    transition: background-color 0.3s;
+}
+
+    #customCloseButton span:hover {
+        background-color: #ccc;
+    }

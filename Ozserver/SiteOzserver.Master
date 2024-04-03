@@ -1,0 +1,192 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteOzserver.master.cs" Inherits="Ozserver.SiteOzserver" %>
+
+<!DOCTYPE html>
+
+<%@ Register Src="~/sidebar.ascx" TagPrefix="uc1" TagName="Sidebar" %>
+
+
+<!-- Header content goes here -->
+<html>
+<head runat="server">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    
+		
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+		
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+		
+    <link rel="stylesheet" href="assets/css/feathericon.min.css">
+		
+    <link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+                                 
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="StyleSheet1.css">
+ 
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+               
+             <div>
+                <form id="form1" runat="server">
+                    <!-- Header -->
+                    <div class="header">
+                        <!-- Logo -->
+                        <asp:ContentPlaceHolder ID="sidebarContent" runat="server">
+                            <div class="header-left">
+                                <a href="index.html" class="logo">&nbsp;</a>
+                                <a href="index.html" class="logo logo-small">
+                                    <img src="images/ABOUT.BMP" alt="Logo" width="30" height="30" />
+                                </a>&nbsp;
+                                <a href="index.html" class="logo">
+                                    <img src="images/ABOUT.BMP" alt="Logo" />
+                                </a>
+                            </div>
+                            <!-- /Logo -->
+
+                            <a href="javascript:void(0);" id="toggle_btn"><i class="fe fe-text-align-left"></i></a>
+                        </asp:ContentPlaceHolder>
+                        <!-- /Header -->
+
+                        <!-- Mobile Menu Toggle -->
+                        <a class="mobile_btn" id="mobile_btn"><i class="fa fa-bars"></i></a>
+                        <!-- /Mobile Menu Toggle -->
+
+                        <!-- Header Right Menu -->
+                        <ul class="nav user-menu">
+                            <!-- User Menu -->
+                            <li class="nav-item dropdown has-arrow">
+                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                    <span class="user-img">
+                                        <img class="rounded-circle" src="assets/img/profiles/avatar-01.jpg" width="31" alt="Ryan Taylor" />
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="user-header">
+                                        <div class="avatar avatar-sm">
+                                            <img src="assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle" />
+                                        </div>
+                                        <div class="user-text">
+                                            <h6>Ryan Taylor</h6>
+                                            <p class="text-muted mb-0">Administrator</p>
+                                        </div>
+                                    </div>
+                                    <a class="dropdown-item" href="profile.html">My Profile</a>
+                                    <a class="dropdown-item" href="settings.html">Settings</a>
+                                    <a class="dropdown-item" href="login.html">Logout</a>
+                                </div>
+                            </li>
+                            <!-- /User Menu -->
+                        </ul>
+                        <!-- /Header Right Menu -->
+                    </div>
+           
+            </div>
+
+
+           <!-- Sidebar -->
+              <uc1:Sidebar runat="server" id="Sidebar" />
+            <!-- /Sidebar -->
+             
+            
+            <!-- Page Wrapper -->
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <!-- /Page Wrapper -->
+     
+
+        
+
+
+            <!-- Footer -->
+        
+           <div class="footer fixed-bottom">
+        <footer class="text-center text-lg-start" style="background-color:#7CB9E8;">
+            <!-- Footer content with required modifications -->
+            (Beta Version) | &copy; 2024 Copyright Ozdocs International Pty Ltd. 2024 | <a href="#" id="openPopupLink">Feedback</a>
+        </footer>
+    </div>
+
+    <div id="dialog" title="Please enter your feedback" style="display: none;">
+        <h4 style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Please enter your feedback</h4>
+        <div id="customCloseButton" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
+            <span style="color: #555; font-size: 24px; font-weight: bold;">&times;</span>
+        </div>
+        <p>
+            <textarea id="feedbackText" placeholder="Enter your feedback..." rows="4" cols="30"></textarea>
+        </p>
+        <div class="button-container">
+            <button id="submitButton">Submit</button>
+            <button id="cancelButton">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#openPopupLink").click(function (e) {
+                e.preventDefault(); // Prevent default link behavior
+                $("#feedbackText").val(""); // Clear textarea value
+                // Open the dialog with custom width and height
+                $("#dialog").dialog({
+                    width: 600, // Set width to 600 pixels
+                    height: 400, // Set height to 400 pixels
+                    resizable: false, // Make the dialog not resizable
+                    position: { my: "center", at: "center", of: window },
+                    autoOpen: true
+                });
+            });
+
+            $("#submitButton").click(function () {
+                var feedback = $("#feedbackText").val();
+
+                // Send the feedback to the server or perform any desired action
+                alert("Feedback submitted: " + feedback);
+                $("#feedbackText").val(""); // Clear textarea value
+                $("#dialog").dialog("close");
+            });
+
+            $("#cancelButton").click(function () {
+                $("#feedbackText").val(""); // Clear textarea value
+                $("#dialog").dialog("close");
+            });
+
+            // Add click event listener to the custom close button
+            $("#customCloseButton").click(function () {
+                $("#dialog").dialog("close");
+            });
+        });
+    </script>
+         <!-- /Footer -->
+       
+         
+     </form>
+
+
+
+    <!-- jQuery -->
+        <script src="assets/js/jquery-3.2.1.min.js"></script>
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        
+		<!-- Bootstrap Core JS -->
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+		
+		<!-- Slimscroll JS -->
+        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		
+		<script src="assets/plugins/raphael/raphael.min.js"></script>    
+		<script src="assets/plugins/morris/morris.min.js"></script>  
+		<script src="assets/js/chart.morris.js"></script>
+		
+		<!-- Custom JS -->
+		<script  src="assets/js/script.js"></script>
+</body>
+</html>
+
