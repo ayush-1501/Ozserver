@@ -106,59 +106,70 @@
 
             <!-- Footer -->
         
-          <div class="footer fixed-bottom">
-        <footer class="text-center text-lg-start" style="background-color:#7CB9E8;">
-            <!-- Footer content with required modifications -->
-            (Beta Version) | &copy; 2024 Copyright Ozdocs International Pty Ltd. 2024 | <a href="#" id="openPopupLink">Feedback</a>
-        </footer>
-    </div>
+     <div class="footer fixed-bottom">
+    <footer class="text-center text-lg-start" style="background-color:#7CB9E8;">
+        <!-- Footer content with required modifications -->
+        (Beta Version) | &copy; 2024 Copyright Ozdocs International Pty Ltd. 2024 | <a href="#" id="openPopupLink">Feedback</a>
+    </footer>
+</div>
 
-    <div id="dialog" title="Please enter your feedback" style="display: none;">
-       <h4 style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Please enter your feedback</h4>
-            <div id="customCloseButton" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-                <span style="color: #555; font-size: 24px; font-weight: bold;">&times;</span>
-            </div>
-          <p>
-                <textarea id="feedbackText" placeholder="Enter your feedback..." rows="4" cols="30"></textarea>
-            </p>
+<div id="dialog" title="Please enter your feedback" style="display: none;">
+    <h4 style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Please enter your feedback</h4>
+    <div id="customCloseButton" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
+        <span style="color: #555; font-size: 24px; font-weight: bold;">&times;</span>
+    </div>
+    <p>
+        <textarea id="feedbackText" placeholder="Enter your feedback..." rows="4" cols="30"></textarea>
+    </p>
+    <div class="button-container">
         <button id="submitButton">Submit</button>
         <button id="cancelButton">Cancel</button>
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $("#openPopupLink").click(function (e) {
-                e.preventDefault(); // Prevent default link behavior
-                $("#feedbackText").val(""); // Clear textarea value
-                // Open the dialog with custom width and height
-                $("#dialog").dialog({
-                    width: 600, // Set width to 600 pixels
-                    height: 400, // Set height to 400 pixels
-                    resizable: false, // Make the dialog not resizable
-                    position: { my: "center", at: "center", of: window }
-                });
-            });
-
-            $("#submitButton").click(function () {
-                var feedback = $("#feedbackText").val();
-                // Send the feedback to the server or perform any desired action
-                alert("Feedback submitted: " + feedback);
-                $("#feedbackText").val(""); // Clear textarea value
-                $("#dialog").dialog("close");
-            });
-
-            $("#cancelButton").click(function () {
-                $("#feedbackText").val(""); // Clear textarea value
-                $("#dialog").dialog("close");
-            });
-            $("#customCloseButton").click(function () {
-                $("#dialog").dialog("close");
+<script>
+    $(document).ready(function () {
+        $("#openPopupLink").click(function (e) {
+            e.preventDefault(); // Prevent default link behavior
+            $("#feedbackText").val(""); // Clear textarea value
+            // Open the dialog with custom width and height
+            $("#dialog").dialog({
+                width: 600, // Set width to 600 pixels
+                height: 400, // Set height to 400 pixels
+                resizable: false, // Make the dialog not resizable
+                position: { my: "center", at: "center", of: window }
             });
         });
-    </script>
+
+        $("#submitButton").click(function () {
+            var feedback = $("#feedbackText").val();
+            // Send the feedback to the server or perform any desired action
+            alert("Feedback submitted: " + feedback);
+            $("#feedbackText").val(""); // Clear textarea value
+            $("#dialog").dialog("close");
+        });
+
+        $("#cancelButton").click(function () {
+            $("#feedbackText").val(""); // Clear textarea value
+            $("#dialog").dialog("close");
+        });
+        $("#customCloseButton").click(function () {
+            $("#dialog").dialog("close");
+        });
+    });
+</script>
+
+<style>
+    .button-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+</style>
+
 
 
 
