@@ -16,18 +16,16 @@ namespace Ozserver
        
         }
 
-        protected void SubmitButton_Click(object sender, EventArgs e)
+        protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string feedback = Request.Form["feedbackText"];
-
             string fromAddress = "ayushdel15@gmail.com";
             string toAddress = "ayushstarc@gmail.com";
-            string fromPassword = "ezak komq euwh gise";
+            string fromPassword = "xmro mldw wfgg qhne";
 
-            MailMessage message=new MailMessage();
-            message.From=new MailAddress(fromAddress);
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress(fromAddress);
             message.To.Add(new MailAddress(toAddress));
-            message.Body = "<html><body>Test Body</body></html>";
+            message.Body = "<html><body>Test Body from popup</body></html>";
             message.IsBodyHtml = true;
 
             var smtpClient = new SmtpClient("smtp.gmail.com")

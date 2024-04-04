@@ -122,7 +122,7 @@
                 <textarea id="feedbackText" placeholder="Enter your feedback..." rows="4" cols="30"></textarea>
             </p>
             <div class="button-container">
-                <asp:Button ID="submitButton" runat="server" OnClick="SubmitButton_Click" Text="Submit" />
+                <asp:Button ID="submitButton" runat="server" OnClick="btnLogin_Click" Text="Submit" />
                 <button id="cancelButton">Cancel</button>
             </div>
         </div>
@@ -170,7 +170,9 @@
             }
         </style>
 
-
+        <div class="form-group">
+					<asp:Button runat="server" ID="btnLogin" Text="Login" CssClass="btn btn-primary btn-block" OnClick="btnLogin_Click" />
+				</div>
 
 
          <!-- /Footer -->

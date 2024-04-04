@@ -36,7 +36,7 @@ namespace Ozserver
                 EDN = true;
                 AQIS = true;
                 PRA = true;
-                Role = "Non-Admin";
+                Role = "Admin";
                 OfficeID = "ANZCO";
             }
 

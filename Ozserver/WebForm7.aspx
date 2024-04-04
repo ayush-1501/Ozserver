@@ -7,11 +7,27 @@
             <div class="page-header">
                 <div class="row">
                       <div class="col-sm-12">
-                          <h3 class="page-title">List of EDN Transmissions</h3>
+                          
+                          <% if (IsTransmissionFrom("EDN")) { %>
+                                   <h3 class="page-title">List of EDN Transmissions</h3>
+                              <% } %>
+                            <% if (IsTransmissionFrom("PRA")) { %>
+                                   <h3 class="page-title">List of PRA Transmissions</h3>
+                             <% } %> 
+                            <% if (IsTransmissionFrom("AQIS")) { %>
+                                    <h3 class="page-title">List of AQIS Transmissions</h3>
+                             <% } %>
                           <ul class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                              <li class="breadcrumb-item"><a href="javascript:(0);">Users</a></li>
-                              <li class="breadcrumb-item active">EDN Transmission</li>
+                              <li class="breadcrumb-item"><a href="Dashboard.aspx.html">Dashboard</a></li>
+                               <% if (IsTransmissionFrom("EDN")) { %>
+                                      <li class="breadcrumb-item active">EDN Document</li>
+                                 <% } %>
+                               <% if (IsTransmissionFrom("PRA")) { %>
+                                       <li class="breadcrumb-item active">PRA Document</li>
+                                <% } %> 
+                               <% if (IsTransmissionFrom("AQIS")) { %>
+                                        <li class="breadcrumb-item active">AQIS Document</li>
+                                <% } %>
                           </ul>
                       </div>
                     <div class="col-sm-12">
@@ -29,18 +45,55 @@
                                 <table class="table ">
                                     <tr>
                                         <th>ID</th>
+                                          <% if (IsTransmissionFrom("EDN")) { %>
+                                                 <th>Sender Ref</th>
+                                            <% } %>
+                                          <% if (IsTransmissionFrom("PRA")) { %>
+                                                  <th>1-Stop Ref</th>
+                                                 
+                                           <% } %> 
+                                          <% if (IsTransmissionFrom("AQIS")) { %>
+                                                    <th>Permit No</th>
+                                           <% } %>
                                         <th>Version</th>
-                                        <th>SDate</th>
-                                        <th>RDate</th>
+                                        <th>Send Date/Time</th>
+                                        <% if (IsTransmissionFrom("EDN")) { %>
+                                               <th>EDN</th>
+                                          <% } %>
+                                        <% if (IsTransmissionFrom("PRA")) { %>
+                                                <th>Shipper Ref</th>
+                                         <% } %> 
+                                        <% if (IsTransmissionFrom("AQIS")) { %>
+                                                  <th>REP No</th>
+                                         <% } %>
                                         <th>Status</th>
                                     </tr>
                             </HeaderTemplate>
                             <ItemTemplate>
                                 <tr>
                                     <td><%# Eval("Id") %></td>
+                                     <% if (IsTransmissionFrom("EDN")) { %>
+                                             <td><%# Eval("senderRef") %></td>
+                                       <% } %>
+                                     <% if (IsTransmissionFrom("PRA")) { %>
+                                             <td><%# Eval("oneStopRef") %></td>
+                                            
+                                      <% } %> 
+                                     <% if (IsTransmissionFrom("AQIS")) { %>
+                                               <td><%# Eval("permitNo") %></td>
+                                             
+                                      <% } %>
                                     <td><%# Eval("Version") %></td>
                                     <td><%# Eval("SDateTime", "{0:yyyy-MM-dd HH:mm:ss}") %></td>
-                                    <td><%# Eval("RDateTime", "{0:yyyy-MM-dd HH:mm:ss}") %></td>
+                                       <% if (IsTransmissionFrom("EDN")) { %>
+                                              <td><%# Eval("EDN") %></td>
+                                        <% } %>
+                                      <% if (IsTransmissionFrom("PRA")) { %>
+                                              <td><%# Eval("shippersRef") %></td>
+                                       <% } %> 
+                                      <% if (IsTransmissionFrom("AQIS")) { %>
+                                                <td><%# Eval("senderRef") %></td>
+                                       <% } %>
                                     <td><%# Eval("Status") %></td>
                                 </tr>
                             </ItemTemplate>
@@ -102,3 +155,7 @@
         </div>
     </div>
 </asp:Content>
+
+
+
+ 

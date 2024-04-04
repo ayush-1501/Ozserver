@@ -19,6 +19,9 @@ namespace Example
         readonly PagedDataSource _pgsource = new PagedDataSource();
         int _firstIndex, _lastIndex;
         private int _pageSize = 15;
+        string _transmissionSource;
+        string Role;
+        string OfficeID;
         private int CurrentPage
         {
             get
@@ -45,13 +48,37 @@ namespace Example
             }
             else
             {
+                if (Request.QueryString["context"] != null)
+                {
+                    _transmissionSource = Request.QueryString["context"].ToUpper();
+                    System.Diagnostics.Debug.WriteLine(_transmissionSource);
+                    Console.WriteLine(_transmissionSource);
+                }
+                if (Session["Role"] != null)
+                {
+                    Role = (string)Session["Role"];
+                    OfficeID = (string)Session["OfficeID"];
+                }
+                else
+                {
+                    // Handle the case where one or more session variables are null
+                    Role = "Non-Admin";
+                    OfficeID = "ANZCO";
+                }
                 // Continue loading the dashboard page
+                Role = "Admin";
+                OfficeID = "ANZCO";
                 if (Page.IsPostBack) return;
                 BindDataIntoRepeater();
             }
-           
-        }
 
+           
+
+        }
+        public bool IsTransmissionFrom(string source)
+        {
+            return _transmissionSource == source.ToUpper();
+        }
         public override void VerifyRenderingInServerForm(Control control)
         {
             /* Confirms that an HtmlForm control is rendered for the specified ASP.NET
@@ -61,8 +88,40 @@ namespace Example
         public DataTable GetDataFromDb()
         {
             string apiUrl = "http://crm2.omnix.com.au/OzdocsServerWebAPI/api/";
-
-            apiUrl = apiUrl + "EDNDocument/GetEDNData";
+            if (_transmissionSource == "EDN")
+            {
+                if (Role == "Admin")
+                {
+                    apiUrl = apiUrl + "EDNDocument/GetEDNData";
+                }
+                else
+                {
+                    apiUrl = apiUrl + "EDNDocument/GetEDNDataByOfficeId?officeId=" + OfficeID;
+                }
+            }
+            else if (_transmissionSource =="PRA")
+            {
+                if (Role == "Admin")
+                {
+                    apiUrl = apiUrl + "PRADocument/GetPRAData";
+                }
+                else
+                {
+                    apiUrl = apiUrl + "PRADocument/GetPRADataByOfficeId?officeId=" + OfficeID;
+                }
+            }
+            else if (_transmissionSource=="AQIS")
+            {
+                if (Role == "Admin")
+                {
+                    apiUrl = apiUrl + "AQISDocument/GetAQISData";
+                }
+                else
+                {
+                    apiUrl = apiUrl + "AQISDocument/GetAQISDataByOfficeId?officeId=" + OfficeID;
+                }
+            }
+          
 
             // Call the CallRestAPI function from BusinessAccessLayer
             RestAPICaller apiCaller = new RestAPICaller();
@@ -220,16 +279,24 @@ namespace Example
         {
             public int Id { get; set; }
             public string OfficeId { get; set; }
+            public string AqisId { get; set; }
+            public string RfpNo { get; set; }
+            public int Version { get; set; }
+            public string Status { get; set; }
+            public string PermitNo { get; set; }
+            public string PradocsId { get; set; }
+            public string ShippersRef { get; set; }
+            public string StatusDesc { get; set; }
+            public string OneStopRef { get; set; }
+            public string LastVersion { get; set; }
+            public string ContainerNo { get; set; }
             public string EdnDocsId { get; set; }
             public string SenderRef { get; set; }
-            public int Version { get; set; }
             public string Edn { get; set; }
-            public string Status { get; set; }
             public DateTime SDateTime { get; set; }
             public DateTime RDateTime { get; set; }
             public int ControlRef { get; set; }
             public string Acknowledge { get; set; }
-            public string StatusDesc { get; set; }
             public string ReasonDesc { get; set; }
             public string Error1 { get; set; }
             public string Error2 { get; set; }
@@ -257,5 +324,6 @@ namespace Example
             public string File_Out_Content { get; set; }
             public int IsNew { get; set; }
         }
+
     }
 }

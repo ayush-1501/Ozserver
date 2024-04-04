@@ -11,13 +11,13 @@
                 </li>
                 <% if (EDN) { %>
                       <li class="submenu">
-                        <a href="" class="icon-link">
+                        <a href="#" class="icon-link">
                             <img src="images/transLC.bmp" alt="Your Image Alt Text" />
                             <span id="ednLink">EDN Transmission</span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
-                            <li><a href="EDNDocumentList.aspx">Today's Transmission</a></li>
+                            <li><a href="WebForm7.aspx?context=EDN">Today's Transmission</a></li>
                             <li><a href="advancedsearch.aspx?context=EDN">Advanced Search</a></li>
                         </ul>
                     </li>
@@ -27,7 +27,7 @@
 
                     praLink.addEventListener("click", function () {
 
-                        window.location.href = "EDNDocumentList.aspx";
+                        window.location.href = "AQISDocumentData.aspx?context=EDN";
                     });
                 </script>
                 <% } %>
@@ -39,7 +39,7 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul style="display: none;">
-                        <li><a href="AQISDocumentList.aspx">Today's Transmission</a></li>
+                        <li><a href="WebForm7.aspx?context=AQIS">Today's Transmission</a></li>
                         <li><a href="advancedsearch.aspx?context=AQIS">Advanced Search</a></li>
                     </ul>
                 </li>
@@ -49,7 +49,7 @@
 
                      praLink.addEventListener("click", function () {
 
-                         window.location.href = "AQISDocumentList.aspx";
+                         window.location.href = "AQISDocumentData.aspx?context=AQIS";
                      });
                  </script>
                 <% } %>
@@ -61,7 +61,7 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
-                            <li><a href="PRADocumentList.aspx">Today's Transmission</a></li>
+                            <li><a href="WebForm7.aspx?context=PRA">Today's Transmission</a></li>
                             <li><a href="advancedsearch.aspx?context=PRA">Advanced Search</a></li>
                         </ul>
                     </li>
@@ -72,7 +72,7 @@
    
                         praLink.addEventListener("click", function() {
      
-                            window.location.href = "PRADocumentList.aspx";
+                            window.location.href = "AQISDocumentData.aspx?context=PRA";
                         });
                     </script>
                 <% } %>
