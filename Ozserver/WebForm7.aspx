@@ -53,7 +53,7 @@
                                                  
                                            <% } %> 
                                           <% if (IsTransmissionFrom("AQIS")) { %>
-                                                    <th>Permit No</th>
+                                                    <th>AQIS Id</th>
                                            <% } %>
                                         <th>Version</th>
                                         <th>Send Date/Time</th>
@@ -64,6 +64,7 @@
                                                 <th>Shipper Ref</th>
                                          <% } %> 
                                         <% if (IsTransmissionFrom("AQIS")) { %>
+                                                  <th>Permit No</th>
                                                   <th>REP No</th>
                                          <% } %>
                                         <th>Status</th>
@@ -76,11 +77,12 @@
                                              <td><%# Eval("senderRef") %></td>
                                        <% } %>
                                      <% if (IsTransmissionFrom("PRA")) { %>
-                                             <td><%# Eval("oneStopRef") %></td>
+                                             
+                                             <td><%# Eval("shippersRef") %></td>
                                             
                                       <% } %> 
                                      <% if (IsTransmissionFrom("AQIS")) { %>
-                                               <td><%# Eval("permitNo") %></td>
+                                               <td><%# Eval("aqisId") %></td>
                                              
                                       <% } %>
                                     <td><%# Eval("Version") %></td>
@@ -89,9 +91,11 @@
                                               <td><%# Eval("EDN") %></td>
                                         <% } %>
                                       <% if (IsTransmissionFrom("PRA")) { %>
-                                              <td><%# Eval("shippersRef") %></td>
+                                              <td><%# Eval("oneStopRef") %></td>
+                                            
                                        <% } %> 
                                       <% if (IsTransmissionFrom("AQIS")) { %>
+                                                <td><%# Eval("permitNo") %></td>
                                                 <td><%# Eval("senderRef") %></td>
                                        <% } %>
                                     <td><%# Eval("Status") %></td>
@@ -103,16 +107,16 @@
                         </asp:Repeater>
                     </div>
 
-                    <div>
+                   <div>
                         <table class="table table-bordered">
                             <tr>
                                 <td class="text-center">
-                                    <asp:LinkButton ID="lbFirst" runat="server" OnClick="lbFirst_Click" CssClass="btn btn-primary">First</asp:LinkButton>
+                                    <asp:LinkButton ID="lbFirst" runat="server" OnClick="lbFirst_Click" CssClass="btn" style="background-color: #1b5a90; color: white;" onmouseover="changeColor(this, '#00d0f1')" onmouseout="changeColor(this, '#1b5a90')">First</asp:LinkButton>
                                 </td>
                                 <td class="text-center">
-                                    <asp:LinkButton ID="lbPrevious" runat="server" OnClick="lbPrevious_Click" CssClass="btn btn-primary">Previous</asp:LinkButton>
+                                    <asp:LinkButton ID="lbPrevious" runat="server" OnClick="lbPrevious_Click" CssClass="btn" style="background-color: #1b5a90; color: white;" onmouseover="changeColor(this, '#00d0f1')" onmouseout="changeColor(this, '#1b5a90')">Previous</asp:LinkButton>
                                 </td>
-                               <td class="text-center" style="display: flex; justify-content: center;">
+                                <td class="text-center" style="display: flex; justify-content: center;">
                                     <asp:DataList ID="rptPaging" runat="server"
                                         OnItemCommand="rptPaging_ItemCommand"
                                         OnItemDataBound="rptPaging_ItemDataBound" 
@@ -122,17 +126,16 @@
                                                 CommandArgument='<%# Eval("PageIndex") %>' 
                                                 CommandName="newPage"
                                                 Text='<%# Eval("PageText") %>' Width="40px"
-                                                CssClass="btn btn-primary">
+                                                CssClass="btn" style="background-color: #1b5a90; color: white;" onmouseover="changeColor(this, '#00d0f1')" onmouseout="changeColor(this, '#1b5a90')">
                                             </asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:DataList>
                                 </td>
-
                                 <td class="text-center">
-                                    <asp:LinkButton ID="lbNext" runat="server" OnClick="lbNext_Click" CssClass="btn btn-primary">Next</asp:LinkButton>
+                                    <asp:LinkButton ID="lbNext" runat="server" OnClick="lbNext_Click" CssClass="btn" style="background-color: #1b5a90; color: white;" onmouseover="changeColor(this, '#00d0f1')" onmouseout="changeColor(this, '#1b5a90')">Next</asp:LinkButton>
                                 </td>
                                 <td class="text-center">
-                                    <asp:LinkButton ID="lbLast" runat="server" OnClick="lbLast_Click" CssClass="btn btn-primary">Last</asp:LinkButton>
+                                    <asp:LinkButton ID="lbLast" runat="server" OnClick="lbLast_Click" CssClass="btn" style="background-color: #1b5a90; color: white;" onmouseover="changeColor(this, '#00d0f1')" onmouseout="changeColor(this, '#1b5a90')">Last</asp:LinkButton>
                                 </td>
                                 <td class="text-center">
                                     <asp:Label ID="lblpage" runat="server" Text=""></asp:Label>
@@ -140,6 +143,21 @@
                             </tr>
                         </table>
                     </div>
+
+                    <script>
+                        // Function to change button color
+                        function changeColor(element, color) {
+                            element.style.backgroundColor = color;
+                        }
+
+                        // Add event listener for click event to handle button clicks
+                        document.addEventListener('click', function (event) {
+                            if (event.target.classList.contains('btn')) {
+                                changeColor(event.target, '#00d0f1');
+                            }
+                        });
+                    </script>
+
                 </ContentTemplate>
             </asp:UpdatePanel>
              <div class="card">
