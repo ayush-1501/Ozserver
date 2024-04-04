@@ -23,7 +23,7 @@ namespace Ozserver
         string OfficeID;
         readonly PagedDataSource _pgsource = new PagedDataSource();
         int _firstIndex, _lastIndex;
-        private int _pageSize = 15;
+        private int _pageSize = 5;
         protected void Page_Load(object sender, EventArgs e)
         {
 

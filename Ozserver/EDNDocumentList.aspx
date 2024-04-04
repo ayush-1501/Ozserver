@@ -11,7 +11,6 @@
                           <h3 class="page-title">List of EDN Transmissions</h3>
                           <ul class="breadcrumb">
                               <li class="breadcrumb-item"><a href="Dashboard.aspx">Dashboard</a></li>
-                              <li class="breadcrumb-item"><a href="javascript:(0);">Users</a></li>
                               <li class="breadcrumb-item active">EDN Transmission</li>
                           </ul>
                       </div>
