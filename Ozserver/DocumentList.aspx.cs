@@ -23,7 +23,7 @@ namespace Example
         string OfficeID;
         public string Role { get; set; }
 
-        private int CurrentPage
+        public int CurrentPage
         {
             get
             {
@@ -38,7 +38,7 @@ namespace Example
                 ViewState["CurrentPage"] = value;
             }
         }
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -53,7 +53,6 @@ namespace Example
                 {
                     _transmissionSource = Request.QueryString["context"].ToUpper();
                     System.Diagnostics.Debug.WriteLine(_transmissionSource);
-                    Console.WriteLine(_transmissionSource);
                 }
                 if (Session["Role"] != null)
                 {
@@ -76,10 +75,27 @@ namespace Example
            
 
         }
+
+        protected string GenerateMouseOutScript(int pageIndex)
+        {
+            // Check if the current page index matches the CurrentPage
+            if (pageIndex == CurrentPage)
+            {
+                // If matches, set color to #00d0f1
+                return "changeColor(this, '#00d0f1')";
+            }
+            else
+            {
+                // Otherwise, set color to #1b5a90
+                return "changeColor(this, '#1b5a90')";
+            }
+        }
         public bool IsTransmissionFrom(string source)
         {
             return _transmissionSource == source.ToUpper();
         }
+
+      
         public override void VerifyRenderingInServerForm(Control control)
         {
             /* Confirms that an HtmlForm control is rendered for the specified ASP.NET

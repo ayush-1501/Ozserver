@@ -73,19 +73,13 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-form-label col-md-2">!-</label>
+                        <label class="col-form-label col-md-2">AQIS Id</label>
                         <div class="col-md-10">
                             <input type="text" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-form-label col-md-2">Document Ref</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-form-label col-md-2">REP</label>
+                        <label class="col-form-label col-md-2">RFP No</label>
                         <div class="col-md-10">
                             <input type="text" class="form-control">
                         </div>
@@ -124,13 +118,13 @@
                          </div>
                      </div>
                      <div class="form-group row">
-                         <label class="col-form-label col-md-2">Ref Id</label>
+                         <label class="col-form-label col-md-2">1-Stop Ref</label>
                          <div class="col-md-10">
                              <input type="text" class="form-control" id="RefIdTextBox" runat="server">
                          </div>
                      </div>
                      <div class="form-group row">
-                         <label class="col-form-label col-md-2">Container No</label>
+                         <label class="col-form-label col-md-2">Shipper Ref</label>
                          <div class="col-md-10">
                              <input type="text" class="form-control" id="ContainerNoTextBox" runat="server">
                          </div>

@@ -1,6 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/SiteOzserver.Master" CodeBehind="DocumentList.aspx.cs" Inherits="Example.WebForm7" EnableEventValidation="false"%>
 
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">  
+    
     <div class="page-wrapper">
         <div class="content container-fluid">
             <!-- Page Header -->
@@ -135,12 +138,17 @@
                                         OnItemCommand="rptPaging_ItemCommand"
                                         OnItemDataBound="rptPaging_ItemDataBound" 
                                         RepeatDirection="Horizontal">
-                                        <ItemTemplate>
+                                       <ItemTemplate>
                                             <asp:LinkButton ID="lbPaging" runat="server"
                                                 CommandArgument='<%# Eval("PageIndex") %>' 
                                                 CommandName="newPage"
                                                 Text='<%# Eval("PageText") %>' Width="40px"
-                                                CssClass="btn" style="background-color: #1b5a90; color: white;" onmouseover="changeColor(this, '#00d0f1')" onmouseout="changeColor(this, '#1b5a90')">
+                                                CssClass="btn"
+                                                style='<%# Convert.ToInt32(Eval("PageIndex")) == CurrentPage ? "background-color: #00d0f1; color: white;" : "background-color: #1b5a90; color: white;" %>'
+                                                onmouseover="changeColor(this, '#00d0f1')" 
+                                            onmouseout='<%# GenerateMouseOutScript(Convert.ToInt32(Eval("PageIndex"))) %>'>
+   
+
                                             </asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:DataList>

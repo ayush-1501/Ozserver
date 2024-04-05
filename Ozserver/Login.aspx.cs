@@ -83,12 +83,7 @@ namespace Ozserver
               
                 ClientScript.RegisterStartupScript(this.GetType(), "LoginFailed", "alert('WRONG USERNAME OR PASSWORD');", true);
             }
-
-
-
-
           
-
           
         }
 
