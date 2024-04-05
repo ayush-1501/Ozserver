@@ -7,7 +7,7 @@
             <ul>
                 <li class="menu-title"><span>Dashboard</span></li>
                 <li class="active">
-                    <a href="index.html"><i class="fe fe-home"></i><span>Dashboard</span></a>
+                    <a href="Dashboard.aspx"><i class="fe fe-home"></i><span>Dashboard</span></a>
                 </li>
                 <% if (EDN) { %>
                       <li class="submenu">
@@ -17,7 +17,7 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
-                            <li><a href="WebForm7.aspx?context=EDN">Today's Transmission</a></li>
+                            <li><a href="DocumentList.aspx?context=EDN">Today's Transmission</a></li>
                             <li><a href="advancedsearch.aspx?context=EDN">Advanced Search</a></li>
                         </ul>
                     </li>
@@ -27,7 +27,7 @@
 
                     praLink.addEventListener("click", function () {
 
-                        window.location.href = "AQISDocumentData.aspx?context=EDN";
+                        window.location.href = "DocumentList.aspx?context=EDN";
                     });
                 </script>
                 <% } %>
@@ -39,7 +39,7 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul style="display: none;">
-                        <li><a href="WebForm7.aspx?context=AQIS">Today's Transmission</a></li>
+                        <li><a href="DocumentList.aspx?context=AQIS">Today's Transmission</a></li>
                         <li><a href="advancedsearch.aspx?context=AQIS">Advanced Search</a></li>
                     </ul>
                 </li>
@@ -49,7 +49,7 @@
 
                      praLink.addEventListener("click", function () {
 
-                         window.location.href = "AQISDocumentData.aspx?context=AQIS";
+                         window.location.href = "DocumentList.aspx?context=AQIS";
                      });
                  </script>
                 <% } %>
@@ -61,7 +61,7 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul style="display: none;">
-                            <li><a href="WebForm7.aspx?context=PRA">Today's Transmission</a></li>
+                            <li><a href="DocumentList.aspx?context=PRA">Today's Transmission</a></li>
                             <li><a href="advancedsearch.aspx?context=PRA">Advanced Search</a></li>
                         </ul>
                     </li>
@@ -72,7 +72,7 @@
    
                         praLink.addEventListener("click", function() {
      
-                            window.location.href = "AQISDocumentData.aspx?context=PRA";
+                            window.location.href = "DocumentList.aspx?context=PRA";
                         });
                     </script>
                 <% } %>

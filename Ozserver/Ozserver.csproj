@@ -141,7 +141,7 @@
     <Content Include="sidebar.ascx" />
     <Content Include="SearchResult.aspx" />
     <Content Include="SearchResult1.aspx" />
-    <Content Include="WebForm7.aspx" />
+    <Content Include="DocumentList.aspx" />
     <None Include="SiteOzserver.Master" />
   </ItemGroup>
   <ItemGroup>
@@ -238,12 +238,12 @@
     <Compile Include="SearchResult1.aspx.designer.cs">
       <DependentUpon>SearchResult1.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm7.aspx.cs">
-      <DependentUpon>WebForm7.aspx</DependentUpon>
+    <Compile Include="DocumentList.aspx.cs">
+      <DependentUpon>DocumentList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm7.aspx.designer.cs">
-      <DependentUpon>WebForm7.aspx</DependentUpon>
+    <Compile Include="DocumentList.aspx.designer.cs">
+      <DependentUpon>DocumentList.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

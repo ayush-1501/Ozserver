@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/SiteOzserver.Master" CodeBehind="WebForm7.aspx.cs" Inherits="Example.WebForm7" EnableEventValidation="false"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/SiteOzserver.Master" CodeBehind="DocumentList.aspx.cs" Inherits="Example.WebForm7" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">  
     <div class="page-wrapper">
@@ -18,7 +18,7 @@
                                     <h3 class="page-title">List of AQIS Transmissions</h3>
                              <% } %>
                           <ul class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="Dashboard.aspx.html">Dashboard</a></li>
+                              <li class="breadcrumb-item"><a href="Dashboard.aspx">Dashboard</a></li>
                                <% if (IsTransmissionFrom("EDN")) { %>
                                       <li class="breadcrumb-item active">EDN Document</li>
                                  <% } %>
@@ -45,6 +45,9 @@
                                 <table class="table ">
                                     <tr>
                                         <th>ID</th>
+                                              <% if (Role == "Admin") { %>
+                                                <th>Office Id</th>
+                                            <% } %>
                                           <% if (IsTransmissionFrom("EDN")) { %>
                                                  <th>Sender Ref</th>
                                             <% } %>
@@ -73,6 +76,9 @@
                             <ItemTemplate>
                                 <tr>
                                     <td><%# Eval("Id") %></td>
+                                       <% if (Role == "Admin") { %>
+                                              <td><%# Eval("OfficeId") %></td>
+                                        <% } %>
                                      <% if (IsTransmissionFrom("EDN")) { %>
                                              <td><%# Eval("senderRef") %></td>
                                        <% } %>
@@ -99,6 +105,14 @@
                                                 <td><%# Eval("senderRef") %></td>
                                        <% } %>
                                     <td><%# Eval("Status") %></td>
+                                    <td>
+                                   <td>
+                                    <a href="search.aspx">
+                                          <i class="fa fa-info" style="color: #1b5a90;"></i> 
+                                    </a>
+                                  </td>
+
+                                   </td>
                                 </tr>
                             </ItemTemplate>
                             <FooterTemplate>

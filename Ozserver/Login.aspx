@@ -43,8 +43,8 @@
 								
 								<!-- Form -->
 								<form action="#" runat="server">
-                                    <div class="form-group">
-                                        <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" placeholder="Email"></asp:TextBox>
+                                   <div class="form-group">
+                                        <asp:TextBox runat="server" ID="user_id" CssClass="form-control" placeholder="Email"></asp:TextBox>
                                     </div>
                                     <div class="form-group">
                                         <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" TextMode="Password" placeholder="Password"></asp:TextBox>

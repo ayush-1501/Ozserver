@@ -106,69 +106,110 @@
 
             <!-- Footer -->
         
-     <div class="footer fixed-bottom">
-            <footer class="text-center text-lg-start" style="background-color:#7CB9E8;">
-                <!-- Footer content with required modifications -->
-                (Beta Version) | &copy; 2024 Copyright Ozdocs International Pty Ltd. 2024 | <a href="#" id="openPopupLink">Feedback</a>
-            </footer>
-        </div>
+<div class="footer fixed-bottom">
+    <footer class="text-center text-lg-start" style="background-color:#7CB9E8;">
+        <!-- Footer content with required modifications -->
+        (Beta Version) | &copy; <%= DateTime.Now.Year %> Copyright Ozdocs International Pty Ltd. <%= DateTime.Now.Year %> | <a href="#" id="openPopupLink">Feedback</a>
+    </footer>
+</div>
 
-        <div id="dialog" title="Please enter your feedback" style="display: none;">
-            <h4 style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Please enter your feedback</h4>
-            <div id="customCloseButton" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-                <span style="color: #555; font-size: 24px; font-weight: bold;">&times;</span>
-            </div>
-            <p>
-                <textarea id="feedbackText" placeholder="Enter your feedback..." rows="4" cols="30"></textarea>
-            </p>
-            <div class="button-container">
-                <asp:Button ID="submitButton" runat="server" OnClick="btnLogin_Click" Text="Submit" />
-                <button id="cancelButton">Cancel</button>
-            </div>
-        </div>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+<div id="dialog" title="Please enter your feedback" style="display: none;">
+    <h4 style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Please enter your feedback</h4>
+    <div id="customCloseButton" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
+        <span style="color: #555; font-size: 24px; font-weight: bold;">&times;</span>
+    </div>
+    <p>
+        <textarea id="feedbackText" placeholder="Enter your feedback..." rows="4" cols="30"></textarea>
+    </p>
+    <div class="button-container">
+        <button id="submitButton">Submit</button>
+        <button id="cancelButton">Cancel</button>
+    </div>
+</div>
 
-        <script>
-            $(document).ready(function () {
-                $("#openPopupLink").click(function (e) {
-                    e.preventDefault(); // Prevent default link behavior
-                    $("#feedbackText").val(""); // Clear textarea value
-                    // Open the dialog with custom width and height
-                    $("#dialog").dialog({
-                        width: 600, // Set width to 600 pixels
-                        height: 400, // Set height to 400 pixels
-                        resizable: false, // Make the dialog not resizable
-                        position: { my: "center", at: "center", of: window }
-                    });
-                });
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
 
-                $("#submitButton").click(function () {
-                    var feedback = $("#feedbackText").val();
-                    // Send the feedback to the server or perform any desired action
-                    alert("Feedback submitted: " + feedback);
-                    $("#feedbackText").val(""); // Clear textarea value
-                    $("#dialog").dialog("close");
-                });
-
-                $("#cancelButton").click(function () {
-                    $("#feedbackText").val(""); // Clear textarea value
-                    $("#dialog").dialog("close");
-                });
-                $("#customCloseButton").click(function () {
-                    $("#dialog").dialog("close");
-                });
+<script>
+    $(document).ready(function () {
+        $("#openPopupLink").click(function (e) {
+            e.preventDefault();
+            $("#feedbackText").val("");
+            $("#dialog").dialog({
+                width: 600,
+                height: 400,
+                resizable: false,
+                position: { my: "center", at: "center", of: window }
             });
-        </script>
+        });
 
-        <style>
-            .button-container {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-        </style>
+        $("#submitButton").click(function () {
+            var feedback = $("#feedbackText").val();
+            alert("Feedback submitted: " + feedback);
+            $("#feedbackText").val("");
+            $("#dialog").dialog("close");
+        });
+
+        $("#cancelButton, #customCloseButton").click(function () {
+            $("#feedbackText").val("");
+            $("#dialog").dialog("close");
+        });
+    });
+</script>
+
+<style>
+    #dialog {
+        display: none;
+        width: 40%;
+        height: 30%;
+        padding: 20px;
+        background-color: #1b5a90;
+        border: 1px solid #31708f;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #dialog textarea {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #31708f;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    #submitButton, #cancelButton {
+        padding: 10px 20px;
+        margin: 0 10px;
+        background-color: #00d0f1;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #cancelButton {
+        background-color: #00d0f1;
+    }
+
+    .footer a {
+        color: #1b5a90;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+</style>
+
 
         <div class="form-group">
 					<asp:Button runat="server" ID="btnLogin" Text="Login" CssClass="btn btn-primary btn-block" OnClick="btnLogin_Click" />

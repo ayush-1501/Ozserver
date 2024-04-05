@@ -20,8 +20,9 @@ namespace Example
         int _firstIndex, _lastIndex;
         private int _pageSize = 15;
         string _transmissionSource;
-        string Role;
         string OfficeID;
+        public string Role { get; set; }
+
         private int CurrentPage
         {
             get
@@ -66,7 +67,7 @@ namespace Example
                     OfficeID = "ANZCO";
                 }
                 // Continue loading the dashboard page
-                Role = "Admin";
+                Role = "Non-Admin";
                 OfficeID = "ANZCO";
                 if (Page.IsPostBack) return;
                 BindDataIntoRepeater();
