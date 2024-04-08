@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteOzserver.master.cs" Inherits="Ozserver.SiteOzserver" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteOzserver.master.cs" Inherits="Ozserver.SiteOzserver"  EnableViewState="true" %>
 
 <!DOCTYPE html>
 
@@ -126,6 +126,10 @@
         <button id="submitButton">Submit</button>
         <button id="cancelButton">Cancel</button>
     </div>
+      <div class="form-group">
+        <!-- Include the login button here -->
+        <button id="loginButton" class="btnLogin" onClick="btnLogin_Click">Login</button>
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -155,6 +159,10 @@
             $("#feedbackText").val("");
             $("#dialog").dialog("close");
         });
+
+        $("#loginButton").click(function () {
+            __doPostBack("<%= btnLogin.ClientID %>", "");
+         });
     });
 </script>
 

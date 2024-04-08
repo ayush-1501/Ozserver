@@ -71,7 +71,7 @@
                                          <% } %> 
                                         <% if (IsTransmissionFrom("AQIS")) { %>
                                                   <th>Permit No</th>
-                                                  <th>REP No</th>
+                                                  <th>RFP No</th>
                                          <% } %>
                                         <th>Status</th>
                                     </tr>
@@ -105,7 +105,7 @@
                                        <% } %> 
                                       <% if (IsTransmissionFrom("AQIS")) { %>
                                                 <td><%# Eval("permitNo") %></td>
-                                                <td><%# Eval("senderRef") %></td>
+                                                 <td><%# Eval("rfpNo") %></td>
                                        <% } %>
                                     <td><%# Eval("Status") %></td>
                                     <td>
