@@ -45,8 +45,8 @@
                     <div>
                         <asp:Repeater ID="rptResult" runat="server">
                             <HeaderTemplate>
-                                <table class="table ">
-                                    <tr>
+                               <table class="table">
+                                   <tr style="background-color: #d3d3d3;">
                                         <th>ID</th>
                                               <% if (Role == "Admin") { %>
                                                 <th>Office Id</th>
@@ -74,6 +74,7 @@
                                                   <th>RFP No</th>
                                          <% } %>
                                         <th>Status</th>
+                                        <th></th>
                                     </tr>
                             </HeaderTemplate>
                             <ItemTemplate>
@@ -108,14 +109,12 @@
                                                  <td><%# Eval("rfpNo") %></td>
                                        <% } %>
                                     <td><%# Eval("Status") %></td>
-                                    <td>
+
                                    <td>
                                     <a href="search.aspx">
                                           <i class="fa fa-info" style="color: #1b5a90;"></i> 
                                     </a>
-                                  </td>
-
-                                   </td>
+                                    </td>
                                 </tr>
                             </ItemTemplate>
                             <FooterTemplate>

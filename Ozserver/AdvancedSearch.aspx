@@ -15,45 +15,42 @@
             <!--Page Header-->
            
               <% if (IsTransmissionFrom("EDN"))  { %>
-         <div class="text-center">
-             <div class="col-lg-12 col-md-6 col-sm-3">
-                 <div class="card">
-                     <div class="card-header">
-                         <h4 class="card-title">All Transaction </h4>
-                     </div>
-                     <div class="card-body">
-                         <form action="#">
-                             <div class="form-group row">
-                                 <label class="col-form-label col-md-2">By Date</label>
-                                 <div class="col-md-10">
-                                     <input type="text" class="form-control" placeholder="From Date...">
-                                     <input type="text" class="form-control" placeholder="To Date...">
-                                 </div>
-                             </div>
-                             <div class="form-group row">
-                                 <label class="col-form-label col-md-2">Sender ref</label>
-                                 <div class="col-md-10">
-                                     <input type="text" class="form-control">
-                                 </div>
-                             </div>
-                             <div class="form-group row">
-                                 <label class="col-form-label col-md-2">EDN</label>
-                                 <div class="col-md-10">
-                                     <input type="text" class="form-control">
-                                 </div>
-                             </div>
-                         </form>
-                     </div>
-                     <div>
-                           
-                              <div class="card-footer">
-                                  <asp:Button ID="Button2" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnLogin_Click1" CausesValidation="False" />
-                              </div>
-                          
-                     </div>
-                 </div>
-             </div>
-         </div>
+        <div class="text-center">
+    <div class="col-lg-12 col-md-6 col-sm-3">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">All Transaction </h4>
+            </div>
+            <div class="card-body">
+                     <div class="form-group row">
+                        <label class="col-form-label col-md-2">By Date</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="From Date..." id="FromDateTextBox" runat="server">
+                            <input type="text" class="form-control" placeholder="To Date..." id="ToDateTextBox" runat="server">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2">Sender ref</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="SenderRefTextBox" runat="server">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2">EDN</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="EDNTextBox" runat="server">
+                        </div>
+                    </div>
+             
+            </div>
+            <div>
+                <div class="card-footer">
+                    <asp:Button ID="Button2" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnLogin_ClickEDN" CausesValidation="False" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
    <% } %>
    <% if (IsTransmissionFrom("AQIS"))  { %>
@@ -89,7 +86,7 @@
                     <div>
                   
                           <div class="card-footer">
-                              <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnLogin_Click1" CausesValidation="False" />
+                              <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnLogin_ClickAQIS" CausesValidation="False" />
                           </div>
                    
                     </div>
@@ -103,39 +100,47 @@
    <% if (IsTransmissionFrom("PRA"))  { %>
                     
       
-     <div class="text-center">
-         <div class="col-lg-12 col-md-6 col-sm-3">
-             <div class="card">
-                 <div class="card-header">
-                     <h4 class="card-title">All Transaction </h4>
-                 </div>
-                 <div class="card-body">
-                     <div class="form-group row">
-                         <label class="col-form-label col-md-2">By Date</label>
-                         <div class="col-md-10">
-                             <input type="text" class="form-control" placeholder="From Date..." id="FromDateTextBox" runat="server">
-                             <input type="text" class="form-control" placeholder="To Date..." id="ToDateTextBox" runat="server">
-                         </div>
-                     </div>
-                     <div class="form-group row">
-                         <label class="col-form-label col-md-2">1-Stop Ref</label>
-                         <div class="col-md-10">
-                             <input type="text" class="form-control" id="RefIdTextBox" runat="server">
-                         </div>
-                     </div>
-                     <div class="form-group row">
-                         <label class="col-form-label col-md-2">Shipper Ref</label>
-                         <div class="col-md-10">
-                             <input type="text" class="form-control" id="ContainerNoTextBox" runat="server">
-                         </div>
-                     </div>
-                 </div>
-                 <div class="card-footer">
-                     <asp:Button ID="SearchButton" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnLogin_Click1" />
-                 </div>
-             </div>
-         </div>
-     </div>
+                 <div class="text-center">
+    <div class="col-lg-12 col-md-6 col-sm-3">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">All Transaction </h4>
+            </div>
+            <div class="card-body">
+                <form action="#">
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2">By Date</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="From Date...">
+                            <input type="text" class="form-control" placeholder="To Date...">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2">1-Stop Ref</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2">Shipper Ref</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                  
+                   
+                    <div>
+                  
+                          <div class="card-footer">
+                              <asp:Button ID="Button3" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnLogin_ClickPRA" CausesValidation="False" />
+                          </div>
+                   
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
    <% } %>
         </div>

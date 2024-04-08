@@ -22,7 +22,7 @@ namespace Example
         string _transmissionSource;
         string OfficeID;
         public string Role { get; set; }
-
+        string link = ConfigurationManager.AppSettings["url"];
         public int CurrentPage
         {
             get
@@ -138,11 +138,59 @@ namespace Example
                     apiUrl = apiUrl + "AQISDocument/GetAQISDataByOfficeId?officeId=" + OfficeID;
                 }
             }
-          
 
+            string apiUrl1 = "https://localhost:7209/api/";
+            if (_transmissionSource == "EDNSEARCH")
+            {
+                apiUrl1 += "EDNDocument/GetEDNDataByFilter?";
+                if (!string.IsNullOrEmpty((string)Session["FromDate"]))
+                {
+                    string fromDate = Session["FromDate"].ToString();
+                    apiUrl1 += $"FromDate={fromDate}&";
+                }
+                    
+
+                if (!string.IsNullOrEmpty((string)Session["ToDate"]))
+                {
+                    string toDate = Session["ToDate"].ToString();
+                    apiUrl1 += $"ToDate={toDate}&";
+                }
+                   
+
+                if (!string.IsNullOrEmpty((string)Session["SenderRef"]))
+                {
+                    string senderRef = Session["SenderRef"].ToString();
+                    apiUrl1 += $"SenderRef={senderRef}&";
+                }
+
+                if (!string.IsNullOrEmpty((string)Session["EDN1"]))
+                {
+                    string edn1 = Session["EDN1"].ToString();
+                    apiUrl1 += $"EDN1={edn1}&";
+                }
+
+                if (!string.IsNullOrEmpty(apiUrl1) && apiUrl1.EndsWith("&"))
+                {
+                    apiUrl1 = apiUrl1.Remove(apiUrl1.Length - 1);
+                }
+
+               
+
+            }
+            else if (_transmissionSource == "PRASEARCH")
+            {
+                    apiUrl1 = apiUrl1 + "/PRADocument/GetPRADataByFilter?toDate=2024-04-08";
+
+            }
+            else if (_transmissionSource == "AQISSEARCH")
+            {
+                apiUrl = apiUrl1 + "AQISDocument/GetAQISDataByFilter?toDate=2024-04-08";
+            }
+
+           
             // Call the CallRestAPI function from BusinessAccessLayer
             RestAPICaller apiCaller = new RestAPICaller();
-            string jsonResult = apiCaller.CallRestAPI(apiUrl);
+            string jsonResult = apiCaller.CallRestAPI(apiUrl1);
 
             // Deserialize JSON string to a suitable object
             List<Branch> data = new List<Branch>();
@@ -199,14 +247,14 @@ namespace Example
             var dt = GetDataFromDb();
             _pgsource.DataSource = dt.DefaultView;
             _pgsource.AllowPaging = true;
-            // Number of items to be displayed in the Repeater
+            
             _pgsource.PageSize = _pageSize;
             _pgsource.CurrentPageIndex = CurrentPage;
-            // Keep the Total pages in View State
+           
             ViewState["TotalPages"] = _pgsource.PageCount;
-            // Example: "Page 1 of 10"
+         
             lblpage.Text = "Page " + (CurrentPage + 1) + " of " + _pgsource.PageCount;
-            // Enable First, Last, Previous, Next buttons
+         
             lbPrevious.Enabled = !_pgsource.IsFirstPage;
             lbNext.Enabled = !_pgsource.IsLastPage;
             lbFirst.Enabled = !_pgsource.IsFirstPage;
@@ -223,8 +271,8 @@ namespace Example
         private void HandlePaging()
         {
             var dt = new DataTable();
-            dt.Columns.Add("PageIndex"); //Start from 0
-            dt.Columns.Add("PageText"); //Start from 1
+            dt.Columns.Add("PageIndex"); 
+            dt.Columns.Add("PageText"); 
 
             _firstIndex = CurrentPage - 5;
             if (CurrentPage > 5)
@@ -232,8 +280,7 @@ namespace Example
             else
                 _lastIndex = 10;
 
-            // Check last page is greater than total page then reduced it 
-            // to total no. of page is last index
+           
             if (_lastIndex > Convert.ToInt32(ViewState["TotalPages"]))
             {
                 _lastIndex = Convert.ToInt32(ViewState["TotalPages"]);
@@ -243,7 +290,7 @@ namespace Example
             if (_firstIndex < 0)
                 _firstIndex = 0;
 
-            // Now creating page number based on above first and last page index
+            
             for (var i = _firstIndex; i < _lastIndex; i++)
             {
                 var dr = dt.NewRow();
