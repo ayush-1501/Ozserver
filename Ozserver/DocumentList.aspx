@@ -11,24 +11,24 @@
                 <div class="row">
                       <div class="col-sm-12">
                           
-                          <% if (IsTransmissionFrom("EDN")) { %>
+                          <% if (IsTransmissionFrom("EDN") || IsTransmissionFrom("EDNSEARCH") ) { %>
                                    <h3 class="page-title">List of EDN Transmissions</h3>
                               <% } %>
-                            <% if (IsTransmissionFrom("PRA")) { %>
+                            <% if (IsTransmissionFrom("PRA") || IsTransmissionFrom("PRASEARCH")) { %>
                                    <h3 class="page-title">List of PRA Transmissions</h3>
                              <% } %> 
-                            <% if (IsTransmissionFrom("AQIS")) { %>
+                            <% if (IsTransmissionFrom("AQIS") || IsTransmissionFrom("AQISSEARCH")) { %>
                                     <h3 class="page-title">List of AQIS Transmissions</h3>
                              <% } %>
                           <ul class="breadcrumb">
                               <li class="breadcrumb-item"><a href="Dashboard.aspx">Dashboard</a></li>
-                               <% if (IsTransmissionFrom("EDN")) { %>
+                               <% if (IsTransmissionFrom("EDN") || IsTransmissionFrom("EDNSEARCH")) { %>
                                       <li class="breadcrumb-item active">EDN Document</li>
                                  <% } %>
-                               <% if (IsTransmissionFrom("PRA")) { %>
+                               <% if (IsTransmissionFrom("PRA") || IsTransmissionFrom("PRASEARCH")) { %>
                                        <li class="breadcrumb-item active">PRA Document</li>
                                 <% } %> 
-                               <% if (IsTransmissionFrom("AQIS")) { %>
+                               <% if (IsTransmissionFrom("AQIS") || IsTransmissionFrom("AQISSEARCH")) { %>
                                         <li class="breadcrumb-item active">AQIS Document</li>
                                 <% } %>
                           </ul>
@@ -51,25 +51,25 @@
                                               <% if (Role == "Admin") { %>
                                                 <th>Office Id</th>
                                             <% } %>
-                                          <% if (IsTransmissionFrom("EDN")) { %>
+                                          <% if (IsTransmissionFrom("EDN") || IsTransmissionFrom("EDNSEARCH")) { %>
                                                  <th>Sender Ref</th>
                                             <% } %>
-                                          <% if (IsTransmissionFrom("PRA")) { %>
+                                          <% if (IsTransmissionFrom("PRA") || IsTransmissionFrom("PRASEARCH") ) { %>
                                                   <th>1-Stop Ref</th>
                                                  
                                            <% } %> 
-                                          <% if (IsTransmissionFrom("AQIS")) { %>
+                                          <% if (IsTransmissionFrom("AQIS") || IsTransmissionFrom("AQISSEARCH")) { %>
                                                     <th>AQIS Id</th>
                                            <% } %>
                                         <th>Version</th>
                                         <th>Send Date/Time</th>
-                                        <% if (IsTransmissionFrom("EDN")) { %>
+                                        <% if (IsTransmissionFrom("EDN") || IsTransmissionFrom("EDNSEARCH")) { %>
                                                <th>EDN</th>
                                           <% } %>
-                                        <% if (IsTransmissionFrom("PRA")) { %>
+                                        <% if (IsTransmissionFrom("PRA") || IsTransmissionFrom("PRASEARCH")) { %>
                                                 <th>Shipper Ref</th>
                                          <% } %> 
-                                        <% if (IsTransmissionFrom("AQIS")) { %>
+                                        <% if (IsTransmissionFrom("AQIS") || IsTransmissionFrom("AQISSEARCH")) { %>
                                                   <th>Permit No</th>
                                                   <th>RFP No</th>
                                          <% } %>
@@ -83,28 +83,28 @@
                                        <% if (Role == "Admin") { %>
                                               <td><%# Eval("OfficeId") %></td>
                                         <% } %>
-                                     <% if (IsTransmissionFrom("EDN")) { %>
+                                     <% if (IsTransmissionFrom("EDN") ||  IsTransmissionFrom("EDNSEARCH")) { %>
                                              <td><%# Eval("senderRef") %></td>
                                        <% } %>
-                                     <% if (IsTransmissionFrom("PRA")) { %>
+                                     <% if (IsTransmissionFrom("PRA") || IsTransmissionFrom("PRASEARCH")) { %>
                                              
                                              <td><%# Eval("shippersRef") %></td>
                                             
                                       <% } %> 
-                                     <% if (IsTransmissionFrom("AQIS")) { %>
+                                     <% if (IsTransmissionFrom("AQIS") || IsTransmissionFrom("AQISSEARCH")) { %>
                                                <td><%# Eval("aqisId") %></td>
                                              
                                       <% } %>
                                     <td><%# Eval("Version") %></td>
                                     <td><%# Eval("SDateTime", "{0:yyyy-MM-dd HH:mm:ss}") %></td>
-                                       <% if (IsTransmissionFrom("EDN")) { %>
+                                       <% if (IsTransmissionFrom("EDN") || IsTransmissionFrom("EDNSEARCH")) { %>
                                               <td><%# Eval("EDN") %></td>
                                         <% } %>
-                                      <% if (IsTransmissionFrom("PRA")) { %>
+                                      <% if (IsTransmissionFrom("PRA") || IsTransmissionFrom("PRASEARCH")) { %>
                                               <td><%# Eval("oneStopRef") %></td>
                                             
                                        <% } %> 
-                                      <% if (IsTransmissionFrom("AQIS")) { %>
+                                      <% if (IsTransmissionFrom("AQIS") || IsTransmissionFrom("AQISSEARCH")) { %>
                                                 <td><%# Eval("permitNo") %></td>
                                                  <td><%# Eval("rfpNo") %></td>
                                        <% } %>

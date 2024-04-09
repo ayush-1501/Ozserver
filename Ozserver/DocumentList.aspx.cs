@@ -139,6 +139,7 @@ namespace Example
                 }
             }
 
+
             string apiUrl1 = "https://localhost:7209/api/";
             if (_transmissionSource == "EDNSEARCH")
             {
@@ -179,7 +180,7 @@ namespace Example
             }
             else if (_transmissionSource == "PRASEARCH")
             {
-                //apiUrl1 = apiUrl1 + "/PRADocument/GetPRADataByFilter?toDate=2024-04-08";
+
                 apiUrl1 += "PRADocument/GetPRADataByFilter?";
                 if (!string.IsNullOrEmpty((string)Session["FromDate"]))
                 {
@@ -215,7 +216,7 @@ namespace Example
             }
             else if (_transmissionSource == "AQISSEARCH")
             {
-                // apiUrl1 = apiUrl1 + "AQISDocument/GetAQISDataByFilter?toDate=2024-04-08";
+
 
                 apiUrl1 += "AQISDocument/GetAQISDataByFilter?";
                 if (!string.IsNullOrEmpty((string)Session["FromDate"]))
@@ -250,16 +251,20 @@ namespace Example
                 }
             }
 
-            // Call the CallRestAPI function from BusinessAccessLayer
-            RestAPICaller apiCaller = new RestAPICaller();
-            string jsonResult = apiCaller.CallRestAPI(apiUrl1);
+            if (_transmissionSource == "EDNSEARCH" || _transmissionSource == "AQISSEARCH" || _transmissionSource == "PRASEARCH")
+            {
+                apiUrl = apiUrl1;
+            }
 
-            // Deserialize JSON string to a suitable object
+            RestAPICaller apiCaller = new RestAPICaller();
+            string jsonResult = apiCaller.CallRestAPI(apiUrl);
+
+         
             List<Branch> data = new List<Branch>();
 
             try
             {
-                // Attempt to deserialize JSON as a list
+                
                 data = JsonConvert.DeserializeObject<List<Branch>>(jsonResult);
             }
             catch (JsonSerializationException ex)
@@ -267,18 +272,18 @@ namespace Example
                 Console.WriteLine("Error deserializing JSON as list: " + ex.Message);
                 try
                 {
-                    // If deserialization as list fails, try deserializing as a single object
+                   
                     Branch singleBranch = JsonConvert.DeserializeObject<Branch>(jsonResult);
                     data.Add(singleBranch); // Add the single object to the list
                 }
                 catch (JsonSerializationException innerEx)
                 {
                     Console.WriteLine("Error deserializing JSON as single object: " + innerEx.Message);
-                    // Handle the exception accordingly, possibly log it or throw it further
+                    
                 }
             }
 
-            // Convert the object to a DataTable
+           
             DataTable dt = ToDataTable(data);
 
             return dt;
@@ -286,7 +291,7 @@ namespace Example
 
         public DataTable GetDataFromDb1()
         {
-          
+
 
             string apiUrl1 = "https://localhost:7209/api/";
             if (_transmissionSource == "EDNSEARCH")
@@ -315,7 +320,7 @@ namespace Example
                 if (!string.IsNullOrEmpty((string)Session["EDN1"]))
                 {
                     string edn1 = Session["EDN1"].ToString();
-                    apiUrl1 += $"EDN1={edn1}&";
+                    apiUrl1 += $"EDN={edn1}&";
                 }
 
                 if (!string.IsNullOrEmpty(apiUrl1) && apiUrl1.EndsWith("&"))
@@ -328,7 +333,7 @@ namespace Example
             }
             else if (_transmissionSource == "PRASEARCH")
             {
-                //apiUrl1 = apiUrl1 + "/PRADocument/GetPRADataByFilter?toDate=2024-04-08";
+                
                 apiUrl1 += "PRADocument/GetPRADataByFilter?";
                 if (!string.IsNullOrEmpty((string)Session["FromDate"]))
                 {
@@ -347,13 +352,13 @@ namespace Example
                 if (!string.IsNullOrEmpty((string)Session["ShipperRef"]))
                 {
                     string shipperRef = Session["ShipperRef"].ToString();
-                    apiUrl1 += $"SenderRef={shipperRef}&";
+                    apiUrl1 += $"ShipperRef={shipperRef}&";
                 }
 
-                if (!string.IsNullOrEmpty((string)Session["ShipperRef"]))
+                if (!string.IsNullOrEmpty((string)Session["StopRef"]))
                 {
-                    string shipperRef = Session["ShipperRef"].ToString();
-                    apiUrl1 += $"EDN1={shipperRef}&";
+                    string StopRef = Session["StopRef"].ToString();
+                    apiUrl1 += $"OneStopRef={StopRef}&";
                 }
 
                 if (!string.IsNullOrEmpty(apiUrl1) && apiUrl1.EndsWith("&"))
@@ -364,8 +369,8 @@ namespace Example
             }
             else if (_transmissionSource == "AQISSEARCH")
             {
-                // apiUrl1 = apiUrl1 + "AQISDocument/GetAQISDataByFilter?toDate=2024-04-08";
-          
+                
+
                 apiUrl1 += "AQISDocument/GetAQISDataByFilter?";
                 if (!string.IsNullOrEmpty((string)Session["FromDate"]))
                 {
@@ -384,13 +389,13 @@ namespace Example
                 if (!string.IsNullOrEmpty((string)Session["AQISId"]))
                 {
                     string AQISId = Session["AQISId"].ToString();
-                    apiUrl1 += $"SenderRef={AQISId}&";
+                    apiUrl1 += $"AQISId={AQISId}&";
                 }
 
                 if (!string.IsNullOrEmpty((string)Session["RfpNo"]))
                 {
                     string RfpNo = Session["RfpNo"].ToString();
-                    apiUrl1 += $"EDN1={RfpNo}&";
+                    apiUrl1 += $"RfpNo={RfpNo}&";
                 }
 
                 if (!string.IsNullOrEmpty(apiUrl1) && apiUrl1.EndsWith("&"))
@@ -399,17 +404,16 @@ namespace Example
                 }
             }
 
-
-            // Call the CallRestAPI function from BusinessAccessLayer
+          
             RestAPICaller apiCaller = new RestAPICaller();
             string jsonResult = apiCaller.CallRestAPI(apiUrl1);
 
-            // Deserialize JSON string to a suitable object
+           
             List<Branch> data = new List<Branch>();
 
             try
             {
-                // Attempt to deserialize JSON as a list
+               
                 data = JsonConvert.DeserializeObject<List<Branch>>(jsonResult);
             }
             catch (JsonSerializationException ex)
@@ -417,18 +421,18 @@ namespace Example
                 Console.WriteLine("Error deserializing JSON as list: " + ex.Message);
                 try
                 {
-                    // If deserialization as list fails, try deserializing as a single object
+                   
                     Branch singleBranch = JsonConvert.DeserializeObject<Branch>(jsonResult);
-                    data.Add(singleBranch); // Add the single object to the list
+                    data.Add(singleBranch); 
                 }
                 catch (JsonSerializationException innerEx)
                 {
                     Console.WriteLine("Error deserializing JSON as single object: " + innerEx.Message);
-                    // Handle the exception accordingly, possibly log it or throw it further
+                   
                 }
             }
 
-            // Convert the object to a DataTable
+           
             DataTable dt = ToDataTable(data);
 
             return dt;
@@ -457,6 +461,7 @@ namespace Example
         {
             var dt= GetDataFromDb(); 
            
+          
             _pgsource.DataSource = dt.DefaultView;
             _pgsource.AllowPaging = true;
             

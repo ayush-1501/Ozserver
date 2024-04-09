@@ -131,16 +131,9 @@
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
     <Content Include="AdvancedSearch.aspx" />
-    <Content Include="AQISDocumentData.aspx" />
-    <Content Include="AQISDocumentList.aspx" />
     <Content Include="Dashboard.aspx" />
-    <Content Include="EDNDocumentList.aspx" />
-    <Content Include="EDNTransmissions.aspx" />
     <Content Include="Logout.aspx" />
-    <Content Include="PRADocumentList.aspx" />
     <Content Include="sidebar.ascx" />
-    <Content Include="SearchResult.aspx" />
-    <Content Include="SearchResult1.aspx" />
     <Content Include="DocumentList.aspx" />
     <None Include="SiteOzserver.Master" />
   </ItemGroup>
@@ -161,20 +154,6 @@
     <Compile Include="AdvancedSearch.aspx.designer.cs">
       <DependentUpon>AdvancedSearch.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AQISDocumentData.aspx.cs">
-      <DependentUpon>AQISDocumentData.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AQISDocumentData.aspx.designer.cs">
-      <DependentUpon>AQISDocumentData.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AQISDocumentList.aspx.cs">
-      <DependentUpon>AQISDocumentList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AQISDocumentList.aspx.designer.cs">
-      <DependentUpon>AQISDocumentList.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -182,33 +161,12 @@
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EDNDocumentList.aspx.cs">
-      <DependentUpon>EDNDocumentList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EDNDocumentList.aspx.designer.cs">
-      <DependentUpon>EDNDocumentList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="EDNTransmissions.aspx.cs">
-      <DependentUpon>EDNTransmissions.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EDNTransmissions.aspx.designer.cs">
-      <DependentUpon>EDNTransmissions.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Logout.aspx.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="PRADocumentList.aspx.cs">
-      <DependentUpon>PRADocumentList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PRADocumentList.aspx.designer.cs">
-      <DependentUpon>PRADocumentList.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOzserver.Master.cs">
       <DependentUpon>SiteOzserver.Master</DependentUpon>
@@ -223,20 +181,6 @@
     </Compile>
     <Compile Include="sidebar.ascx.designer.cs">
       <DependentUpon>sidebar.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="SearchResult.aspx.cs">
-      <DependentUpon>SearchResult.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SearchResult.aspx.designer.cs">
-      <DependentUpon>SearchResult.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SearchResult1.aspx.cs">
-      <DependentUpon>SearchResult1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SearchResult1.aspx.designer.cs">
-      <DependentUpon>SearchResult1.aspx</DependentUpon>
     </Compile>
     <Compile Include="DocumentList.aspx.cs">
       <DependentUpon>DocumentList.aspx</DependentUpon>
