@@ -15,33 +15,37 @@
             <!--Page Header-->
            
               <% if (IsTransmissionFrom("EDN"))  { %>
-        <div class="text-center">
+<div class="text-center">
     <div class="col-lg-12 col-md-6 col-sm-3">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">All Transaction </h4>
+                <h4 class="card-title">All Transaction</h4>
             </div>
             <div class="card-body">
-                     <div class="form-group row">
-                        <label class="col-form-label col-md-2">By Date</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" placeholder="From Date..." id="FromDateTextBoxEDN" runat="server">
-                            <input type="text" class="form-control" placeholder="To Date..." id="ToDateTextBoxEDN" runat="server">
-                        </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-2">From Date</label>
+                    <div class="col-md-10">
+                        <input type="date" class="form-control" id="FromDateTextBoxEDN" runat="server" placeholder="From Date...">
                     </div>
-                    <div class="form-group row">
-                        <label class="col-form-label col-md-2">Sender ref</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" id="SenderRefTextBox" runat="server">
-                        </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-2">To Date</label>
+                    <div class="col-md-10">
+                        <input type="date" class="form-control" id="ToDateTextBoxEDN" runat="server" placeholder="To Date...">
                     </div>
-                    <div class="form-group row">
-                        <label class="col-form-label col-md-2">EDN</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" id="EDNTextBox" runat="server">
-                        </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-2">Sender ref</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="SenderRefTextBox" runat="server" placeholder="Sender ref">
                     </div>
-             
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-2">EDN</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="EDNTextBox" runat="server" placeholder="EDN">
+                    </div>
+                </div>
             </div>
             <div>
                 <div class="card-footer">
@@ -52,59 +56,73 @@
     </div>
 </div>
 
+
+
    <% } %>
    <% if (IsTransmissionFrom("AQIS"))  { %>
-    <div class="text-center">
-        <div class="col-lg-12 col-md-6 col-sm-3">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">All Transaction </h4>
+  <div class="text-center">
+    <div class="col-lg-12 col-md-6 col-sm-3">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">All Transaction</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-group row">
+                    <label class="col-form-label col-md-2">From Date</label>
+                    <div class="col-md-10">
+                        <input type="date" class="form-control" id="FromDateTextBoxAQIS" runat="server" placeholder="From Date...">
+                    </div>
                 </div>
-                <div class="card-body">
-                        <div class="form-group row">
-                            <label class="col-form-label col-md-2">By Date</label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control" placeholder="From Date..." id="FromDateTextBoxAQIS" runat="server">
-                                <input type="text" class="form-control" placeholder="To Date..." id="ToDateTextBoxAQIS" runat="server">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-form-label col-md-2">AQIS Id</label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control" id="AQISIdTextBox" runat="server">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-form-label col-md-2">RFP No</label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control" id="RfpNoTextBox" runat="server">
-                            </div>
-                        </div>
-                        <div>
-                            <div class="card-footer">
-                                <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnLogin_ClickAQIS" CausesValidation="False" />
-                            </div>
-                        </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-2">To Date</label>
+                    <div class="col-md-10">
+                        <input type="date" class="form-control" id="ToDateTextBoxAQIS" runat="server" placeholder="To Date...">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-2">AQIS Id</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="AQISIdTextBox" runat="server">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-2">RFP No</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="RfpNoTextBox" runat="server">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card-footer">
+                    <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnLogin_ClickAQIS" CausesValidation="False" />
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
 <% } %>
 
    <% if (IsTransmissionFrom("PRA"))  { %>
                     
-   <div class="text-center">
+  <div class="text-center">
     <div class="col-lg-12 col-md-6 col-sm-3">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">All Transaction </h4>
+                <h4 class="card-title">All Transaction</h4>
             </div>
             <div class="card-body">
                 <div class="form-group row">
-                    <label class="col-form-label col-md-2">By Date</label>
+                    <label class="col-form-label col-md-2">From Date</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" placeholder="From Date..." id="FromDateTextBoxPRA" runat="server">
-                        <input type="text" class="form-control" placeholder="To Date..." id="ToDateTextBoxPRA" runat="server">
+                        <input type="date" class="form-control" id="FromDateTextBoxPRA" runat="server">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-2">To Date</label>
+                    <div class="col-md-10">
+                        <input type="date" class="form-control" id="ToDateTextBoxPRA" runat="server">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -128,6 +146,7 @@
         </div>
     </div>
 </div>
+
 
 
 
