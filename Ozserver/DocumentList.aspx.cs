@@ -22,7 +22,8 @@ namespace Example
         string _transmissionSource;
         string OfficeID;
         public string Role { get; set; }
-        string link = ConfigurationManager.AppSettings["url"];
+        string TableLink = System.Configuration.ConfigurationManager.AppSettings["url1"].ToString();
+        string SearchLink = System.Configuration.ConfigurationManager.AppSettings["url2"].ToString();
         public int CurrentPage
         {
             get
@@ -104,7 +105,8 @@ namespace Example
 
         public DataTable GetDataFromDb()
         {
-            string apiUrl = "http://crm2.omnix.com.au/OzdocsServerWebAPI/api/";
+           // string apiUrl = "http://crm2.omnix.com.au/OzdocsServerWebAPI/api/";
+            string apiUrl = TableLink;
             if (_transmissionSource == "EDN")
             {
                 if (Role == "Admin")
@@ -140,7 +142,7 @@ namespace Example
             }
 
 
-            string apiUrl1 = "https://localhost:7209/api/";
+            string apiUrl1 = SearchLink;
             if (_transmissionSource == "EDNSEARCH")
             {
                 apiUrl1 += "EDNDocument/GetEDNDataByFilter?";

@@ -41,6 +41,33 @@ namespace Ozserver
         {
             PerformLogin();
         }
+        [System.Web.Services.WebMethod]
+        public static string SendEmail(string feedback)
+        {
+            try
+            {
+                // Configure the email message
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("ayushdel15@gmail.com");
+                mail.To.Add("ayushdel15@gmail.com");
+                mail.Subject = "Feedback Received";
+                mail.Body = "Feedback: " + feedback;
 
+                // Send the email using SMTP
+                SmtpClient smtp = new SmtpClient("smtp.example.com");
+                smtp.Port = 587; // Specify your SMTP port
+                smtp.Credentials = new System.Net.NetworkCredential("ayushdel15@gmail.com", "xmro mldw wfgg qhne");
+                smtp.EnableSsl = true; // Enable SSL/TLS
+
+                smtp.Send(mail);
+
+                return "Email sent successfully.";
+            }
+            catch (Exception ex)
+            {
+                return "Error sending email: " + ex.Message;
+            }
+        }
     }
+
 }

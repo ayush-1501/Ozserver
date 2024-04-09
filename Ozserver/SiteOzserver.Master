@@ -127,10 +127,6 @@
         <button id="submitButton">Submit</button>
         <button id="cancelButton">Cancel</button>
     </div>
-      <div class="form-group">
-    <!-- Include the login button here -->
-    <button id="loginButton" class="btnLogin">Login</button>
-</div>
 </div>
 
 
@@ -152,32 +148,33 @@
 
         $("#submitButton").click(function () {
             var feedback = $("#feedbackText").val();
-            alert("Feedback submitted: " + feedback);
-            $("#feedbackText").val("");
-            $("#dialog").dialog("close");
+            sendEmail(feedback);
         });
 
         $("#cancelButton, #customCloseButton").click(function () {
             $("#feedbackText").val("");
             $("#dialog").dialog("close");
         });
-
-        // AJAX call to trigger server-side btnLogin_Click method
-        $("#loginButton").click(function () {
-            $.ajax({
-                type: "POST",
-                url: "SiteOzserver.master/PerformLogin",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {
-                    alert("Email sent successfully.");
-                },
-                error: function (response) {
-                    alert("Error occurred while sending email.");
-                }
-            });
-        });
     });
+
+    function sendEmail(feedback) {
+        $.ajax({
+            type: "POST",
+            url: "SendEmail.aspx/SendEmail", // Assuming SendEmail.aspx is your server-side page
+            data: JSON.stringify({ feedback: feedback }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                alert(response.d); // Display success message
+                $("#feedbackText").val(""); // Clear feedback text
+                $("#dialog").dialog("close"); // Close the dialog
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert("Error occurred while sending email."); // Handle error
+            }
+        });
+    }
+
 </script>
 
 
@@ -236,10 +233,7 @@
 </style>
 
 
-        <div class="form-group">
-					<asp:Button runat="server" ID="btnLogin" Text="Login" CssClass="btn btn-primary btn-block" OnClick="btnLogin_Click" />
-				</div>
-
+       
 
          <!-- /Footer -->
        
