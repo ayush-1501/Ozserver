@@ -25,13 +25,13 @@
                 <div class="form-group row">
                     <label class="col-form-label col-md-2">From Date</label>
                     <div class="col-md-10">
-                        <input type="date" class="form-control" id="FromDateTextBoxEDN" runat="server" placeholder="From Date...">
+                        <input type="text" class="form-control" id="FromDateTextBoxEDN" runat="server" placeholder="From Date..." onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-md-2">To Date</label>
                     <div class="col-md-10">
-                        <input type="date" class="form-control" id="ToDateTextBoxEDN" runat="server" placeholder="To Date...">
+                        <input type="text" class="form-control" id="ToDateTextBoxEDN" runat="server" placeholder="To Date..." onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -58,9 +58,10 @@
 
 
 
+
    <% } %>
    <% if (IsTransmissionFrom("AQIS"))  { %>
-  <div class="text-center">
+ <div class="text-center">
     <div class="col-lg-12 col-md-6 col-sm-3">
         <div class="card">
             <div class="card-header">
@@ -70,25 +71,25 @@
                 <div class="form-group row">
                     <label class="col-form-label col-md-2">From Date</label>
                     <div class="col-md-10">
-                        <input type="date" class="form-control" id="FromDateTextBoxAQIS" runat="server" placeholder="From Date...">
+                        <input type="text" class="form-control" id="FromDateTextBoxAQIS" runat="server" placeholder="From Date..." onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-md-2">To Date</label>
                     <div class="col-md-10">
-                        <input type="date" class="form-control" id="ToDateTextBoxAQIS" runat="server" placeholder="To Date...">
+                        <input type="text" class="form-control" id="ToDateTextBoxAQIS" runat="server" placeholder="To Date..." onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-md-2">AQIS Id</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="AQISIdTextBox" runat="server">
+                        <input type="text" class="form-control" id="AQISIdTextBox" runat="server" placeholder="AQIS Id">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-md-2">RFP No</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="RfpNoTextBox" runat="server">
+                        <input type="text" class="form-control" id="RfpNoTextBox" runat="server" placeholder="RFP No">
                     </div>
                 </div>
             </div>
@@ -100,6 +101,7 @@
         </div>
     </div>
 </div>
+
 
 
 <% } %>
@@ -116,25 +118,25 @@
                 <div class="form-group row">
                     <label class="col-form-label col-md-2">From Date</label>
                     <div class="col-md-10">
-                        <input type="date" class="form-control" id="FromDateTextBoxPRA" runat="server">
+                        <input type="text" class="form-control" id="FromDateTextBoxPRA" runat="server" placeholder="From Date..." onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-md-2">To Date</label>
                     <div class="col-md-10">
-                        <input type="date" class="form-control" id="ToDateTextBoxPRA" runat="server">
+                        <input type="text" class="form-control" id="ToDateTextBoxPRA" runat="server" placeholder="To Date..." onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-md-2">1-Stop Ref</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="StopRefTextBox" runat="server">
+                        <input type="text" class="form-control" id="StopRefTextBox" runat="server" placeholder="1-Stop Ref">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-md-2">Shipper Ref</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="ShipperRefTextBox" runat="server">
+                        <input type="text" class="form-control" id="ShipperRefTextBox" runat="server" placeholder="Shipper Ref">
                     </div>
                 </div>
             </div>
@@ -146,6 +148,7 @@
         </div>
     </div>
 </div>
+
 
 
 

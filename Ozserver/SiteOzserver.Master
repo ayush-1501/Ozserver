@@ -110,7 +110,7 @@
 <div class="footer fixed-bottom">
     <footer class="text-center text-lg-start" style="background-color:#7CB9E8;">
         <!-- Footer content with required modifications -->
-        (Beta Version) | &copy; <%= DateTime.Now.Year %> Copyright Ozdocs International Pty Ltd. <%= DateTime.Now.Year %> | <a href="#" id="openPopupLink">Feedback</a>
+        (Beta Version) | &copy; <%= DateTime.Now.Year %> Copyright Ozdocs International Pty Ltd. <%= DateTime.Now.Year %> | <a href="#" id="openPopupLink" style="font-weight: bold; color: #333;">Feedback</a>
     </footer>
 </div>
 
@@ -181,20 +181,21 @@
 
 
 <style>
-    #dialog {
-        display: none;
-        width: 40%;
-        height: 30%;
-        padding: 20px;
-        background-color: #1b5a90;
-        border: 1px solid #31708f;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin: auto;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+   #dialog {
+    display: none;
+    width: 40%;
+    height: 30%;
+    padding: 20px;
+    background-color: #7CB9E8;
+    border: 1px solid #31708f;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px; /* Add border radius */
+}
 
     #dialog textarea {
         width: calc(100% - 20px);
@@ -211,18 +212,19 @@
         margin-top: 20px;
     }
 
-    #submitButton, #cancelButton {
-        padding: 10px 20px;
-        margin: 0 10px;
-        background-color: #00d0f1;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+   #submitButton, #cancelButton {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #1b5a90;
+    color: #fff;
+    border: none;
+    border-radius: 5px; /* Add border radius */
+    cursor: pointer;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2); /* Add box shadow */
+   }
 
     #cancelButton {
-        background-color: #00d0f1;
+        background-color: #1b5a90;
     }
 
     .footer a {
@@ -230,6 +232,9 @@
         text-decoration: none;
         margin: 0 10px;
     }
+    #submitButton:hover, #cancelButton:hover {
+    background-color: #00d0f1;
+}
 </style>
 
 

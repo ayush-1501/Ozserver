@@ -21,7 +21,7 @@ namespace Ozserver
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl FromDateTextBoxEDN;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText FromDateTextBoxEDN;
 
         /// <summary>
         /// ToDateTextBoxEDN control.
@@ -30,7 +30,7 @@ namespace Ozserver
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl ToDateTextBoxEDN;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText ToDateTextBoxEDN;
 
         /// <summary>
         /// SenderRefTextBox control.
@@ -66,7 +66,7 @@ namespace Ozserver
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl FromDateTextBoxAQIS;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText FromDateTextBoxAQIS;
 
         /// <summary>
         /// ToDateTextBoxAQIS control.
@@ -75,7 +75,7 @@ namespace Ozserver
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl ToDateTextBoxAQIS;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText ToDateTextBoxAQIS;
 
         /// <summary>
         /// AQISIdTextBox control.
@@ -111,7 +111,7 @@ namespace Ozserver
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl FromDateTextBoxPRA;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText FromDateTextBoxPRA;
 
         /// <summary>
         /// ToDateTextBoxPRA control.
@@ -120,7 +120,7 @@ namespace Ozserver
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl ToDateTextBoxPRA;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText ToDateTextBoxPRA;
 
         /// <summary>
         /// StopRefTextBox control.
