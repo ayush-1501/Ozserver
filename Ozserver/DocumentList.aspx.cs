@@ -18,7 +18,7 @@ namespace Example
     {
         readonly PagedDataSource _pgsource = new PagedDataSource();
         int _firstIndex, _lastIndex;
-        private int _pageSize = 15;
+        private int _pageSize = 7;
         string _transmissionSource;
         string OfficeID;
         public string Role { get; set; }
@@ -148,14 +148,14 @@ namespace Example
                     string fromDate = Session["FromDate"].ToString();
                     apiUrl1 += $"FromDate={fromDate}&";
                 }
-                    
+
 
                 if (!string.IsNullOrEmpty((string)Session["ToDate"]))
                 {
                     string toDate = Session["ToDate"].ToString();
                     apiUrl1 += $"ToDate={toDate}&";
                 }
-                   
+
 
                 if (!string.IsNullOrEmpty((string)Session["SenderRef"]))
                 {
@@ -166,7 +166,7 @@ namespace Example
                 if (!string.IsNullOrEmpty((string)Session["EDN1"]))
                 {
                     string edn1 = Session["EDN1"].ToString();
-                    apiUrl1 += $"EDN1={edn1}&";
+                    apiUrl1 += $"EDN={edn1}&";
                 }
 
                 if (!string.IsNullOrEmpty(apiUrl1) && apiUrl1.EndsWith("&"))
@@ -174,20 +174,82 @@ namespace Example
                     apiUrl1 = apiUrl1.Remove(apiUrl1.Length - 1);
                 }
 
-               
+
 
             }
             else if (_transmissionSource == "PRASEARCH")
             {
-                    apiUrl1 = apiUrl1 + "/PRADocument/GetPRADataByFilter?toDate=2024-04-08";
+                //apiUrl1 = apiUrl1 + "/PRADocument/GetPRADataByFilter?toDate=2024-04-08";
+                apiUrl1 += "PRADocument/GetPRADataByFilter?";
+                if (!string.IsNullOrEmpty((string)Session["FromDate"]))
+                {
+                    string fromDate = Session["FromDate"].ToString();
+                    apiUrl1 += $"FromDate={fromDate}&";
+                }
+
+
+                if (!string.IsNullOrEmpty((string)Session["ToDate"]))
+                {
+                    string toDate = Session["ToDate"].ToString();
+                    apiUrl1 += $"ToDate={toDate}&";
+                }
+
+
+                if (!string.IsNullOrEmpty((string)Session["ShipperRef"]))
+                {
+                    string shipperRef = Session["ShipperRef"].ToString();
+                    apiUrl1 += $"ShipperRef={shipperRef}&";
+                }
+
+                if (!string.IsNullOrEmpty((string)Session["StopRef"]))
+                {
+                    string StopRef = Session["StopRef"].ToString();
+                    apiUrl1 += $"OneStopRef={StopRef}&";
+                }
+
+                if (!string.IsNullOrEmpty(apiUrl1) && apiUrl1.EndsWith("&"))
+                {
+                    apiUrl1 = apiUrl1.Remove(apiUrl1.Length - 1);
+                }
 
             }
             else if (_transmissionSource == "AQISSEARCH")
             {
-                apiUrl = apiUrl1 + "AQISDocument/GetAQISDataByFilter?toDate=2024-04-08";
+                // apiUrl1 = apiUrl1 + "AQISDocument/GetAQISDataByFilter?toDate=2024-04-08";
+
+                apiUrl1 += "AQISDocument/GetAQISDataByFilter?";
+                if (!string.IsNullOrEmpty((string)Session["FromDate"]))
+                {
+                    string fromDate = Session["FromDate"].ToString();
+                    apiUrl1 += $"FromDate={fromDate}&";
+                }
+
+
+                if (!string.IsNullOrEmpty((string)Session["ToDate"]))
+                {
+                    string toDate = Session["ToDate"].ToString();
+                    apiUrl1 += $"ToDate={toDate}&";
+                }
+
+
+                if (!string.IsNullOrEmpty((string)Session["AQISId"]))
+                {
+                    string AQISId = Session["AQISId"].ToString();
+                    apiUrl1 += $"AQISId={AQISId}&";
+                }
+
+                if (!string.IsNullOrEmpty((string)Session["RfpNo"]))
+                {
+                    string RfpNo = Session["RfpNo"].ToString();
+                    apiUrl1 += $"RfpNo={RfpNo}&";
+                }
+
+                if (!string.IsNullOrEmpty(apiUrl1) && apiUrl1.EndsWith("&"))
+                {
+                    apiUrl1 = apiUrl1.Remove(apiUrl1.Length - 1);
+                }
             }
 
-           
             // Call the CallRestAPI function from BusinessAccessLayer
             RestAPICaller apiCaller = new RestAPICaller();
             string jsonResult = apiCaller.CallRestAPI(apiUrl1);
@@ -222,6 +284,155 @@ namespace Example
             return dt;
         }
 
+        public DataTable GetDataFromDb1()
+        {
+          
+
+            string apiUrl1 = "https://localhost:7209/api/";
+            if (_transmissionSource == "EDNSEARCH")
+            {
+                apiUrl1 += "EDNDocument/GetEDNDataByFilter?";
+                if (!string.IsNullOrEmpty((string)Session["FromDate"]))
+                {
+                    string fromDate = Session["FromDate"].ToString();
+                    apiUrl1 += $"FromDate={fromDate}&";
+                }
+
+
+                if (!string.IsNullOrEmpty((string)Session["ToDate"]))
+                {
+                    string toDate = Session["ToDate"].ToString();
+                    apiUrl1 += $"ToDate={toDate}&";
+                }
+
+
+                if (!string.IsNullOrEmpty((string)Session["SenderRef"]))
+                {
+                    string senderRef = Session["SenderRef"].ToString();
+                    apiUrl1 += $"SenderRef={senderRef}&";
+                }
+
+                if (!string.IsNullOrEmpty((string)Session["EDN1"]))
+                {
+                    string edn1 = Session["EDN1"].ToString();
+                    apiUrl1 += $"EDN1={edn1}&";
+                }
+
+                if (!string.IsNullOrEmpty(apiUrl1) && apiUrl1.EndsWith("&"))
+                {
+                    apiUrl1 = apiUrl1.Remove(apiUrl1.Length - 1);
+                }
+
+
+
+            }
+            else if (_transmissionSource == "PRASEARCH")
+            {
+                //apiUrl1 = apiUrl1 + "/PRADocument/GetPRADataByFilter?toDate=2024-04-08";
+                apiUrl1 += "PRADocument/GetPRADataByFilter?";
+                if (!string.IsNullOrEmpty((string)Session["FromDate"]))
+                {
+                    string fromDate = Session["FromDate"].ToString();
+                    apiUrl1 += $"FromDate={fromDate}&";
+                }
+
+
+                if (!string.IsNullOrEmpty((string)Session["ToDate"]))
+                {
+                    string toDate = Session["ToDate"].ToString();
+                    apiUrl1 += $"ToDate={toDate}&";
+                }
+
+
+                if (!string.IsNullOrEmpty((string)Session["ShipperRef"]))
+                {
+                    string shipperRef = Session["ShipperRef"].ToString();
+                    apiUrl1 += $"SenderRef={shipperRef}&";
+                }
+
+                if (!string.IsNullOrEmpty((string)Session["ShipperRef"]))
+                {
+                    string shipperRef = Session["ShipperRef"].ToString();
+                    apiUrl1 += $"EDN1={shipperRef}&";
+                }
+
+                if (!string.IsNullOrEmpty(apiUrl1) && apiUrl1.EndsWith("&"))
+                {
+                    apiUrl1 = apiUrl1.Remove(apiUrl1.Length - 1);
+                }
+
+            }
+            else if (_transmissionSource == "AQISSEARCH")
+            {
+                // apiUrl1 = apiUrl1 + "AQISDocument/GetAQISDataByFilter?toDate=2024-04-08";
+          
+                apiUrl1 += "AQISDocument/GetAQISDataByFilter?";
+                if (!string.IsNullOrEmpty((string)Session["FromDate"]))
+                {
+                    string fromDate = Session["FromDate"].ToString();
+                    apiUrl1 += $"FromDate={fromDate}&";
+                }
+
+
+                if (!string.IsNullOrEmpty((string)Session["ToDate"]))
+                {
+                    string toDate = Session["ToDate"].ToString();
+                    apiUrl1 += $"ToDate={toDate}&";
+                }
+
+
+                if (!string.IsNullOrEmpty((string)Session["AQISId"]))
+                {
+                    string AQISId = Session["AQISId"].ToString();
+                    apiUrl1 += $"SenderRef={AQISId}&";
+                }
+
+                if (!string.IsNullOrEmpty((string)Session["RfpNo"]))
+                {
+                    string RfpNo = Session["RfpNo"].ToString();
+                    apiUrl1 += $"EDN1={RfpNo}&";
+                }
+
+                if (!string.IsNullOrEmpty(apiUrl1) && apiUrl1.EndsWith("&"))
+                {
+                    apiUrl1 = apiUrl1.Remove(apiUrl1.Length - 1);
+                }
+            }
+
+
+            // Call the CallRestAPI function from BusinessAccessLayer
+            RestAPICaller apiCaller = new RestAPICaller();
+            string jsonResult = apiCaller.CallRestAPI(apiUrl1);
+
+            // Deserialize JSON string to a suitable object
+            List<Branch> data = new List<Branch>();
+
+            try
+            {
+                // Attempt to deserialize JSON as a list
+                data = JsonConvert.DeserializeObject<List<Branch>>(jsonResult);
+            }
+            catch (JsonSerializationException ex)
+            {
+                Console.WriteLine("Error deserializing JSON as list: " + ex.Message);
+                try
+                {
+                    // If deserialization as list fails, try deserializing as a single object
+                    Branch singleBranch = JsonConvert.DeserializeObject<Branch>(jsonResult);
+                    data.Add(singleBranch); // Add the single object to the list
+                }
+                catch (JsonSerializationException innerEx)
+                {
+                    Console.WriteLine("Error deserializing JSON as single object: " + innerEx.Message);
+                    // Handle the exception accordingly, possibly log it or throw it further
+                }
+            }
+
+            // Convert the object to a DataTable
+            DataTable dt = ToDataTable(data);
+
+            return dt;
+        }
         public DataTable ToDataTable<T>(List<T> items)
         {
             DataTable dataTable = new DataTable(typeof(T).Name);
@@ -244,7 +455,8 @@ namespace Example
         // Bind PagedDataSource into Repeater
         private void BindDataIntoRepeater()
         {
-            var dt = GetDataFromDb();
+            var dt= GetDataFromDb(); 
+           
             _pgsource.DataSource = dt.DefaultView;
             _pgsource.AllowPaging = true;
             

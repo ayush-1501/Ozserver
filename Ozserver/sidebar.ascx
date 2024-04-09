@@ -11,8 +11,8 @@
                 </li>
                 <% if (EDN) { %>
                       <li class="submenu">
-                        <a href="#" class="icon-link">
-                            <img src="images/transLC.bmp" alt="Your Image Alt Text" />
+                        <a  href="#" class="icon-link">
+                            <img id="ednLink" src="images/transLC.bmp" alt="Your Image Alt Text" />
                             <span id="ednLink">EDN Transmission</span>
                             <span class="menu-arrow"></span>
                         </a>
@@ -33,8 +33,8 @@
                 <% } %>
                 <% if (AQIS) { %>
                 <li class="submenu">
-                    <a href="#" class="icon-link">
-                        <img src="images/transLC.bmp" alt="Your Image Alt Text" />
+                    <a  href="#" class="icon-link">
+                        <img id="aqisLink" src="images/transLC.bmp" alt="Your Image Alt Text" />
                         <span id="aqisLink">AQIS Transmission</span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -55,8 +55,8 @@
                 <% } %>
                 <% if (PRA) { %>
                     <li class="submenu">
-                        <a href="#" class="icon-link">
-                            <img src="images/transLC.bmp" alt="Your Image Alt Text" />
+                        <a  href="#" class="icon-link">
+                            <img id="praLink" src="images/transLC.bmp" alt="Your Image Alt Text" />
                             <span id="praLink">PRA Transmission</span>
                             <span class="menu-arrow"></span>
                         </a>

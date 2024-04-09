@@ -63,42 +63,41 @@ namespace Ozserver
 
         protected void btnLogin_ClickPRA(object sender, EventArgs e)
         {
-
-            string fromDate = Request.Form["FromDateTextBox"];
-            string toDate = Request.Form["ToDateTextBox"];
-            string refId = Request.Form["refIdTextBox"];
-            string shipperRef = Request.Form["shipperRefTextBox"];
+            string fromDate = FromDateTextBoxPRA.Value;
+            string toDate = ToDateTextBoxPRA.Value;
+            string stopRef = StopRefTextBox.Value;
+            string shipperRef = ShipperRefTextBox.Value;
 
             // Store values in session state
             Session["FromDate"] = fromDate;
             Session["ToDate"] = toDate;
-            Session["RefId"] = refId;
+            Session["StopRef"] = stopRef;
             Session["ShipperRef"] = shipperRef;
-            Response.Redirect("DocumentList.aspx?context=PRAsearch");
-
+            Response.Redirect("DocumentList.aspx?context=PRASEARCH");
         }
+
 
         protected void btnLogin_ClickAQIS(object sender, EventArgs e)
         {
-
-            string fromDate = Request.Form["FromDateTextBox"];
-            string toDate = Request.Form["ToDateTextBox"];
-            string AQISId = Request.Form["AQISIdTextBox"];
-            string rfpNo = Request.Form["RfpNoTextBox"];
+            string fromDate = FromDateTextBoxAQIS.Value;
+            string toDate = ToDateTextBoxAQIS.Value;
+            string AQISId = AQISIdTextBox.Value;
+            string rfpNo = RfpNoTextBox.Value;
 
             // Store values in session state
             Session["FromDate"] = fromDate;
             Session["ToDate"] = toDate;
             Session["AQISId"] = AQISId;
-            Response.Redirect("DocumentList.aspx?context=AQISsearch");
-
+            Session["RfpNo"] = rfpNo;
+            Response.Redirect("DocumentList.aspx?context=AQISSEARCH");
         }
+
 
         protected void btnLogin_ClickEDN(object sender, EventArgs e)
         {
 
-            string fromDate = FromDateTextBox.Value;
-            string toDate = ToDateTextBox.Value;
+            string fromDate = FromDateTextBoxEDN.Value;
+            string toDate = ToDateTextBoxEDN.Value;
             string senderRef = SenderRefTextBox.Value;
             string edn = EDNTextBox.Value;
 
@@ -108,7 +107,7 @@ namespace Ozserver
             Session["SenderRef"] = senderRef;
             Session["EDN1"] = edn;
 
-            Response.Redirect("DocumentList.aspx?context=EDNsearch");
+            Response.Redirect("DocumentList.aspx?context=EDNSEARCH");
 
         }
     }

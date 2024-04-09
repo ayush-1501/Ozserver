@@ -124,20 +124,20 @@
                     </div>
 
                    <div>
-                        <table class="table table-bordered">
+                      <table class="table table-bordered">
                             <tr>
-                                <td class="text-center">
+                                <td class="text-center align-middle">
                                     <asp:LinkButton ID="lbFirst" runat="server" OnClick="lbFirst_Click" CssClass="btn" style="background-color: #1b5a90; color: white;" onmouseover="changeColor(this, '#00d0f1')" onmouseout="changeColor(this, '#1b5a90')">First</asp:LinkButton>
                                 </td>
-                                <td class="text-center">
+                                <td class="text-center align-middle">
                                     <asp:LinkButton ID="lbPrevious" runat="server" OnClick="lbPrevious_Click" CssClass="btn" style="background-color: #1b5a90; color: white;" onmouseover="changeColor(this, '#00d0f1')" onmouseout="changeColor(this, '#1b5a90')">Previous</asp:LinkButton>
                                 </td>
-                                <td class="text-center" style="display: flex; justify-content: center;">
+                                <td class="text-center align-middle" style="display: flex; justify-content: center;">
                                     <asp:DataList ID="rptPaging" runat="server"
                                         OnItemCommand="rptPaging_ItemCommand"
                                         OnItemDataBound="rptPaging_ItemDataBound" 
                                         RepeatDirection="Horizontal">
-                                       <ItemTemplate>
+                                        <ItemTemplate>
                                             <asp:LinkButton ID="lbPaging" runat="server"
                                                 CommandArgument='<%# Eval("PageIndex") %>' 
                                                 CommandName="newPage"
@@ -145,24 +145,23 @@
                                                 CssClass="btn"
                                                 style='<%# Convert.ToInt32(Eval("PageIndex")) == CurrentPage ? "background-color: #00d0f1; color: white;" : "background-color: #1b5a90; color: white;" %>'
                                                 onmouseover="changeColor(this, '#00d0f1')" 
-                                            onmouseout='<%# GenerateMouseOutScript(Convert.ToInt32(Eval("PageIndex"))) %>'>
-   
-
+                                                onmouseout='<%# GenerateMouseOutScript(Convert.ToInt32(Eval("PageIndex"))) %>'>
                                             </asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:DataList>
                                 </td>
-                                <td class="text-center">
+                                <td class="text-center align-middle">
                                     <asp:LinkButton ID="lbNext" runat="server" OnClick="lbNext_Click" CssClass="btn" style="background-color: #1b5a90; color: white;" onmouseover="changeColor(this, '#00d0f1')" onmouseout="changeColor(this, '#1b5a90')">Next</asp:LinkButton>
                                 </td>
-                                <td class="text-center">
+                                <td class="text-center align-middle">
                                     <asp:LinkButton ID="lbLast" runat="server" OnClick="lbLast_Click" CssClass="btn" style="background-color: #1b5a90; color: white;" onmouseover="changeColor(this, '#00d0f1')" onmouseout="changeColor(this, '#1b5a90')">Last</asp:LinkButton>
                                 </td>
-                                <td class="text-center">
+                                <td class="text-center align-middle">
                                     <asp:Label ID="lblpage" runat="server" Text=""></asp:Label>
                                 </td>
                             </tr>
                         </table>
+
                     </div>
 
                     <script>

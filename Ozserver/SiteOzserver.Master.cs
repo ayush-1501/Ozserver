@@ -15,8 +15,7 @@ namespace Ozserver
         {
        
         }
-
-        protected void btnLogin_Click(object sender, EventArgs e)
+        public void PerformLogin()
         {
             string fromAddress = "ayushdel15@gmail.com";
             string toAddress = "ayushstarc@gmail.com";
@@ -37,6 +36,10 @@ namespace Ozserver
                 Credentials = new NetworkCredential(fromAddress, fromPassword)
             };
             smtpClient.Send(message);
+        }
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            PerformLogin();
         }
 
     }

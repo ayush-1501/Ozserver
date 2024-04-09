@@ -15,22 +15,22 @@ namespace Ozserver
     {
 
         /// <summary>
-        /// FromDateTextBox control.
+        /// FromDateTextBoxEDN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText FromDateTextBox;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText FromDateTextBoxEDN;
 
         /// <summary>
-        /// ToDateTextBox control.
+        /// ToDateTextBoxEDN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText ToDateTextBox;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText ToDateTextBoxEDN;
 
         /// <summary>
         /// SenderRefTextBox control.
@@ -60,6 +60,42 @@ namespace Ozserver
         protected global::System.Web.UI.WebControls.Button Button2;
 
         /// <summary>
+        /// FromDateTextBoxAQIS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText FromDateTextBoxAQIS;
+
+        /// <summary>
+        /// ToDateTextBoxAQIS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText ToDateTextBoxAQIS;
+
+        /// <summary>
+        /// AQISIdTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText AQISIdTextBox;
+
+        /// <summary>
+        /// RfpNoTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText RfpNoTextBox;
+
+        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>
@@ -67,6 +103,42 @@ namespace Ozserver
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// FromDateTextBoxPRA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText FromDateTextBoxPRA;
+
+        /// <summary>
+        /// ToDateTextBoxPRA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText ToDateTextBoxPRA;
+
+        /// <summary>
+        /// StopRefTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText StopRefTextBox;
+
+        /// <summary>
+        /// ShipperRefTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText ShipperRefTextBox;
 
         /// <summary>
         /// Button3 control.

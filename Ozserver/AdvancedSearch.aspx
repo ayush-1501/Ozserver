@@ -25,8 +25,8 @@
                      <div class="form-group row">
                         <label class="col-form-label col-md-2">By Date</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" placeholder="From Date..." id="FromDateTextBox" runat="server">
-                            <input type="text" class="form-control" placeholder="To Date..." id="ToDateTextBox" runat="server">
+                            <input type="text" class="form-control" placeholder="From Date..." id="FromDateTextBoxEDN" runat="server">
+                            <input type="text" class="form-control" placeholder="To Date..." id="ToDateTextBoxEDN" runat="server">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -54,93 +54,83 @@
 
    <% } %>
    <% if (IsTransmissionFrom("AQIS"))  { %>
-             <div class="text-center">
+    <div class="text-center">
+        <div class="col-lg-12 col-md-6 col-sm-3">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">All Transaction </h4>
+                </div>
+                <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">By Date</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" placeholder="From Date..." id="FromDateTextBoxAQIS" runat="server">
+                                <input type="text" class="form-control" placeholder="To Date..." id="ToDateTextBoxAQIS" runat="server">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">AQIS Id</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="AQISIdTextBox" runat="server">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">RFP No</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="RfpNoTextBox" runat="server">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="card-footer">
+                                <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnLogin_ClickAQIS" CausesValidation="False" />
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% } %>
+
+   <% if (IsTransmissionFrom("PRA"))  { %>
+                    
+   <div class="text-center">
     <div class="col-lg-12 col-md-6 col-sm-3">
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">All Transaction </h4>
             </div>
             <div class="card-body">
-                <form action="#">
-                    <div class="form-group row">
-                        <label class="col-form-label col-md-2">By Date</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" placeholder="From Date...">
-                            <input type="text" class="form-control" placeholder="To Date...">
-                        </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-2">By Date</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" placeholder="From Date..." id="FromDateTextBoxPRA" runat="server">
+                        <input type="text" class="form-control" placeholder="To Date..." id="ToDateTextBoxPRA" runat="server">
                     </div>
-                    <div class="form-group row">
-                        <label class="col-form-label col-md-2">AQIS Id</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control">
-                        </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-2">1-Stop Ref</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="StopRefTextBox" runat="server">
                     </div>
-                    <div class="form-group row">
-                        <label class="col-form-label col-md-2">RFP No</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control">
-                        </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-md-2">Shipper Ref</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="ShipperRefTextBox" runat="server">
                     </div>
-                  
-                   
-                    <div>
-                  
-                          <div class="card-footer">
-                              <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnLogin_ClickAQIS" CausesValidation="False" />
-                          </div>
-                   
-                    </div>
-                </form>
+                </div>
+            </div>
+            <div>
+                <div class="card-footer">
+                    <asp:Button ID="Button3" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnLogin_ClickPRA" CausesValidation="False" />
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-   <% } %>
-   <% if (IsTransmissionFrom("PRA"))  { %>
-                    
-      
-                 <div class="text-center">
-    <div class="col-lg-12 col-md-6 col-sm-3">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">All Transaction </h4>
-            </div>
-            <div class="card-body">
-                <form action="#">
-                    <div class="form-group row">
-                        <label class="col-form-label col-md-2">By Date</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" placeholder="From Date...">
-                            <input type="text" class="form-control" placeholder="To Date...">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-form-label col-md-2">1-Stop Ref</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-form-label col-md-2">Shipper Ref</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                  
-                   
-                    <div>
-                  
-                          <div class="card-footer">
-                              <asp:Button ID="Button3" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnLogin_ClickPRA" CausesValidation="False" />
-                          </div>
-                   
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+
+
 
    <% } %>
         </div>
