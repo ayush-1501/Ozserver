@@ -111,10 +111,10 @@
                                     <td><%# Eval("Status") %></td>
 
                                    <td>
-                                    <a href="search.aspx">
-                                          <i class="fa fa-info" style="color: #1b5a90;"></i> 
-                                    </a>
-                                    </td>
+                                     <a href='<%# "search.aspx?id=" + Eval("Id") %>'>
+                                            <i class="fa fa-info" style="color: #1b5a90;"></i> 
+                                      </a>
+                                   </td>
                                 </tr>
                             </ItemTemplate>
                             <FooterTemplate>

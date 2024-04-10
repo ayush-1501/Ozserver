@@ -18,7 +18,7 @@ namespace Example
     {
         readonly PagedDataSource _pgsource = new PagedDataSource();
         int _firstIndex, _lastIndex;
-        private int _pageSize = 7;
+        private int _pageSize = 15;
         string _transmissionSource;
         string OfficeID;
         public string Role { get; set; }
@@ -53,7 +53,6 @@ namespace Example
                 if (Request.QueryString["context"] != null)
                 {
                     _transmissionSource = Request.QueryString["context"].ToUpper();
-                    System.Diagnostics.Debug.WriteLine(_transmissionSource);
                 }
                 if (Session["Role"] != null)
                 {
@@ -62,11 +61,22 @@ namespace Example
                 }
                 else
                 {
-                    // Handle the case where one or more session variables are null
+                   
                     Role = "Non-Admin";
                     OfficeID = "ANZCO";
                 }
-                // Continue loading the dashboard page
+                if (_transmissionSource== "EDN" || _transmissionSource == "EDNSEARCH")
+                {
+                    Page.Title = "EDN TRANSISSION";
+                }
+                else if(_transmissionSource =="PRA" || _transmissionSource == "PRASEARCH")
+                {
+                    Page.Title = "PRA TRANSISSION";
+                }
+                else if (_transmissionSource == "AQIS" || _transmissionSource == "AQISSEARCH")
+                {
+                    Page.Title = "AQIS TRANSISSION";
+                }
                 Role = "Non-Admin";
                 OfficeID = "ANZCO";
                 if (Page.IsPostBack) return;
@@ -256,6 +266,7 @@ namespace Example
             if (_transmissionSource == "EDNSEARCH" || _transmissionSource == "AQISSEARCH" || _transmissionSource == "PRASEARCH")
             {
                 apiUrl = apiUrl1;
+               
             }
 
             RestAPICaller apiCaller = new RestAPICaller();

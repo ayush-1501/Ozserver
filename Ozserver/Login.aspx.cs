@@ -29,7 +29,9 @@ namespace Ozserver
             string user_ids = user_id.Text;
             string password = txtPassword.Text;
 
-
+            Session["user_id"] = user_ids;
+            Session["password"] = password;
+           
             string apiUrl = "http://crm2.omnix.com.au/OzdocsServerWebAPI/api/Login/Login?UserName=";
             apiUrl += user_ids + "&";
             apiUrl += "Password=" + txtPassword.Text;

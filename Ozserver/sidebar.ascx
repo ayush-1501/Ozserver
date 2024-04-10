@@ -77,7 +77,7 @@
                     </script>
                 <% } %>
                   
-                <li><a href="profile.html"><i class="fa fa-user" aria-hidden="true"></i><span>Profile</span></a></li>
+                <li><a href="Profile.aspx"><i class="fa fa-user" aria-hidden="true"></i><span>Profile</span></a></li>
                 <li><a href="logout.aspx"><i class="fa fa-sign-out" aria-hidden="true"></i><span>Logout</span></a></li>
             </ul>
         </div>

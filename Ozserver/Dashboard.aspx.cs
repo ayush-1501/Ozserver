@@ -6,6 +6,7 @@ using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 namespace Ozserver
 {
@@ -22,7 +23,12 @@ namespace Ozserver
             else
             {
                 // Continue loading the dashboard page
+        
+                Page.Title = "Dashboard";
 
+
+                
+  
             }
         }
     }

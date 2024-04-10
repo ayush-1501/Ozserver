@@ -9,7 +9,7 @@
         <title>Ozdocs- Login</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="Images/ABOUT.BMP">
+        <link rel="shortcut icon" type="image/x-icon" href="images/ABOUT.BMP">
 
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">

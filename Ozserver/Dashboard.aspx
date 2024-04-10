@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOzserver.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Ozserver.Dashboard" %>
+<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/SiteOzserver.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Ozserver.Dashboard" %>
 <asp:Content ID="Content6" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 							
 	

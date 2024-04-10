@@ -49,6 +49,19 @@ namespace Ozserver
                 }
             }
 
+            if (_transmissionSource == "EDN" || _transmissionSource == "EDNSEARCH")
+            {
+                Page.Title = "EDN SEARCH";
+            }
+            else if (_transmissionSource == "PRA" || _transmissionSource == "PRASEARCH")
+            {
+                Page.Title = "PRA SEARCH";
+            }
+            else if (_transmissionSource == "AQIS" || _transmissionSource == "AQISSEARCH")
+            {
+                Page.Title = "AQIS SEARCH";
+            }
+
         }
         // Method to check the transmission source for conditional rendering
         public bool IsTransmissionFrom(string source)
