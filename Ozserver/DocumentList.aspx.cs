@@ -106,7 +106,11 @@ namespace Example
             return _transmissionSource == source.ToUpper();
         }
 
-      
+        public string GetTransmissionSource()
+        {
+            
+            return _transmissionSource;
+        }
         public override void VerifyRenderingInServerForm(Control control)
         {
             /* Confirms that an HtmlForm control is rendered for the specified ASP.NET
