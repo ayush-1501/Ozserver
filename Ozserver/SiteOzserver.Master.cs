@@ -13,7 +13,7 @@ namespace Ozserver
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-       
+          //  string id = (string)Session["id"];
         }
         public void PerformLogin()
         {

@@ -110,11 +110,12 @@
                                        <% } %>
                                     <td><%# Eval("Status") %></td>
 
-                                   <td>
-                                      <a href='<%# "search.aspx?id=" + Eval("Id") + "&source=" + GetTransmissionSource() %>'>
-                                            <i class="fa fa-info" style="color: #1b5a90;"></i> 
-                                        </a>
-                                   </td>
+                                  <td>
+                                    <a href='<%# "search.aspx?id=" + Eval("Id") + "&source=" + GetTransmissionSource() %>'>
+                                        <i class="fa fa-info" style="color: #1b5a90;" onmouseover="this.style.color='#00d0f1'" onmouseout="this.style.color='#1b5a90'"></i> 
+                                    </a>
+                                </td>
+
                                 </tr>
                             </ItemTemplate>
                             <FooterTemplate>

@@ -2,36 +2,18 @@
 
 <asp:Content ID="Content6" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
-        /* Profile section styles */
-        .profile-list {
-            margin-top: 20px;
+        .repeater-ul {
+            list-style-type: none; 
+            padding: 0; 
+            margin: 0; 
         }
 
-        .profile-item {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
+        .repeater-li {
+            line-height: 1.5; 
         }
 
-        .profile-label {
-            flex: 1;
-            font-weight: bold;
-        }
-
-        .profile-value {
-            flex: 3;
-        }
-
-        /* Responsive adjustments */
-        @media screen and (max-width: 768px) {
-            .profile-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .profile-value {
-                flex: none;
-            }
+        .repeater-li:nth-child(odd) {
+            background-color: #f0f0f0; 
         }
     </style>
 
@@ -41,23 +23,24 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 class="page-title">Profile</h3>
+                        <h3 class="page-title">User Info</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="Dashboard.aspx">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Profile</li>
+                            <li class="breadcrumb-item active">User Info</li>
                         </ul>
                     </div>
                 </div>
             </div>
-                  <asp:Repeater ID="repeaterData" runat="server">
+
+            <asp:Repeater ID="repeaterData" runat="server">
                 <ItemTemplate>
-                    <ul>
-                        <li><%# Container.DataItem %></li>
+                    <ul class="repeater-ul">
+                        <li class="repeater-li"><%# Container.DataItem %></li>
                     </ul>
                 </ItemTemplate>
             </asp:Repeater>
-
         </div>
     </div>
 </asp:Content>
+
 

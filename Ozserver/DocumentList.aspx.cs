@@ -61,7 +61,6 @@ namespace Example
                 }
                 else
                 {
-                   
                     Role = "Non-Admin";
                     OfficeID = "ANZCO";
                 }
@@ -77,8 +76,7 @@ namespace Example
                 {
                     Page.Title = "AQIS TRANSISSION";
                 }
-                Role = "Non-Admin";
-                OfficeID = "ANZCO";
+               
                 if (Page.IsPostBack) return;
                 BindDataIntoRepeater();
             }

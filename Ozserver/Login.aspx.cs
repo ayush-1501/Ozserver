@@ -59,16 +59,18 @@ namespace Ozserver
                         EDN = true;
                         AQIS = true;
                         PRA = true;
+
                         // Store the values in session state
                         Session["EDN"] = EDN;
                         Session["AQIS"] = AQIS;
                         Session["PRA"] = PRA;
-                        //store value of kind of user
+                          Role = "Admin";
                         Session["Role"] = Role;
                         Session["OfficeID"] = OfficeID;
-                        Role = "Admin";
+                      
                         OfficeID = "ANZCO";
                         Session["Authenticated"] = true;
+                      
                         Response.Redirect("Dashboard.aspx");
    
                 }

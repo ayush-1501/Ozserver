@@ -94,10 +94,10 @@ namespace Ozserver
                                     valueString = value?.ToString();
                                 }
 
-                                // Combine label and value into a single string
+                              
                                 string labelValuePair = $"{label}: {valueString}";
 
-                                // Add the label-value pair to the string array
+                               
                                 stringArray.Add(labelValuePair);
                             }
                         }
