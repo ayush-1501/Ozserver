@@ -55,8 +55,9 @@ namespace Ozserver
                         int OrgId= data[0].OrgId;
                         string CompanyName= data[0].CompanyName;
                         string Email_Address= data[0].EmailAddress;
-                   
-                        EDN = true;
+                        string OfficeId = data[0].OfficeId;
+
+                         EDN = true;
                         AQIS = true;
                         PRA = true;
 
@@ -64,11 +65,9 @@ namespace Ozserver
                         Session["EDN"] = EDN;
                         Session["AQIS"] = AQIS;
                         Session["PRA"] = PRA;
-                          Role = "Admin";
+                         Role = "Admin";
                         Session["Role"] = Role;
                         Session["OfficeID"] = OfficeID;
-                      
-                        OfficeID = "ANZCO";
                         Session["Authenticated"] = true;
                       
                         Response.Redirect("Dashboard.aspx");
