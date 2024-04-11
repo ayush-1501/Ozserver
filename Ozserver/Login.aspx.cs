@@ -15,12 +15,13 @@ namespace Ozserver
         string Role = "Admin";
         string OfficeID = "ANZCO";
 
-        bool EDN = false; // Define boolean variable EDN
-        bool AQIS = false; // Define boolean variable AQIS
-        bool PRA = false; // Define boolean variable PRA
+        bool EDN = false;
+        bool AQIS = false; 
+        bool PRA = false; 
+        bool MASTER = false; 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // ... (Existing code for checking authentication and redirection)
+           
 
         }
 
@@ -40,32 +41,33 @@ namespace Ozserver
 
             if (!string.IsNullOrEmpty(apiUrl))
             {
-                // Call the CallRestAPI function from BusinessAccessLayer
+               
                 RestAPICaller apiCaller = new RestAPICaller();
                 string jsonResult = apiCaller.CallRestAPI(apiUrl);
 
-                // Check if the JSON result contains a valid response
+               
                 if (jsonResult!="[]")
                 {
-                    // Deserialize the JSON result into a User object
+                    
                        data = JsonConvert.DeserializeObject<List<Users>>(jsonResult);
 
-                    // Check if the deserialized object is not null
+                  
                         int Id = data[0].Id;
                         int OrgId= data[0].OrgId;
                         string CompanyName= data[0].CompanyName;
                         string Email_Address= data[0].EmailAddress;
                         string OfficeId = data[0].OfficeId;
 
-                         EDN = true;
+                        EDN = true;
                         AQIS = true;
                         PRA = true;
-
+                        MASTER = true;
                         // Store the values in session state
                         Session["EDN"] = EDN;
                         Session["AQIS"] = AQIS;
                         Session["PRA"] = PRA;
-                         Role = "Admin";
+                        Session["MASTER"] = MASTER;
+                        Role = "Admin";
                         Session["Role"] = Role;
                         Session["OfficeID"] = OfficeID;
                         Session["Authenticated"] = true;

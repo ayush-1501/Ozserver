@@ -12,11 +12,11 @@ using System.Web.UI.WebControls;
                 protected bool EDN = false;
                 protected bool AQIS = false;
                 protected bool PRA = false;
+                protected bool MASTER = false;
 
-
-        protected void Page_Load(object sender, EventArgs e)
+                 protected void Page_Load(object sender, EventArgs e)
                 {
-                    // Retrieve values of EDN, AQIS, and PRA from session state
+                    // Retrieve values of EDN, AQIS, PRA,MASTER from session state
                     if (Session["EDN"] != null)
                         EDN = (bool)Session["EDN"];
 
@@ -26,6 +26,9 @@ using System.Web.UI.WebControls;
                     if (Session["PRA"] != null)
                         PRA = (bool)Session["PRA"];
 
-             }
+                    if (Session["MASTER"] != null)
+                        MASTER = (bool)Session["MASTER"];
+
+                }
         }
     }

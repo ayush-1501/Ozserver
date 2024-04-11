@@ -20,6 +20,9 @@
                             <% if (IsTransmissionFrom("AQIS") || IsTransmissionFrom("AQISSEARCH")) { %>
                                     <h3 class="page-title">List of AQIS Transmissions</h3>
                              <% } %>
+                              <% if (IsTransmissionFrom("MASTER") || IsTransmissionFrom("MASTERSEARCH")) { %>
+                                     <h3 class="page-title">MASTER</h3>
+                              <% } %>
                           <ul class="breadcrumb">
                               <li class="breadcrumb-item"><a href="Dashboard.aspx">Dashboard</a></li>
                                <% if (IsTransmissionFrom("EDN") || IsTransmissionFrom("EDNSEARCH")) { %>
@@ -31,6 +34,9 @@
                                <% if (IsTransmissionFrom("AQIS") || IsTransmissionFrom("AQISSEARCH")) { %>
                                         <li class="breadcrumb-item active">AQIS Document</li>
                                 <% } %>
+                                <% if (IsTransmissionFrom("MASTER") || IsTransmissionFrom("MASTERSEARCH")) { %>
+                                         <li class="breadcrumb-item active">MASTER Document</li>
+                                  <% } %>
                           </ul>
                       </div>
                     <div class="col-sm-12">

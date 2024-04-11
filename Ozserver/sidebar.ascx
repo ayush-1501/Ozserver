@@ -9,6 +9,28 @@
                 <li class="active">
                     <a href="Dashboard.aspx"><i class="fe fe-home"></i><span>Dashboard</span></a>
                 </li>
+                  <% if (MASTER) { %>
+                   <li class="submenu">
+                          <a  href="#" class="icon-link">
+                              <img id="masterLink" src="images/transLC.bmp" alt="Your Image Alt Text" />
+                              <span id="masterLink">MASTER</span>
+                              <span class="menu-arrow"></span>
+                          </a>
+                          <ul style="display: none;">
+                              <li><a href="DocumentList.aspx?context=MASTER">Today's Transmission</a></li>
+                              <li><a href="advancedsearch.aspx?context=MASTER">Advanced Search</a></li>
+                          </ul>
+                      </li>
+                  <script>
+
+                      var praLink = document.getElementById("ednLink");
+
+                      praLink.addEventListener("click", function () {
+
+                          window.location.href = "DocumentList.aspx?context=MASTERSEARCH";
+                      });
+                  </script>
+                  <% } %>
                 <% if (EDN) { %>
                       <li class="submenu">
                         <a  href="#" class="icon-link">

@@ -56,6 +56,10 @@ namespace Ozserver
                 {
                     apiUrl += "PRADocument/GetPRADataById?Id=";
                 }
+                else if (_transmissionSource == "MASTER" || _transmissionSource == "MASTERSEARCH")
+                {
+                    apiUrl += "MasterDocument/GetMasterDataById?Id=";
+                }
 
                 apiUrl += _searchId;
 
@@ -67,7 +71,11 @@ namespace Ozserver
 
                     if (!string.IsNullOrEmpty(jsonResult) && jsonResult != "[]")
                     {
-                        List<Branch> data = JsonConvert.DeserializeObject<List<Branch>>(jsonResult);
+                        JsonSerializerSettings settings = new JsonSerializerSettings
+                        {
+                            NullValueHandling = NullValueHandling.Ignore
+                        };
+                        List<Branch> data = JsonConvert.DeserializeObject<List<Branch>>(jsonResult, settings);
 
                         // Create an empty list to store label-value pairs
                         List<string> stringArray = new List<string>();
@@ -139,6 +147,23 @@ namespace Ozserver
         public class Branch
         {
             public int Id { get; set; }
+            public string DocumentId { get; set; }
+            public string ReferenceId { get; set; }
+            public string Exporter { get; set; }
+            public string Consignee { get; set; }
+            public string Buyer { get; set; }
+            public decimal InvoiceValue { get; set; }
+            public string Currency { get; set; }
+            public string InvoiceNo { get; set; }
+            public DateTime InvoiceDate { get; set; }
+            public string DocumentStatus { get; set; }
+            public string EdnStatus { get; set; }
+            public string Details { get; set; }
+            public string ExporterRef { get; set; }
+            public string BuyerRef { get; set; }
+            public string MUserId { get; set; }
+            public DateTime CreationDate { get; set; }
+            public DateTime RevisionDate { get; set; }
             public string OfficeId { get; set; }
             public string AqisId { get; set; }
             public string RfpNo { get; set; }

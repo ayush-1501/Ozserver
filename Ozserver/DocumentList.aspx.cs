@@ -76,7 +76,11 @@ namespace Example
                 {
                     Page.Title = "AQIS TRANSMISSION";
                 }
-               
+                else if (_transmissionSource == "MASTER" || _transmissionSource == "MASTERSEARCH")
+                {
+                    Page.Title = "MASTER";
+                }
+                
                 if (Page.IsPostBack) return;
                 BindDataIntoRepeater();
             }
@@ -111,13 +115,12 @@ namespace Example
         }
         public override void VerifyRenderingInServerForm(Control control)
         {
-            /* Confirms that an HtmlForm control is rendered for the specified ASP.NET
-          server control at run time. */
+            
         }
 
         public DataTable GetDataFromDb()
         {
-           // string apiUrl = "http://crm2.omnix.com.au/OzdocsServerWebAPI/api/";
+         
             string apiUrl = TableLink;
             if (_transmissionSource == "EDN")
             {
@@ -150,6 +153,17 @@ namespace Example
                 else
                 {
                     apiUrl = apiUrl + "AQISDocument/GetAQISDataByOfficeId?officeId=" + OfficeID;
+                }
+            }
+            else if (_transmissionSource == "MASTER")
+            {
+                if (Role == "Admin")
+                {
+                    apiUrl = apiUrl + "MasterDocument/GetMasterData";
+                }
+                else
+                {
+                    apiUrl = apiUrl + "MasterDocument/GetMasterDataByOfficeId?officeId=" + OfficeID;
                 }
             }
 
@@ -279,8 +293,14 @@ namespace Example
 
             try
             {
-                
-                data = JsonConvert.DeserializeObject<List<Branch>>(jsonResult);
+
+                JsonSerializerSettings settings = new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                };
+
+
+                data = JsonConvert.DeserializeObject<List<Branch>>(jsonResult, settings);
             }
             catch (JsonSerializationException ex)
             {
@@ -289,7 +309,7 @@ namespace Example
                 {
                    
                     Branch singleBranch = JsonConvert.DeserializeObject<Branch>(jsonResult);
-                    data.Add(singleBranch); // Add the single object to the list
+                    data.Add(singleBranch); 
                 }
                 catch (JsonSerializationException innerEx)
                 {
@@ -304,154 +324,7 @@ namespace Example
             return dt;
         }
 
-        public DataTable GetDataFromDb1()
-        {
-
-
-            string apiUrl1 = "https://localhost:7209/api/";
-            if (_transmissionSource == "EDNSEARCH")
-            {
-                apiUrl1 += "EDNDocument/GetEDNDataByFilter?";
-                if (!string.IsNullOrEmpty((string)Session["FromDate"]))
-                {
-                    string fromDate = Session["FromDate"].ToString();
-                    apiUrl1 += $"FromDate={fromDate}&";
-                }
-
-
-                if (!string.IsNullOrEmpty((string)Session["ToDate"]))
-                {
-                    string toDate = Session["ToDate"].ToString();
-                    apiUrl1 += $"ToDate={toDate}&";
-                }
-
-
-                if (!string.IsNullOrEmpty((string)Session["SenderRef"]))
-                {
-                    string senderRef = Session["SenderRef"].ToString();
-                    apiUrl1 += $"SenderRef={senderRef}&";
-                }
-
-                if (!string.IsNullOrEmpty((string)Session["EDN1"]))
-                {
-                    string edn1 = Session["EDN1"].ToString();
-                    apiUrl1 += $"EDN={edn1}&";
-                }
-
-                if (!string.IsNullOrEmpty(apiUrl1) && apiUrl1.EndsWith("&"))
-                {
-                    apiUrl1 = apiUrl1.Remove(apiUrl1.Length - 1);
-                }
-
-
-
-            }
-            else if (_transmissionSource == "PRASEARCH")
-            {
-                
-                apiUrl1 += "PRADocument/GetPRADataByFilter?";
-                if (!string.IsNullOrEmpty((string)Session["FromDate"]))
-                {
-                    string fromDate = Session["FromDate"].ToString();
-                    apiUrl1 += $"FromDate={fromDate}&";
-                }
-
-
-                if (!string.IsNullOrEmpty((string)Session["ToDate"]))
-                {
-                    string toDate = Session["ToDate"].ToString();
-                    apiUrl1 += $"ToDate={toDate}&";
-                }
-
-
-                if (!string.IsNullOrEmpty((string)Session["ShipperRef"]))
-                {
-                    string shipperRef = Session["ShipperRef"].ToString();
-                    apiUrl1 += $"ShipperRef={shipperRef}&";
-                }
-
-                if (!string.IsNullOrEmpty((string)Session["StopRef"]))
-                {
-                    string StopRef = Session["StopRef"].ToString();
-                    apiUrl1 += $"OneStopRef={StopRef}&";
-                }
-
-                if (!string.IsNullOrEmpty(apiUrl1) && apiUrl1.EndsWith("&"))
-                {
-                    apiUrl1 = apiUrl1.Remove(apiUrl1.Length - 1);
-                }
-
-            }
-            else if (_transmissionSource == "AQISSEARCH")
-            {
-                
-
-                apiUrl1 += "AQISDocument/GetAQISDataByFilter?";
-                if (!string.IsNullOrEmpty((string)Session["FromDate"]))
-                {
-                    string fromDate = Session["FromDate"].ToString();
-                    apiUrl1 += $"FromDate={fromDate}&";
-                }
-
-
-                if (!string.IsNullOrEmpty((string)Session["ToDate"]))
-                {
-                    string toDate = Session["ToDate"].ToString();
-                    apiUrl1 += $"ToDate={toDate}&";
-                }
-
-
-                if (!string.IsNullOrEmpty((string)Session["AQISId"]))
-                {
-                    string AQISId = Session["AQISId"].ToString();
-                    apiUrl1 += $"AQISId={AQISId}&";
-                }
-
-                if (!string.IsNullOrEmpty((string)Session["RfpNo"]))
-                {
-                    string RfpNo = Session["RfpNo"].ToString();
-                    apiUrl1 += $"RfpNo={RfpNo}&";
-                }
-
-                if (!string.IsNullOrEmpty(apiUrl1) && apiUrl1.EndsWith("&"))
-                {
-                    apiUrl1 = apiUrl1.Remove(apiUrl1.Length - 1);
-                }
-            }
-
-          
-            RestAPICaller apiCaller = new RestAPICaller();
-            string jsonResult = apiCaller.CallRestAPI(apiUrl1);
-
-           
-            List<Branch> data = new List<Branch>();
-
-            try
-            {
-               
-                data = JsonConvert.DeserializeObject<List<Branch>>(jsonResult);
-            }
-            catch (JsonSerializationException ex)
-            {
-                Console.WriteLine("Error deserializing JSON as list: " + ex.Message);
-                try
-                {
-                   
-                    Branch singleBranch = JsonConvert.DeserializeObject<Branch>(jsonResult);
-                    data.Add(singleBranch); 
-                }
-                catch (JsonSerializationException innerEx)
-                {
-                    Console.WriteLine("Error deserializing JSON as single object: " + innerEx.Message);
-                   
-                }
-            }
-
-           
-            DataTable dt = ToDataTable(data);
-
-            return dt;
-        }
+     
         public DataTable ToDataTable<T>(List<T> items)
         {
             DataTable dataTable = new DataTable(typeof(T).Name);
@@ -492,11 +365,11 @@ namespace Example
             lbFirst.Enabled = !_pgsource.IsFirstPage;
             lbLast.Enabled = !_pgsource.IsLastPage;
 
-            // Bind data into repeater
+            
             rptResult.DataSource = _pgsource;
             rptResult.DataBind();
 
-            // Call the function to do paging
+            
             HandlePaging();
         }
 
@@ -574,10 +447,28 @@ namespace Example
         public class Branch
         {
             public int Id { get; set; }
+            public string DocumentId { get; set; }
+            public string ReferenceId { get; set; }
             public string OfficeId { get; set; }
+            public int Version { get; set; } 
+            public string Exporter { get; set; }
+            public string Consignee { get; set; }
+            public string Buyer { get; set; }
+            public decimal InvoiceValue { get; set; }
+            public string Currency { get; set; }
+            public string InvoiceNo { get; set; }
+            public DateTime InvoiceDate { get; set; }
+            public string DocumentStatus { get; set; }
+            public string EdnStatus { get; set; }
+            public string Edn { get; set; } 
+            public string Details { get; set; }
+            public string ExporterRef { get; set; }
+            public string BuyerRef { get; set; }
+            public string MUserId { get; set; }
+            public DateTime CreationDate { get; set; }
+            public DateTime RevisionDate { get; set; }
             public string AqisId { get; set; }
             public string RfpNo { get; set; }
-            public int Version { get; set; }
             public string Status { get; set; }
             public string PermitNo { get; set; }
             public string PradocsId { get; set; }
@@ -588,38 +479,18 @@ namespace Example
             public string ContainerNo { get; set; }
             public string EdnDocsId { get; set; }
             public string SenderRef { get; set; }
-            public string Edn { get; set; }
             public DateTime SDateTime { get; set; }
             public DateTime RDateTime { get; set; }
             public int ControlRef { get; set; }
             public string Acknowledge { get; set; }
             public string ReasonDesc { get; set; }
-            public string Error1 { get; set; }
-            public string Error2 { get; set; }
-            public string Error3 { get; set; }
-            public string Error4 { get; set; }
-            public string Error5 { get; set; }
-            public string Error6 { get; set; }
-            public string Error7 { get; set; }
-            public string Error8 { get; set; }
-            public string Error9 { get; set; }
-            public string Error10 { get; set; }
-            public string Error11 { get; set; }
-            public string Error12 { get; set; }
-            public string Error13 { get; set; }
-            public string Error14 { get; set; }
-            public string Error15 { get; set; }
-            public string Error16 { get; set; }
-            public string Error17 { get; set; }
-            public string Error18 { get; set; }
-            public string Error19 { get; set; }
-            public string Error20 { get; set; }
             public string File_In_Name { get; set; }
             public string File_In_Content { get; set; }
             public string File_Out_Name { get; set; }
             public string File_Out_Content { get; set; }
             public int IsNew { get; set; }
         }
+
 
     }
 }
