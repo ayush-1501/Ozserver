@@ -66,15 +66,15 @@ namespace Example
                 }
                 if (_transmissionSource== "EDN" || _transmissionSource == "EDNSEARCH")
                 {
-                    Page.Title = "EDN TRANSISSION";
+                    Page.Title = "EDN TRANSISSMION";
                 }
                 else if(_transmissionSource =="PRA" || _transmissionSource == "PRASEARCH")
                 {
-                    Page.Title = "PRA TRANSISSION";
+                    Page.Title = "PRA TRANSMISSION";
                 }
                 else if (_transmissionSource == "AQIS" || _transmissionSource == "AQISSEARCH")
                 {
-                    Page.Title = "AQIS TRANSISSION";
+                    Page.Title = "AQIS TRANSMISSION";
                 }
                
                 if (Page.IsPostBack) return;

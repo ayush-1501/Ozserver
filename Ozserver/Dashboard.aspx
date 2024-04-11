@@ -24,7 +24,7 @@
 									<div class="dash-widget-header">
 										<a href="#" class="icon-link"><img src="images/transLC.bmp" alt="Your Image Alt Text"></a>
 										<div class="dash-count">
-											<h3>168</h3>
+											<h3>1168</h3>
 										</div>
 									</div>
 									<div class="dash-widget-info">

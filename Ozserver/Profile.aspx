@@ -4,12 +4,12 @@
 <asp:Content ID="Content6" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
         /* Profile section styles */
-        .profile-list {
+     .profile-list {
             margin-top: 20px;
         }
 
         .profile-item {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
         }
@@ -17,10 +17,17 @@
         .profile-label {
             flex: 1;
             font-weight: bold;
+            color: #333;
+            font-size: 16px;
+            margin-right: 5px; /* Reduced margin */
+            text-transform: uppercase;
         }
 
         .profile-value {
             flex: 3;
+            font-size: 16px;
+            color: #666;
+             margin-left: 10px;
         }
 
         /* Responsive adjustments */
@@ -32,6 +39,11 @@
 
             .profile-value {
                 flex: none;
+            }
+
+            .profile-label {
+                margin-right: 0;
+                margin-bottom: 5px;
             }
         }
     </style>

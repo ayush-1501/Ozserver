@@ -64,13 +64,13 @@
                             <li class="nav-item dropdown has-arrow">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                     <span class="user-img">
-                                        <img class="rounded-circle" src="assets/img/profiles/avatar-02.jpg" width="31" alt="User Name" />
+                                        <img class="rounded-circle" src="Pic/User.jpg" width="31" alt="User Name" />
                                     </span>
                                 </a>
                                 <div class="dropdown-menu">
                                     <div class="user-header">
                                         <div class="avatar avatar-sm">
-                                            <img src="assets/img/profiles/avatar-02.jpg" alt="User Image" class="avatar-img rounded-circle" />
+                                            <img src="Pic/User.jpg" alt="User Image" class="avatar-img rounded-circle" />
                                         </div>
                                         <div class="user-text">
                                               <h6><%=  Session["user_id"]  %></h6>
@@ -166,12 +166,12 @@
                 if (!response.ok) {
                     $("#dialog").dialog("close");
                 }
-                return response.text(); // Return response text
+                return response.text(); 
             })
             .then(data => {
-                alert(data); // Handle response text
+                alert(data);
                 $("#feedbackText").val("");
-                $("#dialog").dialog("close"); // Close the dialog after email is sent
+                $("#dialog").dialog("close"); 
             })
         $("#dialog").dialog("close");
     }
