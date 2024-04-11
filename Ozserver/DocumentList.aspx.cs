@@ -2,10 +2,12 @@
 using Ozserver.Business_layer;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition.Primitives;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.EnterpriseServices;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Web.Security;
@@ -278,8 +280,62 @@ namespace Example
                     apiUrl1 = apiUrl1.Remove(apiUrl1.Length - 1);
                 }
             }
+            else if (_transmissionSource == "MASTERSEARCH")
+            {
 
-            if (_transmissionSource == "EDNSEARCH" || _transmissionSource == "AQISSEARCH" || _transmissionSource == "PRASEARCH")
+
+                apiUrl1 += "MasterDocument/GetMasterDataByFilter?";
+                if (!string.IsNullOrEmpty((string)Session["FromDate"]))
+                {
+                    string fromDate = Session["FromDate"].ToString();
+                    apiUrl1 += $"FromDate={fromDate}&";
+                }
+
+
+                if (!string.IsNullOrEmpty((string)Session["ToDate"]))
+                {
+                    string toDate = Session["ToDate"].ToString();
+                    apiUrl1 += $"ToDate={toDate}&";
+                }
+
+
+                if (!string.IsNullOrEmpty((string)Session["DocId"]))
+                {
+                    string DocumentId = Session["DocId"].ToString();
+                    apiUrl1 += $"DocumentId={DocumentId}&";
+                }
+
+                if (!string.IsNullOrEmpty((string)Session["invoiceNo"]))
+                {
+                    string InvoiceNo = Session["invoiceNo"].ToString();
+                    apiUrl1 += $"InvoiceNo={InvoiceNo}&";
+                }
+                if (!string.IsNullOrEmpty((string)Session["toDateInvoice"]))
+                {
+                    string ToInvoice = Session["toDateInvoice"].ToString();
+                    apiUrl1 += $"ToInvoice={ToInvoice}&";
+                }
+                if (!string.IsNullOrEmpty((string)Session["fromDateInvoice"]))
+                {
+                    string FromInvoice = Session["fromDateInvoice"].ToString();
+                    apiUrl1 += $"FromInvoice={FromInvoice}&";
+                }
+                if (!string.IsNullOrEmpty((string)Session["exporter"]))
+                {
+                    string Exporter = Session["exporter"].ToString();
+                    apiUrl1 += $"InvoiceNo={Exporter}&";
+                }
+                if (!string.IsNullOrEmpty((string)Session["EDN1"]))
+                {
+                    string Edn = Session["EDN1"].ToString();
+                    apiUrl1 += $"Edn={Edn}&";
+                }
+                if (!string.IsNullOrEmpty(apiUrl1) && apiUrl1.EndsWith("&"))
+                {
+                    apiUrl1 = apiUrl1.Remove(apiUrl1.Length - 1);
+                }
+            }
+            if (_transmissionSource == "EDNSEARCH" || _transmissionSource == "AQISSEARCH" || _transmissionSource == "PRASEARCH" || _transmissionSource == "MASTERSEARCH")
             {
                 apiUrl = apiUrl1;
                

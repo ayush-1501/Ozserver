@@ -25,55 +25,56 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">From Date</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" id="Text1" runat="server" placeholder="From Date..." onfocus="(this.type='date')" onblur="(this.type='text')">
+                                                <input type="text" class="form-control" id="FromDate" runat="server" placeholder="From Date..." onfocus="(this.type='date')" onblur="(this.type='text')">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">To Date</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" id="Text2" runat="server" placeholder="To Date..." onfocus="(this.type='date')" onblur="(this.type='text')">
+                                                <input type="text" class="form-control" id="ToDate" runat="server" placeholder="To Date..." onfocus="(this.type='date')" onblur="(this.type='text')">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">Doc Id</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" id="Text3" runat="server" placeholder="Doc Id">
+                                                <input type="text" class="form-control" id="DocId" runat="server" placeholder="Doc Id">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">Invoice No</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" id="Text4" runat="server" placeholder="Invoice No">
+                                                <input type="text" class="form-control" id="InvoiceNo" runat="server" placeholder="Invoice No">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">Invoice From Date</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" id="Text5" runat="server" placeholder=" From Date..." onfocus="(this.type='date')" onblur="(this.type='text')">
+                                                <input type="text" class="form-control" id="FromDateInvoice" runat="server" placeholder=" From Date..." onfocus="(this.type='date')" onblur="(this.type='text')">
+
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">Invoice To Date</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" id="Text6" runat="server" placeholder="  To Date..." onfocus="(this.type='date')" onblur="(this.type='text')">
+                                                <input type="text" class="form-control" id="ToDateInvoice" runat="server" placeholder="  To Date..." onfocus="(this.type='date')" onblur="(this.type='text')">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">Exporter</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" id="Text7" runat="server" placeholder="Exporter">
+                                                <input type="text" class="form-control" id="Exporter" runat="server" placeholder="Exporter">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">EDN No</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" id="Text8" runat="server" placeholder="EDN No">
+                                                <input type="text" class="form-control" id="EDNNo" runat="server" placeholder="EDN No">
                                             </div>
                                         </div>
                                     </div>
                                     <div>
                                         <div class="card-footer">
-                                            <asp:Button ID="Button4" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnLogin_ClickPRA" CausesValidation="False" />
+                                            <asp:Button ID="Button4" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnLogin_ClickMASTER" CausesValidation="False" />
                                         </div>
                                     </div>
                                 </div>

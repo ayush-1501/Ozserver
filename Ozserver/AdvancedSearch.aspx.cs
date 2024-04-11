@@ -61,6 +61,10 @@ namespace Ozserver
             {
                 Page.Title = "AQIS SEARCH";
             }
+            else if (_transmissionSource == "MASTER" || _transmissionSource == "MASTERSEARCH")
+            {
+                Page.Title = "MASTER SEARCH";
+            }
 
         }
         // Method to check the transmission source for conditional rendering
@@ -121,6 +125,32 @@ namespace Ozserver
             Session["EDN1"] = edn;
 
             Response.Redirect("DocumentList.aspx?context=EDNSEARCH");
+
+        }
+
+        protected void btnLogin_ClickMASTER(object sender, EventArgs e)
+        {
+
+            string fromDate = FromDate.Value; 
+            string toDate = ToDate.Value;
+            string docId = DocId.Value;
+            string invoiceNo = InvoiceNo.Value; 
+            string fromDateInvoice = FromDateInvoice.Value; 
+            string toDateInvoice = ToDateInvoice.Value; 
+            string exporter = Exporter.Value; 
+            string ednNo = EDNNo.Value; 
+
+            // Store values in session state
+            Session["FromDate"] = fromDate;
+            Session["ToDate"] = toDate;
+            Session["docId"] = docId;
+            Session["invoiceNo"] = invoiceNo;
+            Session["fromDateInvoice"] = fromDateInvoice;
+            Session["toDateInvoice"] = toDateInvoice;
+            Session["exporter"] = exporter;
+            Session["EDN1"] = ednNo;
+
+            Response.Redirect("DocumentList.aspx?context=MASTERSEARCH");
 
         }
     }

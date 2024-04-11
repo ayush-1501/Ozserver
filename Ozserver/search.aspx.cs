@@ -77,7 +77,7 @@ namespace Ozserver
                         };
                         List<Branch> data = JsonConvert.DeserializeObject<List<Branch>>(jsonResult, settings);
 
-                        // Create an empty list to store label-value pairs
+                       
                         List<string> stringArray = new List<string>();
 
                         foreach (Branch item in data)
