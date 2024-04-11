@@ -78,10 +78,6 @@
                         <div class="profile-value"><%# Eval("OfficeId") %></div>
                     </div>
                     <div class="profile-item">
-                        <div class="profile-label">Company Name:</div>
-                        <div class="profile-value"><%# Eval("CompanyName") %></div>
-                    </div>
-                    <div class="profile-item">
                         <div class="profile-label">Email Address:</div>
                         <div class="profile-value"><%# Eval("EmailAddress") %></div>
                     </div>

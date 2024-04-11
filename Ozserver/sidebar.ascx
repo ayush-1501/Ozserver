@@ -13,7 +13,7 @@
                    <li class="submenu">
                           <a  href="#" class="icon-link">
                               <img id="masterLink" src="images/transLC.bmp" alt="Your Image Alt Text" />
-                              <span id="masterLink">MASTER</span>
+                              <span id="masterLink">MASTER Document</span>
                               <span class="menu-arrow"></span>
                           </a>
                           <ul style="display: none;">

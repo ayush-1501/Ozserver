@@ -69,6 +69,7 @@ namespace Ozserver
                     RestAPICaller apiCaller = new RestAPICaller();
                     string jsonResult = apiCaller.CallRestAPI(apiUrl);
 
+                 
                     if (!string.IsNullOrEmpty(jsonResult) && jsonResult != "[]")
                     {
                         JsonSerializerSettings settings = new JsonSerializerSettings

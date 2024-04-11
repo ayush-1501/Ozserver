@@ -66,23 +66,31 @@ namespace Example
                     Role = "Non-Admin";
                     OfficeID = "ANZCO";
                 }
-                if (_transmissionSource== "EDN" || _transmissionSource == "EDNSEARCH")
+
+
+
+                if (_transmissionSource== "EDN")
                 {
                     Page.Title = "EDN TRANSISSMION";
                 }
-                else if(_transmissionSource =="PRA" || _transmissionSource == "PRASEARCH")
+                else if(_transmissionSource =="PRA" )
                 {
                     Page.Title = "PRA TRANSMISSION";
                 }
-                else if (_transmissionSource == "AQIS" || _transmissionSource == "AQISSEARCH")
+                else if (_transmissionSource == "AQIS" )
                 {
                     Page.Title = "AQIS TRANSMISSION";
                 }
-                else if (_transmissionSource == "MASTER" || _transmissionSource == "MASTERSEARCH")
+                else if (_transmissionSource == "MASTER" )
                 {
-                    Page.Title = "MASTER";
+                    Page.Title = "MASTER DOCUMENT";
                 }
-                
+                else if(_transmissionSource == "EDNSEARCH" || _transmissionSource == "PRASEARCH" || _transmissionSource == "AQISSEARCH" || _transmissionSource == "MASTERSEARCH")
+                {
+                    Page.Title = "TRANSISSMION";
+                }
+
+
                 if (Page.IsPostBack) return;
                 BindDataIntoRepeater();
             }
