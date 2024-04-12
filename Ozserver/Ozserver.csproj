@@ -136,6 +136,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pic\doc.png" />
     <Content Include="Pic\User.jpg" />
     <Content Include="StyleSheet1.css" />
     <Content Include="Web.config" />

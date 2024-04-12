@@ -11,30 +11,22 @@
                 </li>
                   <% if (MASTER) { %>
                    <li class="submenu">
-                          <a  href="#" class="icon-link">
-                              <img id="masterLink" src="images/transLC.bmp" alt="Your Image Alt Text" />
-                              <span id="masterLink">MASTER Document</span>
-                              <span class="menu-arrow"></span>
-                          </a>
+                         <a href="#" class="icon-link">
+                                 <i class="fe fe-document"></i>
+                                <span id="masterLink">MASTER Document</span>
+                                <span class="menu-arrow"></span>
+                            </a>
                           <ul style="display: none;">
                               <li><a href="DocumentList.aspx?context=MASTER">Today's Transmission</a></li>
                               <li><a href="advancedsearch.aspx?context=MASTER">Advanced Search</a></li>
                           </ul>
                       </li>
-                  <script>
-
-                      var praLink = document.getElementById("ednLink");
-
-                      praLink.addEventListener("click", function () {
-
-                          window.location.href = "DocumentList.aspx?context=MASTERSEARCH";
-                      });
-                  </script>
+                
                   <% } %>
                 <% if (EDN) { %>
                       <li class="submenu">
                         <a  href="#" class="icon-link">
-                            <img id="ednLink" src="images/transLC.bmp" alt="Your Image Alt Text" />
+                            <i class="fe fe-document"></i>
                             <span id="ednLink">EDN Transmission</span>
                             <span class="menu-arrow"></span>
                         </a>
@@ -43,20 +35,12 @@
                             <li><a href="advancedsearch.aspx?context=EDN">Advanced Search</a></li>
                         </ul>
                     </li>
-                <script>
-
-                    var praLink = document.getElementById("ednLink");
-
-                    praLink.addEventListener("click", function () {
-
-                        window.location.href = "DocumentList.aspx?context=EDN";
-                    });
-                </script>
+              
                 <% } %>
                 <% if (AQIS) { %>
                 <li class="submenu">
                     <a  href="#" class="icon-link">
-                        <img id="aqisLink" src="images/transLC.bmp" alt="Your Image Alt Text" />
+                       <i class="fe fe-document"></i>
                         <span id="aqisLink">AQIS Transmission</span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -65,20 +49,12 @@
                         <li><a href="advancedsearch.aspx?context=AQIS">Advanced Search</a></li>
                     </ul>
                 </li>
-                 <script>
-
-                     var praLink = document.getElementById("aqisLink");
-
-                     praLink.addEventListener("click", function () {
-
-                         window.location.href = "DocumentList.aspx?context=AQIS";
-                     });
-                 </script>
+                
                 <% } %>
                 <% if (PRA) { %>
                     <li class="submenu">
                         <a  href="#" class="icon-link">
-                            <img id="praLink" src="images/transLC.bmp" alt="Your Image Alt Text" />
+                             <i class="fe fe-document"></i>
                             <span id="praLink">PRA Transmission</span>
                             <span class="menu-arrow"></span>
                         </a>
@@ -88,15 +64,7 @@
                         </ul>
                     </li>
 
-                    <script>
-   
-                        var praLink = document.getElementById("praLink");
-   
-                        praLink.addEventListener("click", function() {
-     
-                            window.location.href = "DocumentList.aspx?context=PRA";
-                        });
-                    </script>
+                  
                 <% } %>
                   
                 <li><a href="Profile.aspx"><i class="fa fa-user" aria-hidden="true"></i><span>Profile</span></a></li>

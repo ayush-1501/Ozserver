@@ -33,15 +33,6 @@ namespace Ozserver
         protected global::System.Web.UI.WebControls.Label lbl1Message;
 
         /// <summary>
-        /// lbl2Message control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl2Message;
-
-        /// <summary>
         /// lbl3Message control.
         /// </summary>
         /// <remarks>
@@ -49,5 +40,14 @@ namespace Ozserver
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl3Message;
+
+        /// <summary>
+        /// lbl2Message control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl2Message;
     }
 }

@@ -22,7 +22,7 @@
 							<div class="card">
 								<div class="card-body">
 									<div class="dash-widget-header">
-										<a href="#" class="icon-link"><img src="images/transLC.bmp" alt="Your Image Alt Text"></a>
+										<i class="fe fe-document"></i>
 										<div class="dash-count">
 											<asp:Label ID="lbl4Message" runat="server"></asp:Label>
 										</div>
@@ -40,7 +40,7 @@
 							<div class="card">
 								<div class="card-body">
 									<div class="dash-widget-header">
-										<a href="#" class="icon-link"><img src="images/transLC.bmp" alt="Your Image Alt Text"></a>
+										<i class="fe fe-document"></i>
 										<div class="dash-count">
 											<asp:Label ID="lbl1Message" runat="server"></asp:Label>
 										</div>
@@ -59,9 +59,9 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="dash-widget-header">
-									<a href="#" class="icon-link"><img src="images/transLC.bmp" alt="Your Image Alt Text"></a>
+									<i class="fe fe-document"></i>
 									<div class="dash-count">
-										<asp:Label ID="lbl2Message" runat="server"></asp:Label>
+										<asp:Label ID="lbl3Message" runat="server"></asp:Label>
 									</div>
 								</div>
 								<div class="dash-widget-info">
@@ -78,9 +78,9 @@
 							<div class="card">
 								<div class="card-body">
 									<div class="dash-widget-header">
-										<a href="#" class="icon-link"><img src="images/transLC.bmp" alt="Your Image Alt Text"></a>
+										<i class="fe fe-document"></i>
 										<div class="dash-count">
-											<asp:Label ID="lbl3Message" runat="server"></asp:Label>
+											<asp:Label ID="lbl2Message" runat="server"></asp:Label>
 										</div>
 									</div>
 									<div class="dash-widget-info">

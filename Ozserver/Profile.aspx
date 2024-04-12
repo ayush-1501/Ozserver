@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content6" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
-        /* Profile section styles */
+        
      .profile-list {
             margin-top: 20px;
         }
@@ -19,7 +19,7 @@
             font-weight: bold;
             color: #333;
             font-size: 16px;
-            margin-right: 5px; /* Reduced margin */
+            margin-right: 5px; 
             text-transform: uppercase;
         }
 
@@ -30,7 +30,7 @@
              margin-left: 10px;
         }
 
-        /* Responsive adjustments */
+      
         @media screen and (max-width: 768px) {
             .profile-item {
                 flex-direction: column;
