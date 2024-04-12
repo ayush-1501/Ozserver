@@ -61,10 +61,10 @@
                                                  <th>Version</th>
                                                  <th>Invoice No</th>
                                                  <th>Invoice Date</th>
+                                                 <th>Exporter</th>
                                                  <th>Invoice Value</th>
                                                  <th>Document Status</th>
-                                                   <th>Status</th>
-                                                   <th></th>
+                                                   <th>EDN</th>
                                                 <th>View</th>
                                         <% } %>
                                        <% else{ %>
@@ -113,7 +113,7 @@
                                                  <td><%# Eval("Exporter") %></td>
                                                  <td><%# Eval("InvoiceValue") %><%# Eval("Currency") %></td>
                                                  <td><%# Eval("DocumentStatus") %></td>
-                                                  <td><%# Eval("Status") %></td>
+                                                  <td><%# Eval("EDN") %></td>
                                                   <td>
                                                     <a href='<%# "search.aspx?id=" + Eval("Id") + "&source=" + GetTransmissionSource() %>'>
                                                         <i class="fa fa-eye" style="color: #1b5a90;" onmouseover="this.style.color='#00d0f1'" onmouseout="this.style.color='#1b5a90'"></i> 

@@ -382,7 +382,10 @@ namespace Example
                 }
             }
 
-           
+            if (data[0].Status == "404" )
+            {
+                data = null;
+            }
             DataTable dt = ToDataTable(data);
 
             return dt;
@@ -393,6 +396,10 @@ namespace Example
         {
             DataTable dataTable = new DataTable(typeof(T).Name);
             PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            if (items == null || items.Count == 0)
+            {
+                return new DataTable(typeof(T).Name);
+            }
             foreach (PropertyInfo prop in Props)
             {
                 dataTable.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
