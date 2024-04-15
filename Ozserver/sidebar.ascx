@@ -17,7 +17,7 @@
                                         <span class="menu-arrow"></span>
                                     </a>
                                   <ul style="display: none;">
-                                      <li><a href="DocumentList.aspx?context=MASTER">List</a></li>
+                                      <li><a href="DocumentList.aspx?context=ORGANISATION">List</a></li>
                                       <li><a href="Organization.aspx">New/Update</a></li>
                                   </ul>
                               </li>
@@ -31,7 +31,7 @@
                                         <span class="menu-arrow"></span>
                                     </a>
                                   <ul style="display: none;">
-                                    <li><a href="DocumentList.aspx?context=MASTER">List</a></li>
+                                    <li><a href="DocumentList.aspx?context=USER">List</a></li>
                                     <li><a href="User.aspx">New/Update</a></li>
                                   </ul>
                               </li>

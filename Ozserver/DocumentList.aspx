@@ -23,6 +23,13 @@
                               <% if (IsTransmissionFrom("MASTER") || IsTransmissionFrom("MASTERSEARCH")) { %>
                                      <h3 class="page-title">MASTER Document</h3>
                               <% } %>
+                           <% if (IsTransmissionFrom("USER")) { %>
+                              <h3 class="page-title">List of Users </h3>
+
+                         <% } %>
+                            <% if (IsTransmissionFrom("ORGANISATION")) { %>
+                                 <h3 class="page-title">ORGANISATION LIST</h3>
+                            <% } %>
                           <ul class="breadcrumb">
                               <li class="breadcrumb-item"><a href="Dashboard.aspx">Dashboard</a></li>
                                <% if (IsTransmissionFrom("EDN") || IsTransmissionFrom("EDNSEARCH")) { %>
@@ -37,6 +44,12 @@
                                 <% if (IsTransmissionFrom("MASTER") || IsTransmissionFrom("MASTERSEARCH")) { %>
                                          <li class="breadcrumb-item active">MASTER Document</li>
                                   <% } %>
+                                <% if (IsTransmissionFrom("USER")) { %>
+                                     <li class="breadcrumb-item active">USERS</li>
+                                <% } %>
+                                <% if (IsTransmissionFrom("ORGANISATION")) { %>
+                                   <li class="breadcrumb-item active">ORGANISATION</li>
+                              <% } %>
                           </ul>
                       </div>
                     <div class="col-sm-12">
@@ -64,9 +77,22 @@
                                                  <th>Exporter</th>
                                                  <th>Invoice Value</th>
                                                  <th>Document Status</th>
-                                                   <th>EDN</th>
+                                                 <th>EDN</th>
                                                 <th>View</th>
                                         <% } %>
+                                           <% else if (IsTransmissionFrom("USER")){%>
+                                                <th>Id</th>     
+                                                <th>OrgId</th>  
+                                                <th>UserId</th>     
+                                                <th>Password</th>   
+                                                <th>Update</th>
+                                        <% }%>
+                                          <% else if (IsTransmissionFrom("ORGANISATION")){%>
+                                                <th>OfficeId</th>   
+                                                <th>CompanyName</th>    
+                                                <th>Email_Address</th>
+                                                 <th>Update</th>
+                                        <% }%>
                                        <% else{ %>
                                           <th>ID</th>
                                                   <% if (Role == "Admin") { %>
@@ -120,6 +146,29 @@
                                                     </a>
                                                 </td>
                                        <% } %>
+                                           <% else if (IsTransmissionFrom("USER")){%>
+                                                     <td><%# Eval("Id") %></td>
+                                                    <td><%# Eval("OrgId") %></td>
+                                                    <td><%# Eval("UserId") %></td>
+                                                    <td><%# Eval("Password") %></td>
+                                                     <td>
+                                                        <a href='<%# "search.aspx?id=" + Eval("Id") + "&source=" + GetTransmissionSource() %>'>
+                                                            <i class="fa fa-edit mr-1" style="color: #1b5a90;" onmouseover="this.style.color='#00d0f1'" onmouseout="this.style.color='#1b5a90'"></i> 
+                                                        </a>
+                                                    </td>
+
+                                            <% }%>
+                                              <% else if (IsTransmissionFrom("ORGANISATION")){%>
+                                                     
+                                                        <td><%# Eval("OfficeId") %></td>
+                                                        <td><%# Eval("CompanyName") %></td>
+                                                        <td><%# Eval("Email_Address") %></td>
+                                                         <td>
+                                                            <a href='<%# "search.aspx?id=" + Eval("Id") + "&source=" + GetTransmissionSource() %>'>
+                                                                <i class="fa fa-edit mr-1" style="color: #1b5a90;" onmouseover="this.style.color='#00d0f1'" onmouseout="this.style.color='#1b5a90'"></i> 
+                                                            </a>
+                                                        </td>
+                                              <% }%>
                                      <% else{ %>
                                     <td><%# Eval("Id") %></td>
                                        <% if (Role == "Admin") { %>

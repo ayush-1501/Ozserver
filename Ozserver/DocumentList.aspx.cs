@@ -343,6 +343,23 @@ namespace Example
                     apiUrl1 = apiUrl1.Remove(apiUrl1.Length - 1);
                 }
             }
+
+
+            string apiUrlUser = SearchLink;
+
+            if(_transmissionSource == "USER")
+            {
+                apiUrlUser += "User/GetUserData";
+            }
+            else if(_transmissionSource == "ORGANISATION")
+            {
+                apiUrlUser += "Organisation/GetOrganisationData";
+            }
+            if(_transmissionSource == "USER" || _transmissionSource == "ORGANISATION")
+            {
+                apiUrl=apiUrlUser;
+            }
+
             if (_transmissionSource == "EDNSEARCH" || _transmissionSource == "AQISSEARCH" || _transmissionSource == "PRASEARCH" || _transmissionSource == "MASTERSEARCH")
             {
                 apiUrl = apiUrl1;
@@ -560,6 +577,13 @@ namespace Example
             public string File_Out_Name { get; set; }
             public string File_Out_Content { get; set; }
             public int IsNew { get; set; }
+            public string OrgId { get; set; }
+            public string BranchName { get; set; }
+            public string Address { get; set; }
+            public string UserId { get; set; }
+            public string Password { get; set; }
+            public string CompanyName { get; set; }
+            public string Email_Address { get; set; }
         }
 
 
