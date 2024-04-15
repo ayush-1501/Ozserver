@@ -8,7 +8,37 @@
                 <li class="menu-title"><span>Dashboard</span></li>
                 <li class="active">
                     <a href="Dashboard.aspx"><i class="fe fe-home"></i><span>Dashboard</span></a>
-                </li>
+                  </li>
+                         <% if (MASTER) { %>
+                           <li class="submenu">
+                                 <a href="#" class="icon-link">
+                                         <i class="fe fe-document"></i>
+                                        <span id="masterLink">ORGANISATION</span>
+                                        <span class="menu-arrow"></span>
+                                    </a>
+                                  <ul style="display: none;">
+                                      <li><a href="DocumentList.aspx?context=MASTER">List</a></li>
+                                      <li><a href="Organization.aspx">New/Update</a></li>
+                                  </ul>
+                              </li>
+  
+                          <% } %>
+                       <% if (MASTER) { %>
+                           <li class="submenu">
+                                 <a href="#" class="icon-link">
+                                         <i class="fe fe-document"></i>
+                                        <span id="masterLink">USER</span>
+                                        <span class="menu-arrow"></span>
+                                    </a>
+                                  <ul style="display: none;">
+                                    <li><a href="DocumentList.aspx?context=MASTER">List</a></li>
+                                    <li><a href="User.aspx">New/Update</a></li>
+                                  </ul>
+                              </li>
+  
+                          <% } %>
+                  
+              
                   <% if (MASTER) { %>
                    <li class="submenu">
                          <a href="#" class="icon-link">

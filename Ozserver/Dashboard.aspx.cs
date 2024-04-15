@@ -23,7 +23,7 @@ namespace Ozserver
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Check if the user is authenticated
+           
             if (Session["Authenticated"] == null || !(bool)Session["Authenticated"])
             {
                 // If not authenticated, redirect to the login page
@@ -33,11 +33,11 @@ namespace Ozserver
             {
                 // Continue loading the dashboard page
          
-                Page.Title = "Dashboard";
-                string apiUrl = TableLink;
+                      Page.Title = "Dashboard";
+                     string apiUrl = TableLink;
 
-                DateTime currentDate = DateTime.Now;
-                string formattedDate = currentDate.ToString("yyyy-MM-dd");
+                      DateTime currentDate = DateTime.Now;
+                     string formattedDate = currentDate.ToString("yyyy-MM-dd");
                      apiUrl = TableLink + "EDNDocument/GetEDNDataRecordCount?toDate="+ formattedDate+"&TypeOfQuery=DATE";
                      EDNCount= ReturnCount(apiUrl);
                      lbl1Message.Text = EDNCount.ToString();
@@ -67,25 +67,25 @@ namespace Ozserver
 
             try
             {
-                // Deserialize to a List of Branch
+               
                 List<Branch> branches = JsonConvert.DeserializeObject<List<Branch>>(jsonResult);
 
-                // Assuming the array will always have one element, access the first branch
+              
                 if (branches.Count > 0)
                 {
                     return branches[0].count;
                 }
                 else
                 {
-                    // Handle the case where the array is empty (optional)
+                    
                     Console.WriteLine("No branches found in the response.");
-                    return -1; // Or some other default value
+                    return -1; 
                 }
             }
             catch (JsonSerializationException ex)
             {
                 Console.WriteLine("Error deserializing JSON: " + ex.Message);
-                return -1; // Or some other default value
+                return -1;
             }
         }
 

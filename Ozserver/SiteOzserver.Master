@@ -160,24 +160,30 @@
     });
 
     function sendEmail(feedback) {
-        fetch(`https://localhost:7209/api/Email/SendMail?feedback=${encodeURIComponent(feedback)}`, {
-            method: "POST"
+        const apiUrl = `https://localhost:7209/api/Email/SendMail?feedback=${encodeURIComponent(feedback)}`;
+
+        // Make the POST request using the Fetch API
+        fetch(apiUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json" // Specify JSON content type if your API expects JSON
+            },
+            body: JSON.stringify({ feedback: feedback }) // Send feedback in the request body
         })
             .then(response => {
                 if (!response.ok) {
                     $("#dialog").dialog("close");
                 }
-                return response.text(); 
+                return response.text();
             })
             .then(data => {
                 alert(data);
                 $("#feedbackText").val("");
-                $("#dialog").dialog("close"); 
+                $("#dialog").dialog("close");
             })
         $("#dialog").dialog("close");
     }
 </script>
-
     
 
     

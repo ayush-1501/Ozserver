@@ -148,6 +148,8 @@
     <Content Include="DocumentList.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="search.aspx" />
+    <Content Include="Organization.aspx" />
+    <Content Include="User.aspx" />
     <None Include="SiteOzserver.Master" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +217,20 @@
     </Compile>
     <Compile Include="search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Organization.aspx.cs">
+      <DependentUpon>Organization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Organization.aspx.designer.cs">
+      <DependentUpon>Organization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
