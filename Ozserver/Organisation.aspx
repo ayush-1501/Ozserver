@@ -20,13 +20,26 @@
                         <div class="card-header">
                             <h4 class="card-title">UPDATE</h4>
                         </div>
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label class="col-form-label col-md-2">Office Id</label>
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control" id="OfficeId" runat="server" placeholder="Office Id">
-                                </div>
-                            </div>
+                           <% if (IsTransmissionFrom("ORGANISATION")) { %>
+                                  <div class="card-body">
+                                            <div class="form-group row">
+                                                <label class="col-form-label col-md-2">Office Id</label>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control" id="OfficeId" runat="server" placeholder="Office Id" readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                  <% } else { %>
+                                     <div class="card-body">
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-md-2">Office Id</label>
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" id="OfficeId1" runat="server" placeholder="Office Id">
+                                            </div>
+                                        </div>
+                                  <% } %>
+                        
                             <div class="form-group row">
                                 <label class="col-form-label col-md-2">Company Name</label>
                                 <div class="col-md-10">
@@ -41,13 +54,27 @@
                             </div>
                         </div>
                          <!-- Add Label control for error messages -->
-                        <asp:Label ID="lblError" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
-                        <div>
-                            <div class="card-footer">
-                                <asp:Button ID="Button4" runat="server" CssClass="btn btn-primary" Text="Save" OnClick="btnLogin_Click" CausesValidation="False" />
-                            </div>
-                        </div>
-                    </div>
+                            <% if (IsTransmissionFrom("ORGANISATION")) { %>
+                               <asp:Label ID="Label1" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
+                                    <div>
+                                        <div class="card-footer">
+                                            <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="UPDATE" OnClick="btn_ClickUPDATE" CausesValidation="False" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                        
+
+                             <% } else { %>
+                                   <asp:Label ID="lblError" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
+                                    <div>
+                                        <div class="card-footer">
+                                            <asp:Button ID="Button4" runat="server" CssClass="btn btn-primary" Text="ADD" OnClick="btnLogin_Click" CausesValidation="False" />
+                                        </div>
+                                    </div>
+                                </div>
+                             <% } %>
+                       
                 </div>
             </div>
         </div>
