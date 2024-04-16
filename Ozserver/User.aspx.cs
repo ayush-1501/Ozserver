@@ -18,6 +18,7 @@ namespace Ozserver
     {
         string _transmissionSource;
         int _searchId;
+        public string OrgNameValue { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             // Check if the page is being loaded for the first time (not a postback)
@@ -73,13 +74,25 @@ namespace Ozserver
                                     }
                                 }
 
-                                // If data is available, populate form fields with the first branch data
                                 if (data != null && data.Count > 0)
                                 {
                                     Branch branch = data[0];
+                                    OrgNameValue = branch.OrgId; // Set OrgNameValue from branch.OrgId
+
+                                    // Iterate through the options of the OrgName dropdown
+                                    foreach (ListItem option in OrgName.Items)
+                                    {
+                                        // If the value of the option matches the OrgNameValue, mark it as selected
+                                        if (option.Value == OrgNameValue)
+                                        {
+                                            option.Selected = true;
+                                            break; // Exit the loop once the matching option is found
+                                        }
+                                    }
+
+                                    // Update other fields as needed
                                     UserId.Value = branch.UserId;
                                     Password.Value = branch.Password;
-                                    OrgName.Value = branch.OrgId;
                                 }
                             }
                         }
@@ -89,10 +102,11 @@ namespace Ozserver
         }
 
 
+
         protected void btn_ClickADD(object sender, EventArgs e)
         {
 
-            string orgName = OrgName.Value;
+            string orgName = Select1.Value;
             string userId = UserId.Value;
             string password = Password.Value;
 
@@ -164,6 +178,7 @@ namespace Ozserver
             // Retrieve new values from input fields directly
             string newUserId = UserId.Value; // New UserId from form field
             string newPassword = Password.Value; // New Password from form field
+            string newOrgNameValue= OrgName.Value;
             if (Request.QueryString["id"] != null)
             {
                 // Parse the 'id' parameter as an integer
@@ -176,7 +191,7 @@ namespace Ozserver
                     int searchId = _searchId;
 
             // Construct the URL for updating user data with new values
-            string updateUrl = $"https://localhost:7209/api/User/UpdateUserDataById?Id={searchId}&password={Uri.EscapeDataString(newPassword)}&UserId={Uri.EscapeDataString(newUserId)}";
+            string updateUrl = $"https://localhost:7209/api/User/UpdateUserDataById?Id={searchId}&password={Uri.EscapeDataString(newPassword)}&UserId={Uri.EscapeDataString(newUserId)}&OrgName={Uri.EscapeDataString(newOrgNameValue)}";
 
             // Create an instance of HttpClient to make the HTTP request
             using (HttpClient client = new HttpClient())

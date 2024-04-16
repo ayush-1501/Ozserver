@@ -29,12 +29,18 @@
                         </div>
                         <div class="card-body">
                              <% if (IsTransmissionFrom("USER")) { %>
-                                   <div class="form-group row">
-                                        <label class="col-form-label col-md-2">Organisation Name</label>
+                                 <div class="form-group row">
+                                        <label class="col-form-label col-md-2" for="OrgName">Organisation Name</label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" id="OrgName" runat="server" placeholder="OrgName" readonly style="color: grey; background-color: #f8f9fa;">
+                                            <select class="form-control" id="OrgName" runat="server" data-selected-value="<%# OrgNameValue %>">
+                                                <option value="ANZCO">ANZCO</option>
+                                                <option value="ANZCO1">ANZCO1</option>
+                                                <option value="ANZCO2">ANZCO2</option>
+                                                <option value="ANZCO3">ANZCO3</option>
+                                            </select>
                                         </div>
                                     </div>
+
 
                                 <% } else { %>
                                     <div class="form-group row">
