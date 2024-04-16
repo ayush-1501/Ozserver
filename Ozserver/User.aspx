@@ -22,18 +22,29 @@
                             <h4 class="card-title">UPDATE</h4>
                         </div>
                         <div class="card-body">
-                           <div class="form-group row">
-                            <label class="col-form-label col-md-2" for="OrgName">Organisation Name</label>
-                            <div class="col-md-10">
-                                <select class="form-control" id="OrgName" runat="server">
-                                    <option value="">Select a Organisation</option>
-                                    <option value="user1">ANZCO</option>
-                                    <option value="user2">User 2</option>
-                                    <option value="user3">User 3</option>
-                                    
-                                </select>
-                            </div>
-                        </div>
+                             <% if (IsTransmissionFrom("USER")) { %>
+                                   <div class="form-group row">
+                                        <label class="col-form-label col-md-2">Organisation Name</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" id="OrgName" runat="server" placeholder="OrgName" readonly style="color: grey; background-color: #f8f9fa;">
+                                        </div>
+                                    </div>
+
+                                <% } else { %>
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-2" for="OrgName">Organisation Name</label>
+                                        <div class="col-md-10">
+                                            <select class="form-control" id="Select1" runat="server">
+                                                <option value="">Select an Organisation</option>
+                                                <option value="user1">ANZCO</option>
+                                                <option value="user2">User 2</option>
+                                                <option value="user3">User 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                <% } %>
+
+                         
 
                            
                             <div class="form-group row">

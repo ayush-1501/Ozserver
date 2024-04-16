@@ -9,7 +9,7 @@
                 <li class="active">
                     <a href="Dashboard.aspx"><i class="fe fe-home"></i><span>Dashboard</span></a>
                   </li>
-                         <% if (MASTER) { %>
+                         <% if ( Session["Role"]=="Admin") { %>
                            <li class="submenu">
                                  <a href="#" class="icon-link">
                                          <i class="fe fe-document"></i>
@@ -18,12 +18,12 @@
                                     </a>
                                   <ul style="display: none;">
                                       <li><a href="DocumentList.aspx?context=ORGANISATION">List</a></li>
-                                      <li><a href="Organization.aspx">New/Update</a></li>
+                                      <li><a href="Organisation.aspx">New/Update</a></li>
                                   </ul>
                               </li>
   
                           <% } %>
-                       <% if (MASTER) { %>
+                       <% if ( Session["Role"]=="Admin") { %>
                            <li class="submenu">
                                  <a href="#" class="icon-link">
                                          <i class="fe fe-document"></i>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Organization.aspx.cs" Inherits="Ozserver.WebForm5" MasterPageFile="~/SiteOzserver.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Organisation.aspx.cs" Inherits="Ozserver.WebForm5" MasterPageFile="~/SiteOzserver.Master" %>
 
 <asp:Content ID="ContentPlaceHolder1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-wrapper">

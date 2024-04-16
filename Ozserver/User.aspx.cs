@@ -10,11 +10,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using Ozserver.Business_layer;
 
 namespace Ozserver
 {
     public partial class WebForm6 : System.Web.UI.Page
     {
+        string _transmissionSource;
+        int _searchId;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Authenticated"] == null || !(bool)Session["Authenticated"])
@@ -24,8 +27,65 @@ namespace Ozserver
             }
             else
             {
+                if (Request.QueryString["source"] != null)
+                {
+                    _transmissionSource = Request.QueryString["source"].ToUpper();
+
+                    if (Request.QueryString["id"] != null)
+                    {
+
+                        if (int.TryParse(Request.QueryString["id"], out int searchId))
+                        {
+                            _searchId = searchId;
+                            string apiUrl = "https://localhost:7209/api/User/GetUserDataById?Id=" + searchId;
+                            RestAPICaller apiCaller = new RestAPICaller();
+                            string jsonResult = apiCaller.CallRestAPI(apiUrl);
 
 
+                            List<Branch> data = new List<Branch>();
+
+                            try
+                            {
+
+                                JsonSerializerSettings settings = new JsonSerializerSettings
+                                {
+                                    NullValueHandling = NullValueHandling.Ignore
+                                };
+
+
+                                data = JsonConvert.DeserializeObject<List<Branch>>(jsonResult, settings);
+                            }
+                            catch (JsonSerializationException ex)
+                            {
+                                Console.WriteLine("Error deserializing JSON as list: " + ex.Message);
+                                try
+                                {
+
+                                    Branch singleBranch = JsonConvert.DeserializeObject<Branch>(jsonResult);
+                                    data.Add(singleBranch);
+                                }
+                                catch (JsonSerializationException innerEx)
+                                {
+                                    Console.WriteLine("Error deserializing JSON as single object: " + innerEx.Message);
+
+                                }
+                            }
+
+
+                            if (data != null && data.Count > 0)
+                            {
+                               
+                                Branch branch = data[0]; 
+
+                               
+                                UserId.Value = branch.UserId; 
+                                Password.Value = branch.Password;
+                                OrgName.Value = branch.OrgId;
+                            }
+                        }
+                    }
+                }
+               
 
 
             }
@@ -101,10 +161,27 @@ namespace Ozserver
             }
         }
 
+       
+        public bool IsTransmissionFrom(string source)
+        {
+            return _transmissionSource == source.ToUpper();
+        }
 
-    
+        public class Branch
+        {
+            public string OrgId { get; set; }
+            public string UserId { get; set; }
+            public string Password { get; set; }
+            public int Id { get; set; }
+        }
 
-      
 
     }
 }
+
+
+
+
+
+
+

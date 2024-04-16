@@ -21,7 +21,16 @@ namespace Ozserver
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect OrgName;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText OrgName;
+
+        /// <summary>
+        /// Select1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect Select1;
 
         /// <summary>
         /// UserId control.

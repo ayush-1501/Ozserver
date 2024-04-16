@@ -152,7 +152,7 @@
                                                     <td><%# Eval("UserId") %></td>
                                                     <td><%# Eval("Password") %></td>
                                                      <td>
-                                                        <a href='<%# "search.aspx?id=" + Eval("Id") + "&source=" + GetTransmissionSource() %>'>
+                                                        <a href='<%# "user.aspx?id=" + Eval("Id") + "&source=" + GetTransmissionSource() %>'>
                                                             <i class="fa fa-edit mr-1" style="color: #1b5a90;" onmouseover="this.style.color='#00d0f1'" onmouseout="this.style.color='#1b5a90'"></i> 
                                                         </a>
                                                     </td>
@@ -164,7 +164,7 @@
                                                         <td><%# Eval("CompanyName") %></td>
                                                         <td><%# Eval("Email_Address") %></td>
                                                          <td>
-                                                            <a href='<%# "search.aspx?id=" + Eval("Id") + "&source=" + GetTransmissionSource() %>'>
+                                                            <a href='<%# "organisation.aspx?id=" + Eval("Id") + "&source=" + GetTransmissionSource() %>'>
                                                                 <i class="fa fa-edit mr-1" style="color: #1b5a90;" onmouseover="this.style.color='#00d0f1'" onmouseout="this.style.color='#1b5a90'"></i> 
                                                             </a>
                                                         </td>
