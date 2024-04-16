@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="Ozserver.WebForm6" MasterPageFile="~/SiteOzserver.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="Ozserver.WebForm6" MasterPageFile="~/SiteOzserver.Master" EnableViewState="false" %>
 
 
 
@@ -19,7 +19,13 @@
                 <div class="col-lg-12 col-md-6 col-sm-3">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">UPDATE</h4>
+                          
+                              <% if (IsTransmissionFrom("USER")) { %>
+                                   <h4 class="card-title">UPDATE</h4>
+
+                             <% } else { %>
+                                     <h4 class="card-title">ADD</h4>
+                             <% } %>
                         </div>
                         <div class="card-body">
                              <% if (IsTransmissionFrom("USER")) { %>
@@ -60,11 +66,21 @@
                                  </div>
                              </div>
                         </div>
-                        <div>
-                            <div class="card-footer">
-                                <asp:Button ID="Button4" runat="server" CssClass="btn btn-primary" Text="Save" OnClick="btnLogin_Click" CausesValidation="False" />
-                            </div>
-                        </div>
+                         <% if (IsTransmissionFrom("USER")) { %>
+                                 <div>
+                                    <div class="card-footer">
+                                        <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="UPDATE" OnClick="btn_ClickUPDATE" CausesValidation="False" />
+                                    </div>
+                                </div>
+
+                            <% } else { %>
+                                   <div>
+                                     <div class="card-footer">
+                                         <asp:Button ID="Button4" runat="server" CssClass="btn btn-primary" Text="ADD" OnClick="btn_ClickADD" CausesValidation="False" />
+                                     </div>
+                                 </div>
+                            <% } %>
+                       
                     </div>
                 </div>
             </div>

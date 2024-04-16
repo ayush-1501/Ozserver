@@ -20,78 +20,76 @@ namespace Ozserver
         int _searchId;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Authenticated"] == null || !(bool)Session["Authenticated"])
+            // Check if the page is being loaded for the first time (not a postback)
+            if (!IsPostBack)
             {
                 // If not authenticated, redirect to the login page
-                Response.Redirect("Login.aspx");
-            }
-            else
-            {
-                if (Request.QueryString["source"] != null)
+                if (Session["Authenticated"] == null || !(bool)Session["Authenticated"])
                 {
-                    _transmissionSource = Request.QueryString["source"].ToUpper();
-
-                    if (Request.QueryString["id"] != null)
+                    Response.Redirect("Login.aspx");
+                }
+                else
+                {
+                    // Retrieve the 'source' query parameter from the URL
+                    if (Request.QueryString["source"] != null)
                     {
+                        _transmissionSource = Request.QueryString["source"].ToUpper();
 
-                        if (int.TryParse(Request.QueryString["id"], out int searchId))
+                        // Retrieve the 'id' query parameter from the URL
+                        if (Request.QueryString["id"] != null)
                         {
-                            _searchId = searchId;
-                            string apiUrl = "https://localhost:7209/api/User/GetUserDataById?Id=" + searchId;
-                            RestAPICaller apiCaller = new RestAPICaller();
-                            string jsonResult = apiCaller.CallRestAPI(apiUrl);
-
-
-                            List<Branch> data = new List<Branch>();
-
-                            try
+                            // Parse the 'id' parameter as an integer
+                            if (int.TryParse(Request.QueryString["id"], out int searchId))
                             {
+                                _searchId = searchId;
 
-                                JsonSerializerSettings settings = new JsonSerializerSettings
-                                {
-                                    NullValueHandling = NullValueHandling.Ignore
-                                };
+                                // Call the API to get user data
+                                string apiUrl = "https://localhost:7209/api/User/GetUserDataById?Id=" + searchId;
+                                RestAPICaller apiCaller = new RestAPICaller();
+                                string jsonResult = apiCaller.CallRestAPI(apiUrl);
 
-
-                                data = JsonConvert.DeserializeObject<List<Branch>>(jsonResult, settings);
-                            }
-                            catch (JsonSerializationException ex)
-                            {
-                                Console.WriteLine("Error deserializing JSON as list: " + ex.Message);
+                                // Deserialize the API response
+                                List<Branch> data = new List<Branch>();
                                 try
                                 {
-
-                                    Branch singleBranch = JsonConvert.DeserializeObject<Branch>(jsonResult);
-                                    data.Add(singleBranch);
+                                    // Deserialize JSON as a list of Branch objects
+                                    JsonSerializerSettings settings = new JsonSerializerSettings
+                                    {
+                                        NullValueHandling = NullValueHandling.Ignore
+                                    };
+                                    data = JsonConvert.DeserializeObject<List<Branch>>(jsonResult, settings);
                                 }
-                                catch (JsonSerializationException innerEx)
+                                catch (JsonSerializationException)
                                 {
-                                    Console.WriteLine("Error deserializing JSON as single object: " + innerEx.Message);
-
+                                    // If deserialization as a list fails, try deserializing as a single object
+                                    try
+                                    {
+                                        Branch singleBranch = JsonConvert.DeserializeObject<Branch>(jsonResult);
+                                        data.Add(singleBranch);
+                                    }
+                                    catch (JsonSerializationException innerEx)
+                                    {
+                                        Console.WriteLine("Error deserializing JSON as single object: " + innerEx.Message);
+                                    }
                                 }
-                            }
 
-
-                            if (data != null && data.Count > 0)
-                            {
-                               
-                                Branch branch = data[0]; 
-
-                               
-                                UserId.Value = branch.UserId; 
-                                Password.Value = branch.Password;
-                                OrgName.Value = branch.OrgId;
+                                // If data is available, populate form fields with the first branch data
+                                if (data != null && data.Count > 0)
+                                {
+                                    Branch branch = data[0];
+                                    UserId.Value = branch.UserId;
+                                    Password.Value = branch.Password;
+                                    OrgName.Value = branch.OrgId;
+                                }
                             }
                         }
                     }
                 }
-               
-
-
             }
         }
 
-        protected void btnLogin_Click(object sender, EventArgs e)
+
+        protected void btn_ClickADD(object sender, EventArgs e)
         {
 
             string orgName = OrgName.Value;
@@ -161,7 +159,52 @@ namespace Ozserver
             }
         }
 
-       
+        protected void btn_ClickUPDATE(object sender, EventArgs e)
+        {
+            // Retrieve new values from input fields directly
+            string newUserId = UserId.Value; // New UserId from form field
+            string newPassword = Password.Value; // New Password from form field
+            if (Request.QueryString["id"] != null)
+            {
+                // Parse the 'id' parameter as an integer
+                if (int.TryParse(Request.QueryString["id"], out int searchId1))
+                {
+                    _searchId = searchId1;
+                }
+            }
+                    // Use the _searchId obtained from Page_Load to update the data
+                    int searchId = _searchId;
+
+            // Construct the URL for updating user data with new values
+            string updateUrl = $"https://localhost:7209/api/User/UpdateUserDataById?Id={searchId}&password={Uri.EscapeDataString(newPassword)}&UserId={Uri.EscapeDataString(newUserId)}";
+
+            // Create an instance of HttpClient to make the HTTP request
+            using (HttpClient client = new HttpClient())
+            {
+                // Optionally, set the request headers
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                // Send a GET request to the constructed URL
+                HttpResponseMessage response = client.GetAsync(updateUrl).Result;
+
+                // Check the response status code
+                if (response.IsSuccessStatusCode)
+                {
+                    // If the request was successful, handle the response content as needed
+                    string responseContent = response.Content.ReadAsStringAsync().Result;
+                    Console.WriteLine("User data updated successfully.");
+                    Console.WriteLine("Response Content: " + responseContent);
+                }
+                else
+                {
+                    // Handle unsuccessful response, e.g., display an error message
+                    Console.WriteLine($"Failed to update user data. Status Code: {response.StatusCode}");
+                }
+
+                Response.Redirect("DocumentList.aspx?context=USER");
+            }
+        }
+
         public bool IsTransmissionFrom(string source)
         {
             return _transmissionSource == source.ToUpper();
