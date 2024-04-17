@@ -13,6 +13,9 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using Ozserver.Business_layer;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
+using System.Web.Script.Services;
+using System.Web.Services;
 
 namespace Ozserver
 {
@@ -91,132 +94,97 @@ namespace Ozserver
             }
         }
 
-        protected void btnLogin_Click(object sender, EventArgs e)
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public async Task<string> btnCREATE_Click(string officeId, string companyName, string emailAddress)
         {
-           
-            string officeId = OfficeId.Value;
-            string companyName = CompanyName.Value;
-            string emailAddress = EmailAddress.Value;
-
-           
-            HttpClient client = new HttpClient();
-
-           
-            string url = "https://localhost:7209/api/Organisation/OrganisationCreate";
-
-            
-            var organisationData = new
+            try
             {
-                id = 5,
-                officeId = officeId,
-                companyName = companyName,
-                email_Address = emailAddress
-            };
+                HttpClient client = new HttpClient();
 
-          
-            string jsonPayload = JsonConvert.SerializeObject(organisationData);
+                string url = "https://localhost:7209/api/Organisation/OrganisationCreate";
 
-         
-            HttpContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
-
-            
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-           
-            HttpResponseMessage response = client.PostAsync(url, content).Result;
-
-           
-            string responseContent = response.Content.ReadAsStringAsync().Result;
-
-           
-            dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent);
-
-            
-            if (response.IsSuccessStatusCode)
-            {
-                
-                Console.WriteLine("Organization created successfully.");
-
-               
-                if (jsonResponse != null && jsonResponse.message != null)
+                var organisationData = new
                 {
-                    string message=jsonResponse.message;
-                  
-                    if (message.IndexOf("duplicate key value violates unique constraint \"unique_OfficeId\"", StringComparison.Ordinal) >= 0)
-                    {
-                        // Display error message on the frontend
-                        lblError.Text = "OfficeId already exists. Please enter a different OfficeId.";
-                        lblError.Visible = true;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Message: {jsonResponse.message}");
-                    }
-                }
-            }
-            else
-            {
-                // Handle unsuccessful response
-                if (jsonResponse != null && jsonResponse.success == "0")
-                {
-                    string message = jsonResponse.message;
+                    id = 5,
+                    officeId = officeId,
+                    companyName = companyName,
+                    email_Address = emailAddress
+                };
 
-                    // Display error message
-                    lblError.Text = $"Error: {message}";
-                    lblError.Visible = true;
-                }
-            }
-        }
+                string jsonPayload = JsonConvert.SerializeObject(organisationData);
+                HttpContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
 
-        protected void btn_ClickUPDATE(object sender, EventArgs e)
-        {
-            // Retrieve new values from input fields directly
-            string newOrgNameValue = OfficeId.Value; // New UserId from form field
-            string newCompanyName = CompanyName.Value; // New Password from form field
-            string newEmailAddress = EmailAddress.Value;
-
-            if (Request.QueryString["id"] != null)
-            {
-                // Parse the 'id' parameter as an integer
-                if (int.TryParse(Request.QueryString["id"], out int searchId1))
-                {
-                    _searchId = searchId1;
-                }
-            }
-            // Use the _searchId obtained from Page_Load to update the data
-            int searchId = _searchId;
-
-            // Construct the URL for updating user data with new values
-            string updateUrl = $"https://localhost:7209/api/Organisation/UpdateOrganisationDataById?Id={searchId}&CompanyName={Uri.EscapeDataString(newCompanyName)}&Email_Address=={Uri.EscapeDataString(newEmailAddress)}";
-
-            // Create an instance of HttpClient to make the HTTP request
-            using (HttpClient client = new HttpClient())
-            {
-                // Optionally, set the request headers
+                client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // Send a GET request to the constructed URL
-                HttpResponseMessage response = client.GetAsync(updateUrl).Result;
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string responseContent = await response.Content.ReadAsStringAsync();
 
-                // Check the response status code
                 if (response.IsSuccessStatusCode)
                 {
-                    // If the request was successful, handle the response content as needed
-                    string responseContent = response.Content.ReadAsStringAsync().Result;
-                    Console.WriteLine("User data updated successfully.");
-                    Console.WriteLine("Response Content: " + responseContent);
+                    // Parse and return the JSON response
+                    return responseContent;
                 }
                 else
                 {
-                    // Handle unsuccessful response, e.g., display an error message
-                    Console.WriteLine($"Failed to update user data. Status Code: {response.StatusCode}");
+                    // Return an error message for the client to handle
+                    dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent);
+                    return $"Error: {jsonResponse.message}";
                 }
-
-                Response.Redirect("DocumentList.aspx?context=ORGANISATION");
+            }
+            catch (Exception ex)
+            {
+                // Log and return error message
+                Console.WriteLine($"Exception: {ex.Message}");
+                return $"Error: {ex.Message}";
             }
         }
 
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public async Task<string> UpdateOrganisationDataByIdAsync(int searchId, string newCompanyName, string newEmailAddress)
+        {
+            try
+            {
+                // Construct the URL for updating user data with new values
+                string updateUrl = $"https://localhost:7209/api/Organisation/UpdateOrganisationDataById?Id={searchId}&CompanyName={Uri.EscapeDataString(newCompanyName)}&Email_Address={Uri.EscapeDataString(newEmailAddress)}";
+
+                // Create an instance of HttpClient to make the HTTP request
+                using (HttpClient client = new HttpClient())
+                {
+                    // Optionally, set the request headers
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    // Send a GET request to the constructed URL
+                    HttpResponseMessage response = await client.GetAsync(updateUrl);
+
+                    // Check the response status code
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // If the request was successful, return the response content as a string
+                        string responseContent = await response.Content.ReadAsStringAsync();
+                        Console.WriteLine("Organisation data updated successfully.");
+                        Console.WriteLine("Response Content: " + responseContent);
+                        return responseContent; // Return the response content to the client side
+                    }
+                    else
+                    {
+                        // Handle unsuccessful response and return error message
+                        string errorMessage = $"Failed to update organisation data. Status Code: {response.StatusCode}";
+                        Console.WriteLine(errorMessage);
+                        return errorMessage; // Return the error message to the client side
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log and return error message
+                string exceptionMessage = $"Exception occurred: {ex.Message}";
+                Console.WriteLine(exceptionMessage);
+                return exceptionMessage; // Return the exception message to the client side
+            }
+        }
         public bool IsTransmissionFrom(string source)
         {
             return _transmissionSource == source.ToUpper();

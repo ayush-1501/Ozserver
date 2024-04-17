@@ -17,9 +17,15 @@
             <div class="text-center">
                 <div class="col-lg-12 col-md-6 col-sm-3">
                     <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">UPDATE</h4>
-                        </div>
+                       <div class="card-header">
+  
+                          <% if (IsTransmissionFrom("ORGANISATION")) { %>
+                               <h4 class="card-title">UPDATE</h4>
+
+                         <% } else { %>
+                                 <h4 class="card-title">ADD</h4>
+                         <% } %>
+                    </div>
                            <% if (IsTransmissionFrom("ORGANISATION")) { %>
                                   <div class="card-body">
                                             <div class="form-group row">
@@ -38,6 +44,7 @@
                                                 <input type="text" class="form-control" id="OfficeId1" runat="server" placeholder="Office Id">
                                             </div>
                                         </div>
+                                      </div>
                                   <% } %>
                         
                             <div class="form-group row">
@@ -52,31 +59,136 @@
                                     <input type="email" class="form-control" id="EmailAddress" runat="server" placeholder="Email Address">
                                 </div>
                             </div>
-                        </div>
+                      
                          <!-- Add Label control for error messages -->
                             <% if (IsTransmissionFrom("ORGANISATION")) { %>
-                               <asp:Label ID="Label1" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
-                                    <div>
-                                        <div class="card-footer">
-                                            <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="UPDATE" OnClick="btn_ClickUPDATE" CausesValidation="False" />
+                              
+                           <div>
+                            <div class=" text-center"> 
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                    UPDATE
+                                </button>
+
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header text-center"> 
+                                                <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">UPDATE</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to UPDATE?
+                                            </div>
+                                            <div class="modal-footer justify-content-center"> 
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> 
+                                                <button type="button" class="btn btn-primary" onclick="callBtnClickUPDATE()">UPDATE</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+     
+                    <% } else{ %>
+                         <div>
+                            <div class=" text-center"> 
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                    ADD
+                                </button>
 
-                        
+           
 
-                             <% } else { %>
-                                   <asp:Label ID="lblError" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
-                                    <div>
-                                        <div class="card-footer">
-                                            <asp:Button ID="Button4" runat="server" CssClass="btn btn-primary" Text="ADD" OnClick="btnLogin_Click" CausesValidation="False" />
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header text-center"> 
+                                                <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">ADD</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to ADD?
+                                            </div>
+                                            <div class="modal-footer justify-content-center"> 
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> 
+                                                <button type="button" class="btn btn-primary" onclick="callBtnClickAdd()">ADD</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                             <% } %>
+                            </div>
+                        </div>
+
+                       <% } %>    
                        
                 </div>
             </div>
+          </div>
         </div>
-    </div>
+   <script >     
+     function callBtnClickUPDATE() {
+         
+         var officeId = $('#OfficeId').val();
+         var companyName = $('#CompanyName').val();
+         var emailAddress = $('#EmailAddress').val();
+
+       
+         var dataToSend = JSON.stringify({
+             searchId: officeId, 
+             newCompanyName: companyName,
+             newEmailAddress: emailAddress
+         });
+
+
+         
+         $.ajax({
+             type: "POST",
+             url: "Organisation.aspx/UpdateOrganisationDataByIdAsync", 
+             data: dataToSend,
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             success: function (response){    
+                 $('#exampleModalCenter').modal('hide');
+               
+             },
+             error: function (error){
+                 console.error("An error occurred: ", error);
+             }
+         });
+     }
+     function callBtnClickAdd() {
+
+         var officeId = $('#OfficeId').val();
+         var companyName = $('#CompanyName').val();
+         var emailAddress = $('#EmailAddress').val();
+
+        
+         var dataToSend = JSON.stringify({
+             searchId: officeId, 
+             newCompanyName: companyName,
+             newEmailAddress: emailAddress
+         });
+
+
+
+         $.ajax({
+             type: "POST",
+             url: "Organisation.aspx/btnCREATE_Click",
+             data: dataToSend,
+             contentType: "application/json; charset=utf-8",
+             dataType: "json",
+             success: function (response) {
+
+                 $('#exampleModalCenter').modal('hide');
+             },
+             error: function (error) {
+                 console.error("An error occurred: ", error);
+             }
+
+         });
+     }
+   </script>
 </asp:Content>

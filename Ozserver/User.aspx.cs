@@ -11,6 +11,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using Ozserver.Business_layer;
+using System.Web.Services;
+using System.Threading.Tasks;
+using System.Web.Script.Services;
 
 namespace Ozserver
 {
@@ -101,22 +104,11 @@ namespace Ozserver
             }
         }
 
-
-
-        protected void btn_ClickADD(object sender, EventArgs e)
+        [WebMethod]
+        public static string CallBtnClickAdd(string orgName, string userId, string password)
         {
-
-            string orgName = Select1.Value;
-            string userId = UserId.Value;
-            string password = Password.Value;
-
-            HttpClient client = new HttpClient();
-
-
             string url = "https://localhost:7209/api/User/UserCreate";
 
-
-           
             var UserData = new
             {
                 OrgId = orgName,
@@ -124,71 +116,53 @@ namespace Ozserver
                 Password = password
             };
 
-
+            HttpClient client = new HttpClient();
 
             string jsonPayload = JsonConvert.SerializeObject(UserData);
-
-
             HttpContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
-
 
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-
             HttpResponseMessage response = client.PostAsync(url, content).Result;
-
-
             string responseContent = response.Content.ReadAsStringAsync().Result;
-
 
             dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent);
 
-
             if (response.IsSuccessStatusCode)
             {
-
-                Console.WriteLine("Organization created successfully.");
-
-
                 if (jsonResponse != null && jsonResponse.message != null)
                 {
-                    string message = jsonResponse.message;
-
-                   
-                        Console.WriteLine($"Message: {jsonResponse.message}");
-                  
+                    return $"Organization created successfully. Message: {jsonResponse.message}";
                 }
             }
             else
             {
-                
                 if (jsonResponse != null && jsonResponse.success == "0")
                 {
-                    string message = jsonResponse.message;
-
-                 
-                    
+                    return $"Error: {jsonResponse.message}";
                 }
             }
+            return "Error occurred";
         }
 
-        protected void btn_ClickUPDATE(object sender, EventArgs e)
+
+
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static async Task<string> UpdateUserDataById(string newOrgNameValue, string newUserId,  string newPassword)
         {
-            // Retrieve new values from input fields directly
-            string newUserId = UserId.Value; // New UserId from form field
-            string newPassword = Password.Value; // New Password from form field
-            string newOrgNameValue= OrgName.Value;
-            if (Request.QueryString["id"] != null)
+            // Get the searchId from query string
+            int searchId = 0;
+            if (HttpContext.Current.Request.QueryString["id"] != null)
             {
                 // Parse the 'id' parameter as an integer
-                if (int.TryParse(Request.QueryString["id"], out int searchId1))
+                if (int.TryParse(HttpContext.Current.Request.QueryString["id"], out int searchId1))
                 {
-                    _searchId = searchId1;
+                    searchId = searchId1;
                 }
             }
-                    // Use the _searchId obtained from Page_Load to update the data
-                    int searchId = _searchId;
 
             // Construct the URL for updating user data with new values
             string updateUrl = $"https://localhost:7209/api/User/UpdateUserDataById?Id={searchId}&password={Uri.EscapeDataString(newPassword)}&UserId={Uri.EscapeDataString(newUserId)}&OrgName={Uri.EscapeDataString(newOrgNameValue)}";
@@ -200,23 +174,20 @@ namespace Ozserver
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 // Send a GET request to the constructed URL
-                HttpResponseMessage response = client.GetAsync(updateUrl).Result;
+                HttpResponseMessage response = await client.GetAsync(updateUrl);
 
                 // Check the response status code
                 if (response.IsSuccessStatusCode)
                 {
-                    // If the request was successful, handle the response content as needed
-                    string responseContent = response.Content.ReadAsStringAsync().Result;
-                    Console.WriteLine("User data updated successfully.");
-                    Console.WriteLine("Response Content: " + responseContent);
+                    // If the request was successful, return the response content
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    return $"User data updated successfully. Response Content: {responseContent}";
                 }
                 else
                 {
-                    // Handle unsuccessful response, e.g., display an error message
-                    Console.WriteLine($"Failed to update user data. Status Code: {response.StatusCode}");
+                    // Handle unsuccessful response, e.g., return an error message
+                    return $"Failed to update user data. Status Code: {response.StatusCode}";
                 }
-
-                Response.Redirect("DocumentList.aspx?context=USER");
             }
         }
 

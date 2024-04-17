@@ -2,11 +2,13 @@
 
 
 
-<asp:Content ID="ContentPlaceHolder1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+<asp:Content ID="ContentPlaceHolder1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" EnablePageMethods="true">
+      
     <div class="page-wrapper">
         <div class="content container-fluid">
             <!-- Page Header -->
-            <div class="page-header">
+             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-12">
                         <h3 class="page-title">USER</h3>
@@ -47,10 +49,10 @@
                                         <label class="col-form-label col-md-2" for="OrgName">Organisation Name</label>
                                         <div class="col-md-10">
                                             <select class="form-control" id="Select1" runat="server">
-                                                <option value="">Select an Organisation</option>
-                                                <option value="user1">ANZCO</option>
-                                                <option value="user2">User 2</option>
-                                                <option value="user3">User 3</option>
+                                                <option value="ANZCO5">ANZCO5</option>
+                                                <option value="ANZCO">ANZCO</option>
+                                                <option value="ANZCO1">ANZCO8</option>
+                                                <option value="ANZCO3">ANZCO9</option>
                                             </select>
                                         </div>
                                     </div>
@@ -71,25 +73,144 @@
                                      <input type="text" class="form-control" id="Password" runat="server" placeholder="Password">
                                  </div>
                              </div>
-                        </div>
-                         <% if (IsTransmissionFrom("USER")) { %>
+                      
+                         <% if (IsTransmissionFrom("USER")){ %>
+                                  <div>
+                                    <div class=" text-center"> 
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                            UPDATE
+                                        </button>
+
+                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header text-center"> 
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">UPDATE</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to UPDATE?
+                                                    </div>
+                                                    <div class="modal-footer justify-content-center"> 
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> 
+                                                        <button type="button" class="btn btn-primary" onclick="callBtnClickUPDATE()">UPDATE</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 
+                            <% } else{ %>
                                  <div>
-                                    <div class="card-footer">
-                                        <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="UPDATE" OnClick="btn_ClickUPDATE" CausesValidation="False" />
+                                    <div class=" text-center"> 
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                            ADD
+                                        </button>
+
+                                       
+
+                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header text-center"> 
+                                                        <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">ADD</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to ADD?
+                                                    </div>
+                                                    <div class="modal-footer justify-content-center"> 
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> 
+                                                        <button type="button" class="btn btn-primary" onclick="callBtnClickAdd()">ADD</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
-                            <% } else { %>
-                                   <div>
-                                     <div class="card-footer">
-                                         <asp:Button ID="Button4" runat="server" CssClass="btn btn-primary" Text="ADD" OnClick="btn_ClickADD" CausesValidation="False" />
-                                     </div>
-                                 </div>
-                            <% } %>
-                       
+                               <% } %>    
+                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+          
+     <script >     
+         function callBtnClickUPDATE() {
+             
+             var newOrgNameValue = $('#OrgName').val();
+             var newUserId = $('#UserId').val();
+             var newPassword = $('#Password').val();
+
+             newOrgNameValue = "ANZCO";
+             newUserId = "abce";
+             newPassword = "edja";
+
+             var dataToSend = JSON.stringify({
+                 newOrgNameValue: newOrgNameValue,
+                 newUserId: newUserId,
+                 newPassword: newPassword
+             });
+
+             
+             $.ajax({
+                 type: "POST",
+                 url: "User.aspx/UpdateUserDataById", 
+                 data: dataToSend,
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function (response){    
+                     $('#exampleModalCenter').modal('hide');
+                   
+                 },
+                 error: function (error){
+                     console.error("An error occurred: ", error);
+                 }
+             });
+         }
+         function callBtnClickAdd() {
+
+             var orgName = $('#Select1').val();
+             var userId = $('#UserId').val();
+             var password = $('#Password').val();
+
+             orgName = "ANZCO";
+             userId = "ayush";
+             password = "ayush123";
+             var dataToSend = JSON.stringify({
+                 orgName: orgName,
+                 userId: userId,
+                 password: password
+             });
+
+
+             $.ajax({
+                 type: "POST",
+                 url: "User.aspx/CallBtnClickAdd",
+                 data: dataToSend,
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function (response) {
+
+                     $('#exampleModalCenter').modal('hide');
+                 },
+                 error: function (error) {
+                     console.error("An error occurred: ", error);
+                 }
+
+             });
+         }
+     </script>
+
+              
+
+         
+
 </asp:Content>
