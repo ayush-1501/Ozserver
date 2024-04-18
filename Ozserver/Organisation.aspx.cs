@@ -36,6 +36,7 @@ namespace Ozserver
                 }
                 else
                 {
+                    Page.Title = "ORGANISATION";
                     // Retrieve the 'source' query parameter from the URL
                     if (Request.QueryString["source"] != null)
                     {
@@ -94,95 +95,121 @@ namespace Ozserver
             }
         }
 
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public async Task<string> btnCREATE_Click(string officeId, string companyName, string emailAddress)
+        protected void btnADD_Click(object sender, EventArgs e)
         {
-            try
+
+            string officeId = OfficeId1.Value;
+            string companyName = CompanyName.Value;
+            string emailAddress = EmailAddress.Value;
+
+
+            HttpClient client = new HttpClient();
+
+
+            string url = "https://localhost:7209/api/Organisation/OrganisationCreate";
+
+
+            var organisationData = new
             {
-                HttpClient client = new HttpClient();
+                officeId = officeId,
+                companyName = companyName,
+                email_Address = emailAddress
+            };
 
-                string url = "https://localhost:7209/api/Organisation/OrganisationCreate";
 
-                var organisationData = new
+            string jsonPayload = JsonConvert.SerializeObject(organisationData);
+
+
+            HttpContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+
+            string responseContent = response.Content.ReadAsStringAsync().Result;
+
+
+            dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent);
+
+
+            if (response.IsSuccessStatusCode)
+            {
+
+                Console.WriteLine("Organization created successfully.");
+
+
+                if (jsonResponse != null && jsonResponse.message != null)
                 {
-                    id = 5,
-                    officeId = officeId,
-                    companyName = companyName,
-                    email_Address = emailAddress
-                };
+                    string message = jsonResponse.message;
 
-                string jsonPayload = JsonConvert.SerializeObject(organisationData);
-                HttpContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
 
-                client.DefaultRequestHeaders.Accept.Clear();
+                    Console.WriteLine($"Message: {jsonResponse.message}");
+
+                }
+            }
+            else
+            {
+
+                if (jsonResponse != null && jsonResponse.success == "0")
+                {
+                    string message = jsonResponse.message;
+
+
+
+                }
+            }
+            Response.Redirect("DocumentList.aspx?context=ORGANISATION");
+        }
+
+        protected void btn_ClickUPDATE(object sender, EventArgs e)
+        {
+
+            string newOrgNameValue = OfficeId.Value.Trim();
+            string newCompanyName = CompanyName.Value.Trim();
+            string newEmailAddress = EmailAddress.Value.Trim();
+
+            if (Request.QueryString["id"] != null)
+            {
+                // Parse the 'id' parameter as an integer
+                if (int.TryParse(Request.QueryString["id"], out int searchId1))
+                {
+                    _searchId = searchId1;
+                }
+            }
+            // Use the _searchId obtained from Page_Load to update the data
+            int searchId = _searchId;
+
+            // Construct the URL for updating user data with new values
+            string updateUrl = $"https://localhost:7209/api/Organisation/UpdateOrganisationDataById?Id={searchId}&CompanyName={Uri.EscapeDataString(newCompanyName)}&Email_Address={Uri.EscapeDataString(newEmailAddress)}";
+
+            // Create an instance of HttpClient to make the HTTP request
+            using (HttpClient client = new HttpClient())
+            {
+                // Optionally, set the request headers
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage response = await client.PostAsync(url, content);
-                string responseContent = await response.Content.ReadAsStringAsync();
+                // Send a GET request to the constructed URL
+                HttpResponseMessage response = client.GetAsync(updateUrl).Result;
 
+                // Check the response status code
                 if (response.IsSuccessStatusCode)
                 {
-                    // Parse and return the JSON response
-                    return responseContent;
+                    // If the request was successful, handle the response content as needed
+                    string responseContent = response.Content.ReadAsStringAsync().Result;
+                    Console.WriteLine("User data updated successfully.");
+                    Console.WriteLine("Response Content: " + responseContent);
                 }
                 else
                 {
-                    // Return an error message for the client to handle
-                    dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent);
-                    return $"Error: {jsonResponse.message}";
+                    // Handle unsuccessful response, e.g., display an error message
+                    Console.WriteLine($"Failed to update user data. Status Code: {response.StatusCode}");
                 }
-            }
-            catch (Exception ex)
-            {
-                // Log and return error message
-                Console.WriteLine($"Exception: {ex.Message}");
-                return $"Error: {ex.Message}";
-            }
-        }
 
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public async Task<string> UpdateOrganisationDataByIdAsync(int searchId, string newCompanyName, string newEmailAddress)
-        {
-            try
-            {
-                // Construct the URL for updating user data with new values
-                string updateUrl = $"https://localhost:7209/api/Organisation/UpdateOrganisationDataById?Id={searchId}&CompanyName={Uri.EscapeDataString(newCompanyName)}&Email_Address={Uri.EscapeDataString(newEmailAddress)}";
-
-                // Create an instance of HttpClient to make the HTTP request
-                using (HttpClient client = new HttpClient())
-                {
-                    // Optionally, set the request headers
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    // Send a GET request to the constructed URL
-                    HttpResponseMessage response = await client.GetAsync(updateUrl);
-
-                    // Check the response status code
-                    if (response.IsSuccessStatusCode)
-                    {
-                        // If the request was successful, return the response content as a string
-                        string responseContent = await response.Content.ReadAsStringAsync();
-                        Console.WriteLine("Organisation data updated successfully.");
-                        Console.WriteLine("Response Content: " + responseContent);
-                        return responseContent; // Return the response content to the client side
-                    }
-                    else
-                    {
-                        // Handle unsuccessful response and return error message
-                        string errorMessage = $"Failed to update organisation data. Status Code: {response.StatusCode}";
-                        Console.WriteLine(errorMessage);
-                        return errorMessage; // Return the error message to the client side
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log and return error message
-                string exceptionMessage = $"Exception occurred: {ex.Message}";
-                Console.WriteLine(exceptionMessage);
-                return exceptionMessage; // Return the exception message to the client side
+                Response.Redirect("DocumentList.aspx?context=ORGANISATION");
             }
         }
         public bool IsTransmissionFrom(string source)

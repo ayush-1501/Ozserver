@@ -95,7 +95,8 @@
                                                     </div>
                                                     <div class="modal-footer justify-content-center"> 
                                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> 
-                                                        <button type="button" class="btn btn-primary" onclick="callBtnClickUPDATE()">UPDATE</button>
+                                                        <asp:button runat="server" Text="UPDATE" Cssclass="btn btn-primary" Onclick="btn_ClickUPDATE"/>
+                                                       
                                                     </div>
                                                 </div>
                                             </div>
@@ -126,7 +127,7 @@
                                                     </div>
                                                     <div class="modal-footer justify-content-center"> 
                                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> 
-                                                        <button type="button" class="btn btn-primary" onclick="callBtnClickAdd()">ADD</button>
+                                                        <asp:button runat="server" Text="ADD" Cssclass="btn btn-primary" Onclick="btn_ClickADD"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -142,72 +143,7 @@
         </div>
     </div>
           
-     <script >     
-         function callBtnClickUPDATE() {
-             
-             var newOrgNameValue = $('#OrgName').val();
-             var newUserId = $('#UserId').val();
-             var newPassword = $('#Password').val();
-
-             newOrgNameValue = "ANZCO";
-             newUserId = "abce";
-             newPassword = "edja";
-
-             var dataToSend = JSON.stringify({
-                 newOrgNameValue: newOrgNameValue,
-                 newUserId: newUserId,
-                 newPassword: newPassword
-             });
-
-             
-             $.ajax({
-                 type: "POST",
-                 url: "User.aspx/UpdateUserDataById", 
-                 data: dataToSend,
-                 contentType: "application/json; charset=utf-8",
-                 dataType: "json",
-                 success: function (response){    
-                     $('#exampleModalCenter').modal('hide');
-                   
-                 },
-                 error: function (error){
-                     console.error("An error occurred: ", error);
-                 }
-             });
-         }
-         function callBtnClickAdd() {
-
-             var orgName = $('#Select1').val();
-             var userId = $('#UserId').val();
-             var password = $('#Password').val();
-
-             orgName = "ANZCO";
-             userId = "ayush";
-             password = "ayush123";
-             var dataToSend = JSON.stringify({
-                 orgName: orgName,
-                 userId: userId,
-                 password: password
-             });
-
-
-             $.ajax({
-                 type: "POST",
-                 url: "User.aspx/CallBtnClickAdd",
-                 data: dataToSend,
-                 contentType: "application/json; charset=utf-8",
-                 dataType: "json",
-                 success: function (response) {
-
-                     $('#exampleModalCenter').modal('hide');
-                 },
-                 error: function (error) {
-                     console.error("An error occurred: ", error);
-                 }
-
-             });
-         }
-     </script>
+    
 
               
 

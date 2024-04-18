@@ -12,7 +12,7 @@
                          <% if ( Session["Role"]=="Admin") { %>
                            <li class="submenu">
                                  <a href="#" class="icon-link">
-                                         <i class="fe fe-document"></i>
+                                         <i class="fa fa-building"></i>
                                         <span id="masterLink">ORGANISATION</span>
                                         <span class="menu-arrow"></span>
                                     </a>

@@ -37,8 +37,6 @@
                
           <form id="form1" runat="server">
              <div>
-               
-
                     <!-- Header -->
                     <div class="header">
                         <!-- Logo -->
@@ -114,150 +112,42 @@
 
 
             <!-- Footer -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
-<div class="footer fixed-bottom">
-    <footer class="text-center text-lg-start" style="background-color:#7CB9E8;">
-        <!-- Footer content with required modifications -->
-        (Beta Version) | &copy; <%= DateTime.Now.Year %> Copyright Ozdocs International Pty Ltd. <%= DateTime.Now.Year %> | <a href="#" id="openPopupLink" style="font-weight: bold; color: #333;">Feedback</a>
-    </footer>
+     
+        <div class="footer fixed-bottom">
+            <footer class="text-center text-lg-start" style="background-color:#7CB9E8;">
+                <!-- Footer content with required modifications -->
+                (Beta Version) | &copy; <%= DateTime.Now.Year %> Copyright Ozdocs International Pty Ltd. <%= DateTime.Now.Year %> | 
+                <a href="#exampleModalCenter" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="font-weight: bold; color: #333;">
+                    Feedback
+                </a>
+            </footer>
+
+        </div>
+
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="background-color:#7CB9E8;"> 
+            <div class="modal-header justify-content-center">
+                <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">FEEDBACK</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <textarea id="messagetext" runat="server" placeholder="Enter your message..." rows="4" cols="30" style="width:100%;"></textarea> 
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <asp:button runat="server" Text="SUBMIT" CssClass="btn btn-primary" OnClick="btn_ClickMail"/>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-<div id="dialog" title="Please enter your feedback" style="display: none;">
-    <h4 style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">Please enter your feedback</h4>
-    <div id="customCloseButton" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-        <span style="color: #555; font-size: 24px; font-weight: bold;">&times;</span>
-    </div>
-    <p>
-        <textarea id="feedbackText" placeholder="Enter your feedback..." rows="4" cols="30"></textarea>
-    </p>
-    <div class="button-container">
-        <button id="submitButton">Submit</button>
-        <button id="cancelButton">Cancel</button>
-    </div>
-</div>
 
-<script>
-    $(document).ready(function () {
-        $("#openPopupLink").click(function (e) {
-            e.preventDefault();
-            $("#feedbackText").val("");
-            $("#dialog").dialog({
-                width: 600,
-                height: 400,
-                resizable: false,
-                position: { my: "center", at: "center", of: window }
-            });
-        });
-
-        $("#submitButton").click(function () {
-            var feedback = $("#feedbackText").val();
-            sendEmail(feedback);
-        });
-
-        $("#cancelButton, #customCloseButton").click(function () {
-            $("#feedbackText").val("");
-            $("#dialog").dialog("close");
-        });
-    });
-
-    function sendEmail(feedback) {
-        const apiUrl = `https://localhost:7209/api/Email/SendMail?feedback=${encodeURIComponent(feedback)}`;
-
-        // Make the POST request using the Fetch API
-        fetch(apiUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json" // Specify JSON content type if your API expects JSON
-            },
-            body: JSON.stringify({ feedback: feedback }) // Send feedback in the request body
-        })
-            .then(response => {
-                if (!response.ok) {
-                    $("#dialog").dialog("close");
-                }
-                return response.text();
-            })
-            .then(data => {
-                alert(data);
-                $("#feedbackText").val("");
-                $("#dialog").dialog("close");
-            })
-        $("#dialog").dialog("close");
-    }
-</script>
-    
-
-    
-
-
-
-
-
-
-
-<style>
-   #dialog {
-    display: none;
-    width: 40%;
-    height: 30%;
-    padding: 20px;
-    background-color: #7CB9E8;
-    border: 1px solid #31708f;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 10px; /* Add border radius */
-}
-
-    #dialog textarea {
-        width: calc(100% - 20px);
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #31708f;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
-
-    .button-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-    }
-
-   #submitButton, #cancelButton {
-    padding: 10px 20px;
-    margin: 0 10px;
-    background-color: #1b5a90;
-    color: #fff;
-    border: none;
-    border-radius: 5px; /* Add border radius */
-    cursor: pointer;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2); /* Add box shadow */
-   }
-
-    #cancelButton {
-        background-color: #1b5a90;
-    }
-
-    .footer a {
-        color: #1b5a90;
-        text-decoration: none;
-        margin: 0 10px;
-    }
-    #submitButton:hover, #cancelButton:hover {
-    background-color: #00d0f1;
-}
-</style>
-
-
-       
-
-         <!-- /Footer -->
+      
+      
        
          
      </form>

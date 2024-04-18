@@ -64,6 +64,7 @@
                             <% if (IsTransmissionFrom("ORGANISATION")) { %>
                               
                            <div>
+                               
                             <div class=" text-center"> 
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                                     UPDATE
@@ -83,7 +84,7 @@
                                             </div>
                                             <div class="modal-footer justify-content-center"> 
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> 
-                                                <button type="button" class="btn btn-primary" onclick="callBtnClickUPDATE()">UPDATE</button>
+                                               <asp:button runat="server" Text="UPDATE" Cssclass="btn btn-primary" Onclick="btn_ClickUPDATE"/>
                                             </div>
                                         </div>
                                     </div>
@@ -93,6 +94,7 @@
      
                     <% } else{ %>
                          <div>
+                               
                             <div class=" text-center"> 
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                                     ADD
@@ -114,7 +116,7 @@
                                             </div>
                                             <div class="modal-footer justify-content-center"> 
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> 
-                                                <button type="button" class="btn btn-primary" onclick="callBtnClickAdd()">ADD</button>
+                                                <asp:button runat="server" Text="ADD" Cssclass="btn btn-primary" Onclick="btnADD_Click"/>
                                             </div>
                                         </div>
                                     </div>
@@ -128,67 +130,5 @@
             </div>
           </div>
         </div>
-   <script >     
-     function callBtnClickUPDATE() {
-         
-         var officeId = $('#OfficeId').val();
-         var companyName = $('#CompanyName').val();
-         var emailAddress = $('#EmailAddress').val();
-
-       
-         var dataToSend = JSON.stringify({
-             searchId: officeId, 
-             newCompanyName: companyName,
-             newEmailAddress: emailAddress
-         });
-
-
-         
-         $.ajax({
-             type: "POST",
-             url: "Organisation.aspx/UpdateOrganisationDataByIdAsync", 
-             data: dataToSend,
-             contentType: "application/json; charset=utf-8",
-             dataType: "json",
-             success: function (response){    
-                 $('#exampleModalCenter').modal('hide');
-               
-             },
-             error: function (error){
-                 console.error("An error occurred: ", error);
-             }
-         });
-     }
-     function callBtnClickAdd() {
-
-         var officeId = $('#OfficeId').val();
-         var companyName = $('#CompanyName').val();
-         var emailAddress = $('#EmailAddress').val();
-
-        
-         var dataToSend = JSON.stringify({
-             searchId: officeId, 
-             newCompanyName: companyName,
-             newEmailAddress: emailAddress
-         });
-
-
-
-         $.ajax({
-             type: "POST",
-             url: "Organisation.aspx/btnCREATE_Click",
-             data: dataToSend,
-             contentType: "application/json; charset=utf-8",
-             dataType: "json",
-             success: function (response) {
-
-                 $('#exampleModalCenter').modal('hide');
-             },
-             error: function (error) {
-                 console.error("An error occurred: ", error);
-             }
-
-         });
-     }
-   </script>
+  
 </asp:Content>
