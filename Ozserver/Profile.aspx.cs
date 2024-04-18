@@ -3,10 +3,12 @@ using Ozserver.Business_layer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static Ozserver.Login;
+using static Ozserver.WebForm1;
 
 namespace Ozserver
 {
@@ -48,11 +50,29 @@ namespace Ozserver
 
 
                     }
+                    if (data != null && data.Count > 0)
+                    {
+                       
+                        Users firstUser = data[0];
 
+                      
+                        int orgId = firstUser.OrgId;
+                        string userId = firstUser.UserId;
+                        string emailAddress = firstUser.EmailAddress;
+                        string officeId= firstUser.OfficeId;
+
+
+
+                        OrgIdControl.Value = orgId.ToString(); 
+                        UserIdControl.Value = userId;
+                        EmailAddress.Value = emailAddress;
+                        OfficeIdControl.Value = officeId.ToString();
+
+
+                    }
 
                 }
-                lvUserProfile.DataSource = data;
-                lvUserProfile.DataBind();
+               
             }
 
         }
