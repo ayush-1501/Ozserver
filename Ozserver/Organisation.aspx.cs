@@ -24,6 +24,7 @@ namespace Ozserver
 
         string _transmissionSource;
         int _searchId;
+        string SearchLink = System.Configuration.ConfigurationManager.AppSettings["url2"].ToString();
         public string OrgNameValue { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -51,7 +52,7 @@ namespace Ozserver
                                 _searchId = searchId;
 
                                 // Call the API to get user data
-                                string apiUrl = "https://localhost:7209/api/Organisation/GetOrganisationDataById?Id=" + searchId;
+                                string apiUrl = SearchLink+"Organisation/GetOrganisationDataById?Id=" + searchId;
                                 RestAPICaller apiCaller = new RestAPICaller();
                                 string jsonResult = apiCaller.CallRestAPI(apiUrl);
 
@@ -106,7 +107,7 @@ namespace Ozserver
             HttpClient client = new HttpClient();
 
 
-            string url = "https://localhost:7209/api/Organisation/OrganisationCreate";
+            string url = SearchLink+"Organisation/OrganisationCreate";
 
 
             var organisationData = new
@@ -174,38 +175,38 @@ namespace Ozserver
 
             if (Request.QueryString["id"] != null)
             {
-                // Parse the 'id' parameter as an integer
+                
                 if (int.TryParse(Request.QueryString["id"], out int searchId1))
                 {
                     _searchId = searchId1;
                 }
             }
-            // Use the _searchId obtained from Page_Load to update the data
+           
             int searchId = _searchId;
 
-            // Construct the URL for updating user data with new values
-            string updateUrl = $"https://localhost:7209/api/Organisation/UpdateOrganisationDataById?Id={searchId}&CompanyName={Uri.EscapeDataString(newCompanyName)}&Email_Address={Uri.EscapeDataString(newEmailAddress)}";
+           
+            string updateUrl = SearchLink+$"Organisation/UpdateOrganisationDataById?Id={searchId}&CompanyName={Uri.EscapeDataString(newCompanyName)}&Email_Address={Uri.EscapeDataString(newEmailAddress)}";
 
-            // Create an instance of HttpClient to make the HTTP request
+          
             using (HttpClient client = new HttpClient())
             {
-                // Optionally, set the request headers
+               
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                // Send a GET request to the constructed URL
+                
                 HttpResponseMessage response = client.GetAsync(updateUrl).Result;
 
-                // Check the response status code
+                
                 if (response.IsSuccessStatusCode)
                 {
-                    // If the request was successful, handle the response content as needed
+                    
                     string responseContent = response.Content.ReadAsStringAsync().Result;
                     Console.WriteLine("User data updated successfully.");
                     Console.WriteLine("Response Content: " + responseContent);
                 }
                 else
                 {
-                    // Handle unsuccessful response, e.g., display an error message
+                    
                     Console.WriteLine($"Failed to update user data. Status Code: {response.StatusCode}");
                 }
 

@@ -4,14 +4,17 @@
     <div class="page-wrapper">
         <div class="content container-fluid">
             <!-- Page Header -->
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h3 class="page-title">Organization</h3>
-                       
-                    </div>
-                </div>
-            </div>
+           	<div class="page-header">
+					<div class="row">
+						<div class="col-sm-12">
+							<h3 class="page-title">ORGANISATION</h3>
+							<ul class="breadcrumb">
+                                 <li class="breadcrumb-item"><a href="Dashboard.aspx">Dashboard</a></li>
+								<li class="breadcrumb-item active">ORGANISATION</li>
+							</ul>
+						</div>
+					</div>
+				</div>
             <!-- Page Header -->
                 
             <div class="text-center">
@@ -26,6 +29,7 @@
                                  <h4 class="card-title">ADD</h4>
                          <% } %>
                     </div>
+                      
                            <% if (IsTransmissionFrom("ORGANISATION")) { %>
                                   <div class="card-body">
                                             <div class="form-group row">

@@ -16,8 +16,10 @@ namespace Ozserver
 {
     public partial class SiteOzserver : MasterPage
     {
-     
 
+        string From_mail = System.Configuration.ConfigurationManager.AppSettings["FromMail"].ToString();
+        string To_mail = System.Configuration.ConfigurationManager.AppSettings["ToMail"].ToString();
+        string Password = System.Configuration.ConfigurationManager.AppSettings["Password"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
             //  string id = (string)Session["id"];
@@ -29,9 +31,9 @@ namespace Ozserver
             // Access the messagetext server control and retrieve its value
             string feedback = messagetext.Value.Trim();
 
-            string fromAddress = "ayushdel15@gmail.com";
-            string toAddress = "vijaykant@ozdocs.co.in";
-            string fromPassword = "xmro mldw wfgg qhne";
+            string fromAddress = From_mail;
+            string toAddress = To_mail;
+            string fromPassword = Password;
 
             MailMessage message = new MailMessage();
             message.From = new MailAddress(fromAddress);

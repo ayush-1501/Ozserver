@@ -17,8 +17,8 @@
                                         <span class="menu-arrow"></span>
                                     </a>
                                   <ul style="display: none;">
-                                      <li><a href="DocumentList.aspx?context=ORGANISATION">List</a></li>
-                                      <li><a href="Organisation.aspx">New/Update</a></li>
+                                      <li><a href="DocumentList.aspx?context=ORGANISATION">LIST</a></li>
+                                      <li><a href="Organisation.aspx">ADD</a></li>
                                   </ul>
                               </li>
   
@@ -26,13 +26,13 @@
                        <% if ( Session["Role"]=="Admin") { %>
                            <li class="submenu">
                                  <a href="#" class="icon-link">
-                                         <i class="fe fe-document"></i>
+                                         <i class="fe fe-user"></i>
                                         <span id="masterLink">USER</span>
                                         <span class="menu-arrow"></span>
                                     </a>
                                   <ul style="display: none;">
-                                    <li><a href="DocumentList.aspx?context=USER">List</a></li>
-                                    <li><a href="User.aspx">New/Update</a></li>
+                                    <li><a href="DocumentList.aspx?context=USER">LIST</a></li>
+                                    <li><a href="User.aspx">ADD</a></li>
                                   </ul>
                               </li>
   

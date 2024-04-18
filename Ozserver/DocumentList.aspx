@@ -273,17 +273,6 @@
 
                 </ContentTemplate>
             </asp:UpdatePanel>
-             <div class="card">
-             <div class="card-header">
-                 <h4 class="card-title">View Messages</h4>
-             </div>
-             <div class="card-body" style="display: flex; justify-content: space-between;">
-                 <button type="button" class="btn btn-rounded btn-outline-primary" style="padding: 10px 100px;">View EDI from EDNDOCS</button>
-                 <button type="button" class="btn btn-rounded btn-outline-success" style="padding: 10px 100px;">View EDI to EDNDOCS</button>
-                 <button type="button" class="btn btn-rounded btn-outline-dark" style="padding: 10px 100px;">View EDI from ICS</button>
-             </div>
-         </div>
-        </div>
     </div>
 </asp:Content>
 
