@@ -29,26 +29,25 @@
                                  <h4 class="card-title">ADD</h4>
                          <% } %>
                     </div>
-                      
+                      <div class="card-body">
                            <% if (IsTransmissionFrom("ORGANISATION")) { %>
-                                  <div class="card-body">
+                                  
                                             <div class="form-group row">
                                                 <label class="col-form-label col-md-2">Office Id</label>
                                                 <div class="col-md-10">
                                                     <input type="text" class="form-control" id="OfficeId" runat="server" placeholder="Office Id" readonly>
                                                 </div>
                                             </div>
-                                        </div>
-
+                                       
                                   <% } else { %>
-                                     <div class="card-body">
+                                    
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">Office Id</label>
                                             <div class="col-md-10">
                                                 <input type="text" class="form-control" id="OfficeId1" runat="server" placeholder="Office Id">
                                             </div>
                                         </div>
-                                      </div>
+                                     
                                   <% } %>
                         
                             <div class="form-group row">
@@ -132,7 +131,25 @@
                        
                 </div>
             </div>
+              </div>
           </div>
         </div>
+          <style>
+      /* Custom CSS for form alignment */
+       .form-group {
+           margin-bottom: 15px; /* Add margin for spacing between rows */
+       }
+
+       /* Align text within label to the left */
+       .col-form-label {
+           text-align: left;
+       }
+
+       /* Ensure input elements stretch across their columns and are aligned consistently */
+       .form-control {
+           width: 100%; /* Make inputs span the full width of the column */
+       }
+
+  </style>
   
 </asp:Content>

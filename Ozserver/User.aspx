@@ -148,7 +148,23 @@
             </div>
         </div>
     </div>
-          
+        <style>
+      /* Custom CSS for form alignment */
+       .form-group {
+           margin-bottom: 15px; /* Add margin for spacing between rows */
+       }
+
+       /* Align text within label to the left */
+       .col-form-label {
+           text-align: left;
+       }
+
+       /* Ensure input elements stretch across their columns and are aligned consistently */
+       .form-control {
+           width: 100%; /* Make inputs span the full width of the column */
+       }
+
+  </style>    
     
 
               
