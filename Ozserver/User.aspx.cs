@@ -216,14 +216,16 @@ namespace Ozserver
                     string responseContent = response.Content.ReadAsStringAsync().Result;
                     Console.WriteLine("User data updated successfully.");
                     Console.WriteLine("Response Content: " + responseContent);
+                    Response.Redirect("DocumentList.aspx?context=USER");
                 }
-                else
+                
+                if (!response.IsSuccessStatusCode)
                 {
-                    
-                    Console.WriteLine($"Failed to update user data. Status Code: {response.StatusCode}");
+                    string errorMessage = $"Failed to update user data. ";
+                    HiddenErrorMessage.Value = errorMessage;
                 }
 
-                Response.Redirect("DocumentList.aspx?context=USER");
+               
             }
         }
 

@@ -204,10 +204,10 @@ namespace Ozserver
                     Console.WriteLine("User data updated successfully.");
                     Console.WriteLine("Response Content: " + responseContent);
                 }
-                else
+                if (!response.IsSuccessStatusCode)
                 {
-                    
-                    Console.WriteLine($"Failed to update user data. Status Code: {response.StatusCode}");
+                    string errorMessage = $"Failed to update user data. Status Code: {response.StatusCode}";
+                    HiddenErrorMessage.Value = errorMessage;
                 }
 
                 Response.Redirect("DocumentList.aspx?context=ORGANISATION");

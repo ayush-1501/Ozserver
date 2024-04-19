@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Organisation.aspx.cs" Inherits="Ozserver.WebForm5" MasterPageFile="~/SiteOzserver.Master" %>
 
 <asp:Content ID="ContentPlaceHolder1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:HiddenField ID="HiddenErrorMessage" runat="server" />
     <div class="page-wrapper">
         <div class="content container-fluid">
             <!-- Page Header -->
@@ -62,7 +63,7 @@
                                     <input type="email" class="form-control" id="EmailAddress" runat="server" placeholder="Email Address">
                                 </div>
                             </div>
-                      
+                          
                          <!-- Add Label control for error messages -->
                             <% if (IsTransmissionFrom("ORGANISATION")) { %>
                               
@@ -151,5 +152,22 @@
        }
 
   </style>
+
+  <script>
+     function showErrorPopup() {
+         // Get the error message from the hidden field
+         var errorMessage = document.getElementById('<%= HiddenErrorMessage.ClientID %>').value;
+
+         // If there is an error message, display it in a JavaScript alert
+         if (errorMessage) {
+             alert(errorMessage);
+         }
+     }
+
+     // Call the function when the page loads
+     window.onload = function () {
+         showErrorPopup();
+     };
+  </script>
   
 </asp:Content>

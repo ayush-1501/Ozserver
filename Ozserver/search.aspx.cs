@@ -114,8 +114,7 @@ namespace Ozserver
                         StringArray = stringArray;
                     }
                 }
-                repeaterData.DataSource = StringArray;
-                repeaterData.DataBind();
+               
 
             }
 
