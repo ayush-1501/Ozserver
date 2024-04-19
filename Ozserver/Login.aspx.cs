@@ -83,7 +83,7 @@ namespace Ozserver
                 {
                     // Empty JSON response, print error message
               
-                    ClientScript.RegisterStartupScript(this.GetType(), "LoginFailed", "alert('EMPTY JSON RESPONSE');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "LoginFailed", "alert('WRONG USERNAME OR PASSWORD');", true);
                 }
             }
             else

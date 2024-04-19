@@ -34,19 +34,22 @@
 </head>
 
 <body>
-               
+         <div class="main-wrapper">
+		
+			
           <form id="form1" runat="server">
              <div>
+               
                     <!-- Header -->
                     <div class="header">
                         <!-- Logo -->
                         <asp:ContentPlaceHolder ID="sidebarContent" runat="server">
                             <div class="header-left">
-                                <a href="index.html" class="logo">&nbsp;</a>
-                                <a href="index.html" class="logo logo-small">
+                                <a href="Dashboard.aspx" class="logo">&nbsp;</a>
+                                <a href="Dashboard.aspx" class="logo logo-small">
                                     <img src="images/ABOUT.BMP" alt="Logo" width="30" height="30" />
                                 </a>&nbsp;
-                                <a href="index.html" class="logo">
+                                <a href="Dashboard.aspx" class="logo">
                                     <img src="images/ABOUT.BMP" alt="Logo" />
                                 </a>
                             </div>
@@ -151,7 +154,7 @@
        
          
      </form>
-
+</div>
 
 
     <!-- jQuery -->

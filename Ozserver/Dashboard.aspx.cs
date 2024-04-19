@@ -40,20 +40,24 @@ namespace Ozserver
                      string formattedDate = currentDate.ToString("yyyy-MM-dd");
                      apiUrl = TableLink + "EDNDocument/GetEDNDataRecordCount?toDate="+ formattedDate+"&TypeOfQuery=DATE";
                      EDNCount= ReturnCount(apiUrl);
+                     if(EDNCount <= 0)EDNCount = 0;
                      lbl1Message.Text = EDNCount.ToString();
 
 
                     apiUrl = TableLink + "PRADocument/GetPRADataRecordCount?toDate="+formattedDate+"&TypeOfQuery=DATE";
                     PRACount = ReturnCount(apiUrl);
-                    lbl2Message.Text = PRACount.ToString();
+                     if (PRACount <= 0) PRACount = 0;
+                     lbl2Message.Text = PRACount.ToString();
 
                    apiUrl = TableLink + "AQISDocument/GetAQISDataRecordCount?toDate="+formattedDate+"&TypeOfQuery=DATE";
                     AQISCount = ReturnCount(apiUrl);
-                   lbl3Message.Text = AQISCount.ToString();
+                    if (AQISCount <= 0) AQISCount = 0;
+                    lbl3Message.Text = AQISCount.ToString();
 
 
                     apiUrl = TableLink + "MasterDocument/GetMasterDataRecordCount?toDate="+ formattedDate+"&TypeOfQuery=DATE";
                     MasterCount = ReturnCount(apiUrl);
+                    if (MasterCount <= 0) MasterCount = 0;
                     lbl4Message.Text = MasterCount.ToString();
 
 
