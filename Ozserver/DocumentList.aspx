@@ -65,10 +65,11 @@
                                         <asp:ScriptManager ID="MainScriptManager" runat="server" />
                                         <asp:UpdatePanel ID="pnlHelloWorld" runat="server">
                                             <ContentTemplate>
-                                                <div>
+                                               <div class="table-responsive">
+                                                    <table class="datatable table table-stripped">
                                                     <asp:Repeater ID="rptResult" runat="server">
                                                         <HeaderTemplate>
-                                                           <table class="table">
+                                                          
                                                                <tr style="background-color: #d3d3d3;">
                                                                     <%  if (IsTransmissionFrom("MASTER") || IsTransmissionFrom("MASTERSEARCH")) { %>
                                                                            <th>ID</th>
@@ -217,6 +218,7 @@
                                                              
                                                         </ItemTemplate>
                                                 </asp:Repeater>
+                                                </table>
                                              </div>
 
 
@@ -291,6 +293,11 @@
              }
          });
         
+             $(document).ready(function () {
+                 $('#table').DataTable({
+                     responsive: true
+                 });
+        });
      </script>
 </asp:Content>
 
