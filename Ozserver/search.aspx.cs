@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Reflection;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -18,6 +19,7 @@ namespace Ozserver
         int _searchId;
         string Link = System.Configuration.ConfigurationManager.AppSettings["url1"].ToString();
         protected List<string> StringArray { get; set; }
+      
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -170,6 +172,46 @@ namespace Ozserver
                             
                             string isNewEDN = firstUser.IsNew.ToString();
                             IsNewEDN.Value = isNewEDN;
+
+
+                            List<string> errorMessages = new List<string>();
+
+                           
+                            foreach (Branch item in data)
+                            {
+                               
+                                PropertyInfo[] properties = typeof(Branch).GetProperties();
+
+                               
+                                foreach (PropertyInfo property in properties)
+                                {
+                                    
+                                    if (property.Name.StartsWith("Error"))
+                                    {
+                                        
+                                        object value = property.GetValue(item);
+
+                                       
+                                        if (value == null || string.IsNullOrEmpty(value.ToString()))
+                                        {
+                                            continue;
+                                        }
+
+                                       
+                                        string label = property.Name;
+                                        string valueString = value.ToString();
+
+                                        
+                                        string labelValuePair = $"{label}: {valueString}";
+
+                                        
+                                        errorMessages.Add(labelValuePair);
+                                    }
+                                }
+                            }
+
+                            string allErrorMessages = string.Join(Environment.NewLine, errorMessages);
+                            Textarea2.Value = allErrorMessages;
                         }
                         else if (_transmissionSource == "AQIS" || _transmissionSource == "AQISSEARCH")
                         {
@@ -251,6 +293,45 @@ namespace Ozserver
                             string isNew = firstUser.IsNew.ToString();
                             IsNew.Value = isNew;
 
+                            List<string> errorMessages = new List<string>();
+
+
+                            foreach (Branch item in data)
+                            {
+
+                                PropertyInfo[] properties = typeof(Branch).GetProperties();
+
+
+                                foreach (PropertyInfo property in properties)
+                                {
+
+                                    if (property.Name.StartsWith("Error"))
+                                    {
+
+                                        object value = property.GetValue(item);
+
+
+                                        if (value == null || string.IsNullOrEmpty(value.ToString()))
+                                        {
+                                            continue;
+                                        }
+
+
+                                        string label = property.Name;
+                                        string valueString = value.ToString();
+
+
+                                        string labelValuePair = $"{label}: {valueString}";
+
+
+                                        errorMessages.Add(labelValuePair);
+                                    }
+                                }
+                            }
+
+                            string allErrorMessages = string.Join(Environment.NewLine, errorMessages);
+                            Textarea1.Value = allErrorMessages;
+
                         }
                         else if (_transmissionSource == "PRA" || _transmissionSource == "PRASEARCH")
                         {
@@ -317,9 +398,44 @@ namespace Ozserver
                             string fileOutName = firstUser.File_Out_Name;
                             File_Out_Name.Value = fileOutName;
 
-                     
-                            string fileOutContent = firstUser.File_Out_Content;
-                            File_Out_Content.Value = fileOutContent;
+                            List<string> errorMessages = new List<string>();
+
+
+                            foreach (Branch item in data)
+                            {
+
+                                PropertyInfo[] properties = typeof(Branch).GetProperties();
+
+
+                                foreach (PropertyInfo property in properties)
+                                {
+
+                                    if (property.Name.StartsWith("Error"))
+                                    {
+
+                                        object value = property.GetValue(item);
+
+
+                                        if (value == null || string.IsNullOrEmpty(value.ToString()))
+                                        {
+                                            continue;
+                                        }
+
+
+                                        string label = property.Name;
+                                        string valueString = value.ToString();
+
+
+                                        string labelValuePair = $"{label}: {valueString}";
+
+
+                                        errorMessages.Add(labelValuePair);
+                                    }
+                                }
+                            }
+
+                            string allErrorMessages = string.Join(Environment.NewLine, errorMessages);
+                            Errors.Value = allErrorMessages;
 
                         }
                         else if (_transmissionSource == "MASTER" || _transmissionSource == "MASTERSEARCH")
@@ -427,25 +543,11 @@ namespace Ozserver
 
         }
 
-        private void ConvertToAllStrings(dynamic obj)
-        {
-            if (obj is JArray)
-            {
-                foreach (var item in obj)
-                {
-                    ConvertToAllStrings(item);
-                }
-            }
-            else if (obj is JObject)
-            {
-                foreach (var property in obj.Properties())
-                {
-                    property.Value = property.Value?.ToString();
-                    ConvertToAllStrings(property.Value);
-                }
-            }
-        }
-        public bool IsTransmissionFrom(string source)
+
+       
+
+       
+    public bool IsTransmissionFrom(string source)
         {
             return _transmissionSource == source.ToUpper();
         }
@@ -543,8 +645,6 @@ namespace Ozserver
             public string ContPage { get; set; }
             public string EdndocsId { get; set; }
          
-
-
 
         }
     }

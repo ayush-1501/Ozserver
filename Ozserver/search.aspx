@@ -26,109 +26,118 @@
                         <h4 class="card-title">DETAIL</h4>
                     </div>
                     <div class="card-body">
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">OfficeId:</label>
-                                <div class="col-lg-9">
-                                    <input type="text" class="form-control" id="OfficeIdEDN" runat="server" placeholder="OfficeId" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">EdndocsId:</label>
-                                <div class="col-lg-9">
-                                    <input type="text" class="form-control" id="EdndocsId" runat="server" placeholder="EdndocsId" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">SenderRef:</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="SenderRef" runat="server" placeholder="SenderRef" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Version</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="VersionEDN" runat="server" placeholder="Version" readonly>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">EDN</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="EDN1" runat="server" placeholder="EDN" readonly>
-                                </div>
-                            </div>
-                              <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">PermitNo</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="StatusEDN" runat="server" placeholder="Status" readonly>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">SDateTime</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="SDateTimeEDN" runat="server" placeholder="SDateTime" readonly>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">RDateTime</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="RDateTimeEDN" runat="server" placeholder="RDateTime" readonly>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">ControlRef</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="ControlRef" runat="server" placeholder="ControlRef" readonly>
-                                </div>
-                            </div>
-                              <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Acknowledge</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="Acknowledge" runat="server" placeholder="Acknowledge" readonly>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">StatusDesc</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="StatusDescEDN" runat="server" placeholder="StatusDesc" readonly>
-                                </div>
-                            </div>
-                              <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">ReasonDesc</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="ReasonDesc" runat="server" placeholder="ReasonDesc" readonly>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">File_In_Name</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="File_In_NameEDN" runat="server" placeholder="File_In_Name" readonly>
-                                </div>
-                            </div>
-                              <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">File_In_Content</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="File_In_ContentEDN" runat="server" placeholder="File_In_Content" readonly>
-                                </div>
-                            </div>
-                               <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">File_Out_Name</label>
-                                    <div class="col-lg-9">
-                                       <input type="text" class="form-control" id="File_Out_NameEDN" runat="server" placeholder="File_Out_Name" readonly>
+                            <div class="row">
+                                    <!-- Left Column -->
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">OfficeId:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="OfficeIdEDN" runat="server" placeholder="OfficeId" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">EdndocsId:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="EdndocsId" runat="server" placeholder="EdndocsId" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">SenderRef:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="SenderRef" runat="server" placeholder="SenderRef" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">Version:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="VersionEDN" runat="server" placeholder="Version" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">EDN:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="EDN1" runat="server" placeholder="EDN" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">PermitNo:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="StatusEDN" runat="server" placeholder="Status" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">SDateTime:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="SDateTimeEDN" runat="server" placeholder="SDateTime" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">RDateTime:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="RDateTimeEDN" runat="server" placeholder="RDateTime" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Right Column -->
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">ControlRef:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="ControlRef" runat="server" placeholder="ControlRef" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">Acknowledge:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="Acknowledge" runat="server" placeholder="Acknowledge" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">StatusDesc:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="StatusDescEDN" runat="server" placeholder="StatusDesc" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">ReasonDesc:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="ReasonDesc" runat="server" placeholder="ReasonDesc" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">File_In_Name:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="File_In_NameEDN" runat="server" placeholder="File_In_Name" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">File_In_Content:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="File_In_ContentEDN" runat="server" placeholder="File_In_Content" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">File_Out_Name:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="File_Out_NameEDN" runat="server" placeholder="File_Out_Name" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">File_Out_Content:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="File_Out_ContentEDN" runat="server" placeholder="File_Out_Content" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">IsNew:</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" id="IsNewEDN" runat="server" placeholder="IsNew" readonly>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">File_Out_Content</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="File_Out_ContentEDN" runat="server" placeholder="File_Out_Content" readonly>
-                                </div>
-                            </div>
-                     
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label">IsNew</label>
-                            <div class="col-lg-9">
-                               <input type="text" class="form-control" id="IsNewEDN" runat="server" placeholder="IsNew" readonly>
-                            </div>
-                        </div>
+
                          <div class="form-group row">
                              <label class="col-lg-3 col-form-label" for="Errors">Errors:</label>
                              <div class="col-lg-9">
@@ -170,114 +179,123 @@
                     <div class="card-body">
                         
                       
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">OfficeId:</label>
-                                <div class="col-lg-9">
-                                    <input type="text" class="form-control" id="OfficeIdAQIS" runat="server" placeholder="OfficeId" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">AQISId:</label>
-                                <div class="col-lg-9">
-                                    <input type="text" class="form-control" id="AQISId" runat="server" placeholder="AQISId" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">RFPNo:</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="RFPNo" runat="server" placeholder="RFPNo" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Version</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="VersionAQIS" runat="server" placeholder="Version" readonly>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Status</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="Status" runat="server" placeholder="Status" readonly>
-                                </div>
-                            </div>
-                              <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">PermitNo</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="PermitNo" runat="server" placeholder="PermitNo" readonly>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">StatusDesc</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="StatusDescAQIS" runat="server" placeholder="StatusDesc" readonly>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">SDateTime</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="SDateTimeAQIS" runat="server" placeholder="SDateTime" readonly>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">RDateTime</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="RDateTimeAQIS" runat="server" placeholder="RDateTime" readonly>
-                                </div>
-                            </div>
-                              <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Test</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="Test" runat="server" placeholder="Test" readonly>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">ContPage</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="ContPage" runat="server" placeholder="ContPage" readonly>
-                                </div>
-                            </div>
-                              <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">ECN</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="ECN" runat="server" placeholder="ECN" readonly>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">File_In_Name</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="File_In_NameAQIS" runat="server" placeholder="File_In_Name" readonly>
-                                </div>
-                            </div>
-                              <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">File_In_Content</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="File_In_ContentAQIS" runat="server" placeholder="File_In_Content" readonly>
-                                </div>
-                            </div>
-                               <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">File_Out_Name</label>
-                                    <div class="col-lg-9">
-                                       <input type="text" class="form-control" id="File_Out_NameAQIS" runat="server" placeholder="File_Out_Name" readonly>
+                           <div class="row">
+                            <!-- Left Column -->
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">OfficeId:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="OfficeIdAQIS" runat="server" placeholder="OfficeId" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">AQISId:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="AQISId" runat="server" placeholder="AQISId" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">RFPNo:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="RFPNo" runat="server" placeholder="RFPNo" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">Version:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="VersionAQIS" runat="server" placeholder="Version" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">Status:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="Status" runat="server" placeholder="Status" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">PermitNo:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="PermitNo" runat="server" placeholder="PermitNo" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">StatusDesc:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="StatusDescAQIS" runat="server" placeholder="StatusDesc" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">SDateTime:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="SDateTimeAQIS" runat="server" placeholder="SDateTime" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">RDateTime:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="RDateTimeAQIS" runat="server" placeholder="RDateTime" readonly>
+                                        </div>
                                     </div>
                                 </div>
-                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">File_Out_Content</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="File_Out_ContentAQIS" runat="server" placeholder="File_Out_Content" readonly>
+    
+                                <!-- Right Column -->
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">Test:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="Test" runat="server" placeholder="Test" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">ContPage:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="ContPage" runat="server" placeholder="ContPage" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">ECN:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="ECN" runat="server" placeholder="ECN" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">File_In_Name:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="File_In_NameAQIS" runat="server" placeholder="File_In_Name" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">File_In_Content:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="File_In_ContentAQIS" runat="server" placeholder="File_In_Content" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">File_Out_Name:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="File_Out_NameAQIS" runat="server" placeholder="File_Out_Name" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">File_Out_Content:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="File_Out_ContentAQIS" runat="server" placeholder="File_Out_Content" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">Spare:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="Spare" runat="server" placeholder="Spare" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">IsNew:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="IsNew" runat="server" placeholder="IsNew" readonly>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                           <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Spare</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="Spare" runat="server" placeholder="Spare" readonly>
-                                </div>
-                            </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label">IsNew</label>
-                            <div class="col-lg-9">
-                               <input type="text" class="form-control" id="IsNew" runat="server" placeholder="IsNew" readonly>
-                            </div>
-                        </div>
                          <div class="form-group row">
                              <label class="col-lg-3 col-form-label" for="Errors">Errors:</label>
                              <div class="col-lg-9">
@@ -318,103 +336,112 @@
                     <div class="card-body">
                         
                       
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">OfficeId:</label>
-                                <div class="col-lg-9">
-                                    <input type="text" class="form-control" id="OfficeIdPRA" runat="server" placeholder="OfficeId" readonly>
+                           <div class="row">
+                                <!-- Left Column -->
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">OfficeId:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="OfficeIdPRA" runat="server" placeholder="OfficeId" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">PradocsId:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="PradocsId" runat="server" placeholder="PradocsId" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">ShippersRef:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="ShippersRef" runat="server" placeholder="ShippersRef" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">Version:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="VersionPRA" runat="server" placeholder="Version" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">SDateTime:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="SDateTime" runat="server" placeholder="SDateTime" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">RDateTime:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="RDateTime" runat="server" placeholder="RDateTime" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">StatusDesc:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="StatusDesc" runat="server" placeholder="StatusDesc" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">OneStopRef:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="OneStopRef" runat="server" placeholder="OneStopRef" readonly>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <!-- Right Column -->
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                     <div class="form-group row">
+                                         <label class="col-lg-4 col-form-label">LastVersion:</label>
+                                         <div class="col-lg-8">
+                                             <input type="text" class="form-control" id="LastVersion" runat="server" placeholder="LastVersion" readonly>
+                                         </div>
+                                     </div>
+                                     <div class="form-group row">
+                                         <label class="col-lg-4 col-form-label">ContainerNo:</label>
+                                         <div class="col-lg-8">
+                                             <input type="text" class="form-control" id="ContainerNo" runat="server" placeholder="ContainerNo" readonly>
+                                         </div>
+                                     </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">Text5:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="Text5" runat="server" placeholder="ContainerNo" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">SentType:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="SentType" runat="server" placeholder="SentType" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">File_In_Name:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="File_In_Name" runat="server" placeholder="File_In_Name" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">File_In_Content:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="File_In_Content" runat="server" placeholder="File_In_Content" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">File_Out_Name:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="File_Out_Name" runat="server" placeholder="File_Out_Name" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label">File_Out_Content:</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control" id="File_Out_Content" runat="server" placeholder="File_Out_Content" readonly>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">PradocsId:</label>
-                                <div class="col-lg-9">
-                                    <input type="text" class="form-control" id="PradocsId" runat="server" placeholder="PradocsId" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">ShippersRef:</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="ShippersRef" runat="server" placeholder="ShippersRef" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Version</label>
-                                <div class="col-lg-9">
-                                   <input type="text" class="form-control" id="VersionPRA" runat="server" placeholder="Version" readonly>
-                                </div>
-                            </div>
-                             <div class="form-group row">
-                               <label class="col-lg-3 col-form-label">SDateTime</label>
-                               <div class="col-lg-9">
-                                  <input type="text" class="form-control" id="SDateTime" runat="server" placeholder="SDateTime" readonly>
-                               </div>
-                           </div>
-                            <div class="form-group row">
-                               <label class="col-lg-3 col-form-label">RDateTime</label>
-                               <div class="col-lg-9">
-                                  <input type="text" class="form-control" id="RDateTime" runat="server" placeholder="RDateTime" readonly>
-                               </div>
-                           </div>
-                            <div class="form-group row">
-                               <label class="col-lg-3 col-form-label">StatusDesc</label>
-                               <div class="col-lg-9">
-                                  <input type="text" class="form-control" id="StatusDesc" runat="server" placeholder="StatusDesc" readonly>
-                               </div>
-                           </div>
-                            <div class="form-group row">
-                               <label class="col-lg-3 col-form-label">OneStopRef</label>
-                               <div class="col-lg-9">
-                                  <input type="text" class="form-control" id="OneStopRef" runat="server" placeholder="OneStopRef" readonly>
-                               </div>
-                           </div>
-                            <div class="form-group row">
-                               <label class="col-lg-3 col-form-label">LastVersion</label>
-                               <div class="col-lg-9">
-                                  <input type="text" class="form-control" id="LastVersion" runat="server" placeholder="LastVersion" readonly>
-                               </div>
-                           </div>
-                           <div class="form-group row">
-                               <label class="col-lg-3 col-form-label">ContainerNo</label>
-                               <div class="col-lg-9">
-                                  <input type="text" class="form-control" id="ContainerNo" runat="server" placeholder="ContainerNo" readonly>
-                               </div>
-                           </div>
-                          <div class="form-group row">
-                            <label class="col-lg-3 col-form-label">ContainerNo</label>
-                            <div class="col-lg-9">
-                               <input type="text" class="form-control" id="Text5" runat="server" placeholder="ContainerNo" readonly>
-                            </div>
-                        </div>
-                          <div class="form-group row">
-                            <label class="col-lg-3 col-form-label">SentType</label>
-                            <div class="col-lg-9">
-                               <input type="text" class="form-control" id="SentType" runat="server" placeholder="SentType" readonly>
-                            </div>
-                        </div>
-                      
-                          <div class="form-group row">
-                            <label class="col-lg-3 col-form-label">File_In_Name</label>
-                            <div class="col-lg-9">
-                               <input type="text" class="form-control" id="File_In_Name" runat="server" placeholder="File_In_Name" readonly>
-                            </div>
-                        </div>
-                          <div class="form-group row">
-                            <label class="col-lg-3 col-form-label">File_In_Content</label>
-                            <div class="col-lg-9">
-                               <input type="text" class="form-control" id="File_In_Content" runat="server" placeholder="File_In_Content" readonly>
-                            </div>
-                        </div>
-                          <div class="form-group row">
-                            <label class="col-lg-3 col-form-label">File_Out_Name</label>
-                            <div class="col-lg-9">
-                               <input type="text" class="form-control" id="File_Out_Name" runat="server" placeholder="File_Out_Name" readonly>
-                            </div>
-                        </div>
-                          <div class="form-group row">
-                            <label class="col-lg-3 col-form-label">File_Out_Content</label>
-                            <div class="col-lg-9">
-                               <input type="text" class="form-control" id="File_Out_Content" runat="server" placeholder="File_Out_Content" readonly>
-                            </div>
-                        </div>
+
                           <div class="form-group row">
                           <label class="col-lg-3 col-form-label" for="Errors">Errors:</label>
                           <div class="col-lg-9">
@@ -512,15 +539,16 @@
                                         <input type="text" class="form-control" id="Currency" runat="server" placeholder="Currency" readonly>
                                     </div>
                                 </div>
+                                 <div class="form-group row">
+                                     <label class="col-lg-4 col-form-label">InvoiceNo:</label>
+                                     <div class="col-lg-8">
+                                         <input type="text" class="form-control" id="InvoiceNo" runat="server" placeholder="InvoiceNo" readonly>
+                                     </div>
+                                 </div>
                             </div>
                             <!-- Second column -->
                             <div class="col-lg-6">
-                                <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label">InvoiceNo:</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" class="form-control" id="InvoiceNo" runat="server" placeholder="InvoiceNo" readonly>
-                                    </div>
-                                </div>
+                               
                                 <div class="form-group row">
                                     <label class="col-lg-4 col-form-label">InvoiceDate:</label>
                                     <div class="col-lg-8">
