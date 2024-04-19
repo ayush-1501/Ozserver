@@ -85,6 +85,14 @@ namespace Example
                 {
                     Page.Title = "MASTER DOCUMENT";
                 }
+                else if (_transmissionSource == "USER")
+                {
+                    Page.Title = "USER";
+                }
+                else if (_transmissionSource == "ORGANISATION")
+                {
+                    Page.Title = "ORGANISATION";
+                }
                 else if(_transmissionSource == "EDNSEARCH" || _transmissionSource == "PRASEARCH" || _transmissionSource == "AQISSEARCH" || _transmissionSource == "MASTERSEARCH")
                 {
                     Page.Title = "TRANSISSMION";
