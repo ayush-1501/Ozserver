@@ -4,6 +4,7 @@ using Ozserver.Business_layer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Reflection;
 using System.Web;
 using System.Web.UI;
@@ -69,51 +70,357 @@ namespace Ozserver
                     RestAPICaller apiCaller = new RestAPICaller();
                     string jsonResult = apiCaller.CallRestAPI(apiUrl);
 
-                 
-                    if (!string.IsNullOrEmpty(jsonResult) && jsonResult != "[]")
+
+
+
+                    List<Branch> data = new List<Branch>();
+                    if (jsonResult != "[]")
                     {
+
                         JsonSerializerSettings settings = new JsonSerializerSettings
                         {
                             NullValueHandling = NullValueHandling.Ignore
                         };
-                        List<Branch> data = JsonConvert.DeserializeObject<List<Branch>>(jsonResult, settings);
 
-                       
-                        List<string> stringArray = new List<string>();
 
-                        foreach (Branch item in data)
+                        data = JsonConvert.DeserializeObject<List<Branch>>(jsonResult, settings);
+
+
+                    }
+
+
+
+                    if (data != null && data.Count > 0)
+                    {
+
+                        Branch firstUser = data[0];
+                        if (_transmissionSource == "EDN" || _transmissionSource == "EDNSEARCH")
                         {
-                            PropertyInfo[] properties = typeof(Branch).GetProperties();
-                            foreach (PropertyInfo property in properties)
+                            string officeIdEDN = firstUser.OfficeId;
+                            OfficeIdEDN.Value = officeIdEDN.ToString();
+
+                            
+                            string edndocsId = firstUser.EdndocsId;
+                            EdndocsId.Value = edndocsId;
+
+                            
+                            string senderRef = firstUser.SenderRef;
+                            SenderRef.Value = senderRef;
+
+                           
+                            int versionEDN = firstUser.Version;
+                            VersionEDN.Value = versionEDN.ToString();
+
+                           
+                            string edn1 = firstUser.Edn;
+                            EDN1.Value = edn1;
+
+                          
+                            string permitNo = firstUser.PermitNo;
+                            StatusEDN.Value = permitNo;
+
+                            
+                            DateTime sDateTimeEDN = firstUser.SDateTime;
+                            SDateTimeEDN.Value = sDateTimeEDN.ToString("yyyy-MM-dd HH:mm:ss");
+                            if ((SDateTimeEDN.Value == "0001-01-01"))
                             {
-                                object value = property.GetValue(item);
+                                SDateTimeEDN.Value = "";
+                            }
 
-                                if (value == null || string.IsNullOrEmpty(value.ToString()))
-                                {
-                                    continue;
-                                }
-                                string label = property.Name;
-                                string valueString;
-                                if (value is DateTime)
-                                {
-                                    valueString = ((DateTime)value).ToString("yyyy-MM-dd");
-                                }
-                                else
-                                {
-                                    valueString = value?.ToString();
-                                }
 
-                              
-                                string labelValuePair = $"{label}: {valueString}";
+                            DateTime rDateTimeEDN = firstUser.RDateTime;
+                            RDateTimeEDN.Value = rDateTimeEDN.ToString("yyyy-MM-dd HH:mm:ss");
+                            if ((RDateTimeEDN.Value == "0001-01-01"))
+                            {
+                                RDateTimeEDN.Value = "";
+                            }
 
-                               
-                                stringArray.Add(labelValuePair);
+
+                            string controlRef = firstUser.ControlRef.ToString();
+                            ControlRef.Value = controlRef;
+
+                           
+                            string acknowledge = firstUser.Acknowledge;
+                            Acknowledge.Value = acknowledge;
+
+                           
+                            string statusDescEDN = firstUser.StatusDesc;
+                            StatusDescEDN.Value = statusDescEDN;
+
+                           
+                            string reasonDesc = firstUser.ReasonDesc;
+                            ReasonDesc.Value = reasonDesc;
+
+                            
+                            string fileInNameEDN = firstUser.File_In_Name;
+                            File_In_NameEDN.Value = fileInNameEDN;
+
+                           
+                            string fileInContentEDN = firstUser.File_In_Content;
+                            File_In_ContentEDN.Value = fileInContentEDN;
+
+                           
+                            string fileOutNameEDN = firstUser.File_Out_Name;
+                            File_Out_NameEDN.Value = fileOutNameEDN;
+
+                            
+                            string fileOutContentEDN = firstUser.File_Out_Content;
+                            File_Out_ContentEDN.Value = fileOutContentEDN;
+
+                            
+                            string isNewEDN = firstUser.IsNew.ToString();
+                            IsNewEDN.Value = isNewEDN;
+                        }
+                        else if (_transmissionSource == "AQIS" || _transmissionSource == "AQISSEARCH")
+                        {
+                          
+                            string officeIdAQIS = firstUser.OfficeId;
+                            OfficeIdAQIS.Value = officeIdAQIS.ToString();
+
+                          
+                            string aqisId = firstUser.AqisId;
+                            AQISId.Value = aqisId;
+
+                           
+                            string rfpNo = firstUser.RfpNo;
+                            RFPNo.Value = rfpNo;
+
+                          
+                            int versionAQIS = firstUser.Version;
+                            VersionAQIS.Value = versionAQIS.ToString();
+
+                          
+                            string status = firstUser.Status;
+                            Status.Value = status;
+
+                           
+                            string permitNo = firstUser.PermitNo;
+                            PermitNo.Value = permitNo;
+
+                            
+                            string statusDescAQIS = firstUser.StatusDesc;
+                            StatusDescAQIS.Value = statusDescAQIS;
+
+                            
+                            DateTime sDateTimeAQIS = firstUser.SDateTime;
+                            SDateTimeAQIS.Value = sDateTimeAQIS.ToString("yyyy-MM-dd HH:mm:ss");
+                            if ((SDateTimeAQIS.Value == "0001-01-01"))
+                            {
+                                SDateTimeAQIS.Value = "";
+                            }
+
+                            DateTime rDateTimeAQIS = firstUser.RDateTime;
+                            RDateTimeAQIS.Value = rDateTimeAQIS.ToString("yyyy-MM-dd HH:mm:ss");
+                            if ((RDateTimeAQIS.Value == "0001-01-01"))
+                            {
+                                RDateTimeAQIS.Value = "";
+                            }
+
+                            string test = firstUser.Test;
+                            Test.Value = test;
+
+                           
+                            string contPage = firstUser.ContPage;
+                            ContPage.Value = contPage;
+
+                            
+                            string ecn = firstUser.ECN;
+                            ECN.Value = ecn;
+
+                           
+                            string fileInNameAQIS = firstUser.File_In_Name;
+                            File_In_NameAQIS.Value = fileInNameAQIS;
+
+                           
+                            string fileInContentAQIS = firstUser.File_In_Content;
+                            File_In_ContentAQIS.Value = fileInContentAQIS;
+
+                           
+                            string fileOutNameAQIS = firstUser.File_Out_Name;
+                            File_Out_NameAQIS.Value = fileOutNameAQIS;
+
+                           
+                            string fileOutContentAQIS = firstUser.File_Out_Content;
+                            File_Out_ContentAQIS.Value = fileOutContentAQIS;
+
+                           
+                            string spare = firstUser.Spare;
+                            Spare.Value = spare;
+
+                            
+                            string isNew = firstUser.IsNew.ToString();
+                            IsNew.Value = isNew;
+
+                        }
+                        else if (_transmissionSource == "PRA" || _transmissionSource == "PRASEARCH")
+                        {
+                           
+                            string officeIdPRA = firstUser.OfficeId;
+                            OfficeIdPRA.Value = officeIdPRA.ToString();
+
+                           
+                            string pradocsId = firstUser.PradocsId;
+                            PradocsId.Value = pradocsId;
+
+                          
+                            string shippersRef = firstUser.ShippersRef;
+                            ShippersRef.Value = shippersRef;
+
+                           
+                            int versionPRA = firstUser.Version;
+                            VersionPRA.Value = versionPRA.ToString();
+
+                            
+                            DateTime sDateTime = firstUser.SDateTime;
+                            SDateTime.Value = sDateTime.ToString("yyyy-MM-dd HH:mm:ss");
+                            if (SDateTime.Value == "0001-01-01")
+                            {
+                                SDateTime.Value = "";
+                            }
+
+
+                            DateTime rDateTime = firstUser.RDateTime;
+                            RDateTime.Value = rDateTime.ToString("yyyy-MM-dd HH:mm:ss");
+                            if (RDateTime.Value == "0001-01-01")
+                            {
+                                RDateTime.Value = "";
+                            }
+
+                            string statusDesc = firstUser.StatusDesc;
+                            StatusDesc.Value = statusDesc;
+
+                            
+                            string oneStopRef = firstUser.OneStopRef;
+                            OneStopRef.Value = oneStopRef;
+
+                           
+                            int lastVersion = firstUser.Version;
+                            LastVersion.Value = lastVersion.ToString();
+
+                           
+                            string containerNo = firstUser.ContainerNo;
+                            ContainerNo.Value = containerNo;
+
+                           
+                            string sentType = firstUser.SentType;
+                            SentType.Value = sentType;
+
+                            
+                            string fileInName = firstUser.File_In_Name;
+                            File_In_Name.Value = fileInName;
+
+                            
+                            string fileInContent = firstUser.File_In_Content;
+                            File_In_Content.Value = fileInContent;
+
+                            
+                            string fileOutName = firstUser.File_Out_Name;
+                            File_Out_Name.Value = fileOutName;
+
+                     
+                            string fileOutContent = firstUser.File_Out_Content;
+                            File_Out_Content.Value = fileOutContent;
+
+                        }
+                        else if (_transmissionSource == "MASTER" || _transmissionSource == "MASTERSEARCH")
+                        {
+                            string documentId = firstUser.DocumentId;
+                            DocumentId.Value = documentId;
+
+                         
+                            string referenceId = firstUser.ReferenceId;
+                            ReferenceId.Value = referenceId;
+
+                          
+                            string officeId = firstUser.OfficeId;
+                            OfficeId.Value = officeId.ToString();
+
+                            
+                            int version = firstUser.Version;
+                            Version.Value = version.ToString();
+
+                           
+                            string exporter = firstUser.Exporter;
+                            Exporter.Value = exporter;
+
+                           
+                            string consignee = firstUser.Consignee;
+                            Consignee.Value = consignee;
+
+                           
+                            string buyer = firstUser.Buyer;
+                            Buyer.Value = buyer;
+
+                            
+                            decimal invoiceValue = firstUser.InvoiceValue;
+                            InvoiceValue.Value = invoiceValue.ToString("F2"); 
+
+                           
+                            string currency = firstUser.Currency;
+                            Currency.Value = currency;
+
+                            
+                            string invoiceNo = firstUser.InvoiceNo;
+                            InvoiceNo.Value = invoiceNo;
+
+                           
+                            DateTime invoiceDate = firstUser.InvoiceDate;
+                            InvoiceDate.Value = invoiceDate.ToString("yyyy-MM-dd");
+                            if (InvoiceDate.Value == "0001-01-01")
+                            {
+                                InvoiceDate.Value = "";
+                            }
+
+
+                            string documentStatus = firstUser.DocumentStatus;
+                            DocumentStatus.Value = documentStatus;
+
+                           
+                            string ednStatus = firstUser.EdnStatus;
+                            EDNStatus.Value = ednStatus;
+
+                            
+                            string edn = firstUser.Edn;
+                            EDN.Value = edn;
+
+                            
+                            string details = firstUser.Details;
+                            Details.Value = details;
+
+                            
+                            string exporterRef = firstUser.ExporterRef;
+                            ExporterRef.Value = exporterRef;
+
+                            
+                            string buyerRef = firstUser.BuyerRef;
+                            BuyerRef.Value = buyerRef;
+
+                            
+                            string mUserId = firstUser.MUserId;
+                            MUserId.Value = mUserId;
+
+                            
+                            DateTime creationDate = firstUser.CreationDate;
+                            CreationDate.Value = creationDate.ToString("yyyy-MM-dd");
+                            if (CreationDate.Value == "0001-01-01")
+                            {
+                                CreationDate.Value = "";
+                            }
+
+
+                            DateTime revisionDate = firstUser.RevisionDate;
+                            RevisionDate.Value = revisionDate.ToString("yyyy-MM-dd");
+                            if (revisionDate.ToString("yyyy-MM-dd") == "0001-01-01")
+                            {
+                                RevisionDate.Value = "";
                             }
                         }
+                      
 
-                        StringArray = stringArray;
+
                     }
-                }
+                 }
+                
                
 
             }
@@ -229,6 +536,16 @@ namespace Ozserver
             public string File_Out_Name { get; set; }
             public string File_Out_Content { get; set; }
             public int IsNew { get; set; }
+            public string SentType { get; set; }
+            public string Spare { get; set; }
+            public string ECN { get; set; }
+            public string Test { get; set; }
+            public string ContPage { get; set; }
+            public string EdndocsId { get; set; }
+         
+
+
+
         }
     }
 }
