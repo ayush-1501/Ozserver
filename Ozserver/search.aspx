@@ -30,19 +30,19 @@
                                     <!-- Left Column -->
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label">OfficeId:</label>
+                                            <label class="col-lg-3 col-form-label">Office Id:</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" id="OfficeIdEDN" runat="server" placeholder="OfficeId" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label">EdndocsId:</label>
+                                            <label class="col-lg-3 col-form-label">Edndocs Id:</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" id="EdndocsId" runat="server" placeholder="EdndocsId" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label">SenderRef:</label>
+                                            <label class="col-lg-3 col-form-label">Sender Ref:</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" id="SenderRef" runat="server" placeholder="SenderRef" readonly>
                                             </div>
@@ -62,19 +62,19 @@
                                         
                                        
                                           <div class="form-group row">
-                                              <label class="col-lg-3 col-form-label">File_In_Name:</label>
+                                              <label class="col-lg-3 col-form-label">File In Name:</label>
                                               <div class="col-lg-9">
                                                   <input type="text" class="form-control" id="File_In_NameEDN" runat="server" placeholder="File_In_Name" readonly>
                                               </div>
                                           </div>
                                          <div class="form-group row">
-                                             <label class="col-lg-3 col-form-label">File_Out_Name:</label>
+                                             <label class="col-lg-3 col-form-label">File Out Name:</label>
                                              <div class="col-lg-9">
                                                  <input type="text" class="form-control" id="File_Out_NameEDN" runat="server" placeholder="File_Out_Name" readonly>
                                              </div>
                                          </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label">SDateTime:</label>
+                                            <label class="col-lg-3 col-form-label">S DateTime:</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" id="SDateTimeEDN" runat="server" placeholder="SDateTime" readonly>
                                             </div>
@@ -85,7 +85,7 @@
                                     <!-- Right Column -->
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label">ControlRef:</label>
+                                            <label class="col-lg-3 col-form-label">Control Ref:</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" id="ControlRef" runat="server" placeholder="ControlRef" readonly>
                                             </div>
@@ -97,39 +97,39 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label">StatusDesc:</label>
+                                            <label class="col-lg-3 col-form-label">Status Desc:</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" id="StatusDescEDN" runat="server" placeholder="StatusDesc" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label">PermitNo:</label>
+                                            <label class="col-lg-3 col-form-label">Permit No:</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" id="StatusEDN" runat="server" placeholder="Status" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label">ReasonDesc:</label>
+                                            <label class="col-lg-3 col-form-label">Reason Desc:</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" id="ReasonDesc" runat="server" placeholder="ReasonDesc" readonly>
                                             </div>
                                         </div>
                                       
                                             <div class="form-group row">
-                                                <label class="col-lg-3 col-form-label">File_In_Content:</label>
+                                                <label class="col-lg-3 col-form-label">File In Content:</label>
                                                 <div class="col-lg-9">
                                                     <input type="text" class="form-control" id="File_In_ContentEDN" runat="server" placeholder="File_In_Content" readonly>
                                                 </div>
                                             </div>
                                        
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label">File_Out_Content:</label>
+                                            <label class="col-lg-3 col-form-label">File Out Content:</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" id="File_Out_ContentEDN" runat="server" placeholder="File_Out_Content" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label">RDateTime:</label>
+                                            <label class="col-lg-3 col-form-label">R DateTime:</label>
                                             <div class="col-lg-9">
                                                 <input type="text" class="form-control" id="RDateTimeEDN" runat="server" placeholder="RDateTime" readonly>
                                             </div>
@@ -188,19 +188,19 @@
                             <!-- Left Column -->
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">OfficeId:</label>
+                                        <label class="col-lg-4 col-form-label">Office Id:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="OfficeIdAQIS" runat="server" placeholder="OfficeId" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">AQISId:</label>
+                                        <label class="col-lg-4 col-form-label">AQIS Id:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="AQISId" runat="server" placeholder="AQISId" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">RFPNo:</label>
+                                        <label class="col-lg-4 col-form-label">RFP No:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="RFPNo" runat="server" placeholder="RFPNo" readonly>
                                         </div>
@@ -225,19 +225,19 @@
                                      </div>
                                   
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">File_In_Name:</label>
+                                        <label class="col-lg-4 col-form-label">File In Name:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="File_In_NameAQIS" runat="server" placeholder="File_In_Name" readonly>
                                         </div>
                                     </div>
                                       <div class="form-group row">
-                                          <label class="col-lg-4 col-form-label">File_Out_Name:</label>
+                                          <label class="col-lg-4 col-form-label">File Out Name:</label>
                                           <div class="col-lg-8">
                                               <input type="text" class="form-control" id="File_Out_NameAQIS" runat="server" placeholder="File_Out_Name" readonly>
                                           </div>
                                       </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">SDateTime:</label>
+                                        <label class="col-lg-4 col-form-label">S DateTime:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="SDateTimeAQIS" runat="server" placeholder="SDateTime" readonly>
                                         </div>
@@ -254,7 +254,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">ContPage:</label>
+                                        <label class="col-lg-4 col-form-label">Cont Page:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="ContPage" runat="server" placeholder="ContPage" readonly>
                                         </div>
@@ -266,32 +266,32 @@
                                         </div>
                                     </div>
                                       <div class="form-group row">
-                                          <label class="col-lg-4 col-form-label">PermitNo:</label>
+                                          <label class="col-lg-4 col-form-label">Permit No:</label>
                                           <div class="col-lg-8">
                                               <input type="text" class="form-control" id="PermitNo" runat="server" placeholder="PermitNo" readonly>
                                           </div>
                                       </div>
                                       <div class="form-group row">
-                                          <label class="col-lg-4 col-form-label">StatusDesc:</label>
+                                          <label class="col-lg-4 col-form-label">Status Desc:</label>
                                           <div class="col-lg-8">
                                               <input type="text" class="form-control" id="StatusDescAQIS" runat="server" placeholder="StatusDesc" readonly>
                                           </div>
                                       </div>
                                      <div class="form-group row">
-                                         <label class="col-lg-4 col-form-label">IsNew:</label>
+                                         <label class="col-lg-4 col-form-label">Is New:</label>
                                          <div class="col-lg-8">
                                              <input type="text" class="form-control" id="IsNew" runat="server" placeholder="IsNew" readonly>
                                          </div>
                                      </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">File_In_Content:</label>
+                                        <label class="col-lg-4 col-form-label">File In Content:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="File_In_ContentAQIS" runat="server" placeholder="File_In_Content" readonly>
                                         </div>
                                     </div>
                                   
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">File_Out_Content:</label>
+                                        <label class="col-lg-4 col-form-label">File Out Content:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="File_Out_ContentAQIS" runat="server" placeholder="File_Out_Content" readonly>
                                         </div>
@@ -300,7 +300,7 @@
                                    
 
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">RDateTime:</label>
+                                        <label class="col-lg-4 col-form-label">R DateTime:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="RDateTimeAQIS" runat="server" placeholder="RDateTime" readonly>
                                         </div>
@@ -351,104 +351,100 @@
                                 <!-- Left Column -->
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">OfficeId:</label>
+                                        <label class="col-lg-4 col-form-label">Office Id:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="OfficeIdPRA" runat="server" placeholder="OfficeId" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">PradocsId:</label>
+                                        <label class="col-lg-4 col-form-label">Pradocs Id:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="PradocsId" runat="server" placeholder="PradocsId" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">ShippersRef:</label>
+                                        <label class="col-lg-4 col-form-label">Shippers Ref:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="ShippersRef" runat="server" placeholder="ShippersRef" readonly>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">Version:</label>
-                                        <div class="col-lg-8">
-                                            <input type="text" class="form-control" id="VersionPRA" runat="server" placeholder="Version" readonly>
-                                        </div>
-                                    </div>
+                                   
                                      <div class="form-group row">
-                                         <label class="col-lg-4 col-form-label">StatusDesc:</label>
+                                         <label class="col-lg-4 col-form-label">Status Desc:</label>
                                          <div class="col-lg-8">
                                              <input type="text" class="form-control" id="StatusDesc" runat="server" placeholder="StatusDesc" readonly>
                                          </div>
                                      </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">SDateTime:</label>
+                                        <label class="col-lg-4 col-form-label">S DateTime:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="SDateTime" runat="server" placeholder="SDateTime" readonly>
                                         </div>
                                     </div>
                                    
                                    <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">File_In_Name:</label>
+                                        <label class="col-lg-4 col-form-label">File In Name:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="File_In_Name" runat="server" placeholder="File_In_Name" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                     <label class="col-lg-4 col-form-label">File_Out_Name:</label>
+                                     <label class="col-lg-4 col-form-label">File Out Name:</label>
                                      <div class="col-lg-8">
                                          <input type="text" class="form-control" id="File_Out_Name" runat="server" placeholder="File_Out_Name" readonly>
                                      </div>
                                  </div>
+                                     <div class="form-group row">
+                                         <label class="col-lg-4 col-form-label">Version:</label>
+                                         <div class="col-lg-8">
+                                             <input type="text" class="form-control" id="VersionPRA" runat="server" placeholder="Version" readonly>
+                                         </div>
+                                     </div>
                                 </div>
                                 <!-- Right Column -->
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                      <div class="form-group row">
-                                         <label class="col-lg-4 col-form-label">LastVersion:</label>
+                                         <label class="col-lg-4 col-form-label">Last Version:</label>
                                          <div class="col-lg-8">
                                              <input type="text" class="form-control" id="LastVersion" runat="server" placeholder="LastVersion" readonly>
                                          </div>
                                      </div>
                                      <div class="form-group row">
-                                         <label class="col-lg-4 col-form-label">OneStopRef:</label>
+                                         <label class="col-lg-4 col-form-label">OneStop Ref:</label>
                                          <div class="col-lg-8">
                                              <input type="text" class="form-control" id="OneStopRef" runat="server" placeholder="OneStopRef" readonly>
                                          </div>
                                      </div>
                                      <div class="form-group row">
-                                         <label class="col-lg-4 col-form-label">ContainerNo:</label>
+                                         <label class="col-lg-4 col-form-label">Container No:</label>
                                          <div class="col-lg-8">
                                              <input type="text" class="form-control" id="ContainerNo" runat="server" placeholder="ContainerNo" readonly>
                                          </div>
                                      </div>
+                                  
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">ContainerNo</label>
-                                        <div class="col-lg-8">
-                                            <input type="text" class="form-control" id="Text5" runat="server" placeholder="ContainerNo" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">SentType:</label>
+                                        <label class="col-lg-4 col-form-label">Sent Type:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="SentType" runat="server" placeholder="SentType" readonly>
                                         </div>
                                     </div>
                                      
                                      <div class="form-group row">
-                                         <label class="col-lg-4 col-form-label">RDateTime:</label>
+                                         <label class="col-lg-4 col-form-label">R DateTime:</label>
                                          <div class="col-lg-8">
                                              <input type="text" class="form-control" id="RDateTime" runat="server" placeholder="RDateTime" readonly>
                                          </div>
                                      </div>
                                   
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">File_In_Content:</label>
+                                        <label class="col-lg-4 col-form-label">File In Content:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="File_In_Content" runat="server" placeholder="File_In_Content" readonly>
                                         </div>
                                     </div>
                                    
                                     <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label">File_Out_Content:</label>
+                                        <label class="col-lg-4 col-form-label">File Out Content:</label>
                                         <div class="col-lg-8">
                                             <input type="text" class="form-control" id="File_Out_Content" runat="server" placeholder="File_Out_Content" readonly>
                                         </div>
@@ -500,13 +496,13 @@
                             <!-- First column -->
                             <div class="col-lg-6">
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label">DocumentId:</label>
+                                    <label class="col-lg-4 col-form-label">Document Id:</label>
                                     <div class="col-lg-8">
                                         <input type="text" class="form-control" id="DocumentId" runat="server" placeholder="DocumentId" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label">ReferenceId:</label>
+                                    <label class="col-lg-4 col-form-label">Reference Id:</label>
                                     <div class="col-lg-8">
                                         <input type="text" class="form-control" id="ReferenceId" runat="server" placeholder="ReferenceId" readonly>
                                     </div>
@@ -537,26 +533,26 @@
                                     </div>
                                 </div>
                                  <div class="form-group row">
-                                     <label class="col-lg-4 col-form-label">ExporterRef:</label>
+                                     <label class="col-lg-4 col-form-label">Exporter Ref:</label>
                                      <div class="col-lg-8">
                                          <input type="text" class="form-control" id="ExporterRef" runat="server" placeholder="ExporterRef" readonly>
                                      </div>
                                  </div>
                                
                                  <div class="form-group row">
-                                     <label class="col-lg-4 col-form-label">InvoiceNo:</label>
+                                     <label class="col-lg-4 col-form-label">Invoice No:</label>
                                      <div class="col-lg-8">
                                          <input type="text" class="form-control" id="InvoiceNo" runat="server" placeholder="InvoiceNo" readonly>
                                      </div>
                                  </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label">InvoiceValue:</label>
+                                    <label class="col-lg-4 col-form-label">Invoice Value:</label>
                                     <div class="col-lg-8">
                                         <input type="text" class="form-control" id="InvoiceValue" runat="server" placeholder="InvoiceValue" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label">CreationDate:</label>
+                                    <label class="col-lg-4 col-form-label">Creation Date:</label>
                                     <div class="col-lg-8">
                                         <input type="text" class="form-control" id="CreationDate" runat="server" placeholder="CreationDate" readonly>
                                     </div>
@@ -567,13 +563,13 @@
                                
                                
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label">DocumentStatus:</label>
+                                    <label class="col-lg-4 col-form-label">Document Status:</label>
                                     <div class="col-lg-8">
                                         <input type="text" class="form-control" id="DocumentStatus" runat="server" placeholder="DocumentStatus" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label">EDNStatus:</label>
+                                    <label class="col-lg-4 col-form-label">EDN Status:</label>
                                     <div class="col-lg-8">
                                         <input type="text" class="form-control" id="EDNStatus" runat="server" placeholder="EDNStatus" readonly>
                                     </div>
@@ -598,19 +594,19 @@
                                   </div>
                                
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label">MUserId:</label>
+                                    <label class="col-lg-4 col-form-label">MUser Id:</label>
                                     <div class="col-lg-8">
                                         <input type="text" class="form-control" id="MUserId" runat="server" placeholder="MUserId" readonly>
                                     </div>
                                 </div>
                                  <div class="form-group row">
-                                     <label class="col-lg-4 col-form-label">BuyerRef:</label>
+                                     <label class="col-lg-4 col-form-label">Buyer Ref:</label>
                                      <div class="col-lg-8">
                                          <input type="text" class="form-control" id="BuyerRef" runat="server" placeholder="BuyerRef" readonly>
                                      </div>
                                  </div>
                                  <div class="form-group row">
-                                     <label class="col-lg-4 col-form-label">InvoiceDate:</label>
+                                     <label class="col-lg-4 col-form-label">Invoice Date:</label>
                                      <div class="col-lg-8">
                                          <input type="text" class="form-control" id="InvoiceDate" runat="server" placeholder="InvoiceDate" readonly>
                                      </div>
@@ -622,7 +618,7 @@
                                      </div>
                                  </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-4 col-form-label">RevisionDate:</label>
+                                    <label class="col-lg-4 col-form-label">Revision Date:</label>
                                     <div class="col-lg-8">
                                         <input type="text" class="form-control" id="RevisionDate" runat="server" placeholder="RevisionDate" readonly>
                                     </div>

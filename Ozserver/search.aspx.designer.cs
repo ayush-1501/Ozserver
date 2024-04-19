@@ -375,15 +375,6 @@ namespace Ozserver
         protected global::System.Web.UI.HtmlControls.HtmlInputText ShippersRef;
 
         /// <summary>
-        /// VersionPRA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText VersionPRA;
-
-        /// <summary>
         /// StatusDesc control.
         /// </summary>
         /// <remarks>
@@ -420,6 +411,15 @@ namespace Ozserver
         protected global::System.Web.UI.HtmlControls.HtmlInputText File_Out_Name;
 
         /// <summary>
+        /// VersionPRA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText VersionPRA;
+
+        /// <summary>
         /// LastVersion control.
         /// </summary>
         /// <remarks>
@@ -445,15 +445,6 @@ namespace Ozserver
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText ContainerNo;
-
-        /// <summary>
-        /// Text5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text5;
 
         /// <summary>
         /// SentType control.
