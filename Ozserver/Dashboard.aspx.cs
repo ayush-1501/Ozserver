@@ -15,7 +15,7 @@ namespace Ozserver
 {
     public partial class Dashboard : System.Web.UI.Page
     {
-        string TableLink = System.Configuration.ConfigurationManager.AppSettings["url2"].ToString();
+        string TableLink = System.Configuration.ConfigurationManager.AppSettings["API_URL"].ToString();
         int MasterCount =0;
         int EDNCount =0;
         int AQISCount = 0;

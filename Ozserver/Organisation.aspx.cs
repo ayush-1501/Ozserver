@@ -24,7 +24,7 @@ namespace Ozserver
 
         string _transmissionSource;
         int _searchId;
-        string SearchLink = System.Configuration.ConfigurationManager.AppSettings["url2"].ToString();
+        string SearchLink = System.Configuration.ConfigurationManager.AppSettings["API_URL"].ToString();
         public string OrgNameValue { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {

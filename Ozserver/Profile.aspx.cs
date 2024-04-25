@@ -12,8 +12,10 @@ using static Ozserver.WebForm1;
 
 namespace Ozserver
 {
+
     public partial class WebForm1 : System.Web.UI.Page
     {
+        string SearchLink = System.Configuration.ConfigurationManager.AppSettings["API_URL"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -30,7 +32,7 @@ namespace Ozserver
                 string password = (string)Session["password"];
 
 
-                string apiUrl = "http://crm2.omnix.com.au/OzdocsServerWebAPI/api/Login/Login?UserName=";
+                string apiUrl = SearchLink+"Login/Login?UserName=";
                 apiUrl += user_ids + "&";
                 apiUrl += "Password=" + password;
 

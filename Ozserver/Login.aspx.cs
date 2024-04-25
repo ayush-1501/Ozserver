@@ -13,12 +13,13 @@ namespace Ozserver
     public partial class Login : System.Web.UI.Page
     {
         string Role = "Admin";
-        string OfficeID = "ANZCO";
+        string OfficeID;
 
         bool EDN = false;
         bool AQIS = false; 
         bool PRA = false; 
-        bool MASTER = false; 
+        bool MASTER = false;
+        string SearchLink = System.Configuration.ConfigurationManager.AppSettings["API_URL"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
            
@@ -32,8 +33,9 @@ namespace Ozserver
 
             Session["user_id"] = user_ids;
             Session["password"] = password;
-           
+
             string apiUrl = "http://crm2.omnix.com.au/OzdocsServerWebAPI/api/Login/Login?UserName=";
+        
             apiUrl += user_ids + "&";
             apiUrl += "Password=" + txtPassword.Text;
 
@@ -71,7 +73,7 @@ namespace Ozserver
                         Session["AQIS"] = AQIS;
                         Session["PRA"] = PRA;
                         Session["MASTER"] = MASTER;
-                        Role = "Admin";
+                        Role = "Non-Admin";
                         Session["Role"] = Role;
                         Session["OfficeID"] = OfficeID;
                         Session["Authenticated"] = true;

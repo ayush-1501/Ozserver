@@ -24,8 +24,7 @@ namespace Example
         string _transmissionSource;
         string OfficeID;
         public string Role { get; set; }
-        string TableLink = System.Configuration.ConfigurationManager.AppSettings["url1"].ToString();
-        string SearchLink = System.Configuration.ConfigurationManager.AppSettings["url2"].ToString();
+        string TableLink = System.Configuration.ConfigurationManager.AppSettings["API_URL"].ToString();
         public int CurrentPage
         {
             get
@@ -64,7 +63,6 @@ namespace Example
                 else
                 {
                     Role = "Non-Admin";
-                    OfficeID = "ANZCO";
                 }
 
 
@@ -138,7 +136,11 @@ namespace Example
 
         public DataTable GetDataFromDb()
         {
-         
+
+            DateTime currentDate = DateTime.Now;
+            string formattedDate = currentDate.ToString("yyyy-MM-dd");
+           
+
             string apiUrl = TableLink;
             if (_transmissionSource == "EDN")
             {
@@ -148,7 +150,9 @@ namespace Example
                 }
                 else
                 {
-                    apiUrl = apiUrl + "EDNDocument/GetEDNDataByOfficeId?officeId=" + OfficeID;
+                    apiUrl = apiUrl + $"EDNDocument/GetEDNDataByFilter?toDate={formattedDate}&fromDate={formattedDate}";
+                
+
                 }
             }
             else if (_transmissionSource =="PRA")
@@ -159,7 +163,8 @@ namespace Example
                 }
                 else
                 {
-                    apiUrl = apiUrl + "PRADocument/GetPRADataByOfficeId?officeId=" + OfficeID;
+                    apiUrl = apiUrl + $"PRADocument/GetPRADataByFilter?toDate={formattedDate}&fromDate={formattedDate}";
+               
                 }
             }
             else if (_transmissionSource=="AQIS")
@@ -170,7 +175,8 @@ namespace Example
                 }
                 else
                 {
-                    apiUrl = apiUrl + "AQISDocument/GetAQISDataByOfficeId?officeId=" + OfficeID;
+                    apiUrl = apiUrl + $"AQISDocument/GetAQISDataByFilter?toDate={formattedDate}&fromDate={formattedDate}";
+             
                 }
             }
             else if (_transmissionSource == "MASTER")
@@ -181,12 +187,13 @@ namespace Example
                 }
                 else
                 {
-                    apiUrl = apiUrl + "MasterDocument/GetMasterDataByOfficeId?officeId=" + OfficeID;
+                    apiUrl = apiUrl + $"MasterDocument/GetMasterDataByFilter?toDate={formattedDate}&fromDate={formattedDate}";
+               
                 }
             }
 
 
-            string apiUrl1 = SearchLink;
+            string apiUrl1 = TableLink;
             if (_transmissionSource == "EDNSEARCH")
             {
                 apiUrl1 += "EDNDocument/GetEDNDataByFilter?";
@@ -353,7 +360,7 @@ namespace Example
             }
 
 
-            string apiUrlUser = SearchLink;
+            string apiUrlUser = TableLink;
 
             if(_transmissionSource == "USER")
             {
